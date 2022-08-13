@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>scala implicits on LPRAKASHV TECH BLOG</title><link>http://www.lprakashv.com/tags/scala-implicits/</link><description>Recent content in scala implicits on LPRAKASHV TECH BLOG</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>© Lalit Prakash Vatsal</copyright><lastBuildDate>Thu, 17 Oct 2019 08:14:10 +0000</lastBuildDate><atom:link href="http://www.lprakashv.com/tags/scala-implicits/index.xml" rel="self" type="application/rss+xml"/><item><title>How to keep your sanity working with Scala Implicit!</title><link>http://www.lprakashv.com/posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/</link><pubDate>Thu, 17 Oct 2019 08:14:10 +0000</pubDate><guid>http://www.lprakashv.com/posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/</guid><description>Courtesy: https://www.pexels.com/
+Intro Scala Implicits provide a lot of power and flexibility to express the code in such beautiful ways that development sometimes feel like and art and are nothing short of a “Brahmastra” in the hand of a library developer.
+And, as Spider-man’s uncle said,
+“With great power, comes greater responsibility!”
+The abuse of such a powerful feature has made working with them a nightmare sometimes for the end users.</description></item><item><title>Making ordinary classes Rich! (Scala)</title><link>http://www.lprakashv.com/posts/2019-10-07_making-ordinary-classes-rich-scala/</link><pubDate>Mon, 07 Oct 2019 17:24:21 +0000</pubDate><guid>http://www.lprakashv.com/posts/2019-10-07_making-ordinary-classes-rich-scala/</guid><description>Let me break it to you, this post has nothing to do with charity! Now, let’s start with a question:
+How do we enrich something?
+By making it abundant, rich in features and resourceful!
+In simple OOP terms, we add additional feature methods to the class!!
+Let’s try to enrich a Person class, starting with the basic class:
+Now, to make a person speak French, we have to add another method to our Person class:</description></item></channel></rss>
