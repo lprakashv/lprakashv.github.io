@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spring data on LPRAKASHV TECH BLOG</title>
+    <link>http://www.lprakashv.com/tags/spring-data/</link>
+    <description>Recent content in spring data on LPRAKASHV TECH BLOG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Lalit Prakash Vatsal</copyright>
+    <lastBuildDate>Fri, 28 Aug 2020 21:08:07 +0000</lastBuildDate><atom:link href="http://www.lprakashv.com/tags/spring-data/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bulk RDBMS Upserts with Spring</title>
+      <link>http://www.lprakashv.com/posts/2020-08-28_bulk-rdbms-upserts-with-spring/</link>
+      <pubDate>Fri, 28 Aug 2020 21:08:07 +0000</pubDate>
+      
+      <guid>http://www.lprakashv.com/posts/2020-08-28_bulk-rdbms-upserts-with-spring/</guid>
+      <description>Upsert is a fairly common terminology in databases, meaning Update if the record exists or Insert the new record. Upserts make more sense in case of simple object save requests with new information.
+Why Bulk? If we talk about any data sync, data migration or bulk data update jobs, we are bound to have a bulk upsert scenario to update whatever we have in the database and insert all the new rows.</description>
+    </item>
+    
+  </channel>
+</rss>

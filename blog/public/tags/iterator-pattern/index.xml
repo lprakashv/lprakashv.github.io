@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iterator pattern on LPRAKASHV TECH BLOG</title>
+    <link>http://www.lprakashv.com/tags/iterator-pattern/</link>
+    <description>Recent content in iterator pattern on LPRAKASHV TECH BLOG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Lalit Prakash Vatsal</copyright>
+    <lastBuildDate>Mon, 30 Sep 2019 05:16:43 +0000</lastBuildDate><atom:link href="http://www.lprakashv.com/tags/iterator-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cushing Design Patterns! — Unnecessary Patterns.</title>
+      <link>http://www.lprakashv.com/posts/2019-09-30_cushing-design-patternsunnecessary-patterns./</link>
+      <pubDate>Mon, 30 Sep 2019 05:16:43 +0000</pubDate>
+      
+      <guid>http://www.lprakashv.com/posts/2019-09-30_cushing-design-patternsunnecessary-patterns./</guid>
+      <description>This is the part-II in the continuation of the “Crushing Design Patterns” series (Part-I) where we debunk the idea of having to use the design patterns to design the system.
+Intro They are either just so natural that we have been using them unconsciously or there are better ways in which we don’t have to focus on ceremoniously writing them.Here we go.
+1. Builder Pattern The intent of the Builder design pattern is to separate the construction of a complex object from its representation.</description>
+    </item>
+    
+  </channel>
+</rss>

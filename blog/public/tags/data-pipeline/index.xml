@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>data pipeline on LPRAKASHV TECH BLOG</title>
+    <link>http://www.lprakashv.com/tags/data-pipeline/</link>
+    <description>Recent content in data pipeline on LPRAKASHV TECH BLOG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Lalit Prakash Vatsal</copyright>
+    <lastBuildDate>Sun, 12 Apr 2020 10:45:58 +0000</lastBuildDate><atom:link href="http://www.lprakashv.com/tags/data-pipeline/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Akka Streams in Java Spring Boot!</title>
+      <link>http://www.lprakashv.com/posts/2020-04-12_akka-streams-in-java-spring-boot/</link>
+      <pubDate>Sun, 12 Apr 2020 10:45:58 +0000</pubDate>
+      
+      <guid>http://www.lprakashv.com/posts/2020-04-12_akka-streams-in-java-spring-boot/</guid>
+      <description>Streaming data from a Source to Sink is a very trivial task in today’s data processing and data pipelining systems. Ergo, there are many streaming solutions out there like: Kafka Stream, Spark Streaming, Apache Flink etc.
+All of them in one way or another either need an infrastructure to be setup to be able to fully take advantage of them (e.g., HDFS, Spark cluster, Kafka streaming setup etc.) or we need some kind of orchestration among the streaming jobs (e.</description>
+    </item>
+    
+  </channel>
+</rss>
