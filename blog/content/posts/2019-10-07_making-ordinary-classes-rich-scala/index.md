@@ -14,7 +14,8 @@ images:
 
 
 aliases:
-    - "/making-ordinary-classes-rich-scala-ab7f991d690"
+    - "/making-ordinary-classes-rich-scala"
+    - "/posts/making-ordinary-classes-rich-scala"
 
 tags:
   - "scala"

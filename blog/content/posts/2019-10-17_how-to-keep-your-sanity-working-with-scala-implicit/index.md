@@ -22,7 +22,8 @@ images:
 
 
 aliases:
-    - "/how-to-keep-your-sanity-working-with-scala-implicit-fda9ffc33162"
+    - "/how-to-keep-your-sanity-working-with-scala-implicit"
+    - "/posts/how-to-keep-your-sanity-working-with-scala-implicit"
 
 tags:
   - "scala"

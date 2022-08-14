@@ -16,7 +16,8 @@ images:
 
 
 aliases:
-    - "/akka-streams-in-java-spring-boot-f7749cafb7f5"
+    - "/akka-streams-in-java-spring-boot"
+    - "/posts/akka-streams-in-java-spring-boot"
 
 tags:
   - "java"

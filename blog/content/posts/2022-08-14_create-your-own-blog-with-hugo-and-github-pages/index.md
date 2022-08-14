@@ -19,6 +19,7 @@ images:
   - "/posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/images/8.png"
 
 aliases:
+    - "/posts/create-your-own-blog-with-hugo-and-github-pages"
     - "/create-your-own-blog-with-hugo-and-github-pages"
 
 tags:

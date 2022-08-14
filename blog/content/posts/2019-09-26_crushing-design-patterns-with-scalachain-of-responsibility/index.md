@@ -15,7 +15,8 @@ images:
 
 
 aliases:
-    - "/crushing-design-patterns-with-scala-chain-of-responsibility-7d705ebe12b5"
+    - "/crushing-design-patterns-with-scala-chain-of-responsibility"
+    - "/posts/crushing-design-patterns-with-scala-chain-of-responsibility"
 
 tags: ['design patterns', 'java', 'scala', 'chain of responsibility']
 

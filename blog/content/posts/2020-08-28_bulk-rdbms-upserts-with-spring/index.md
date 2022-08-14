@@ -32,7 +32,8 @@ images:
 
 
 aliases:
-    - "/bulk-rdbms-upserts-with-spring-506edc9cea19"
+    - "/bulk-rdbms-upserts-with-spring"
+    - "/posts/bulk-rdbms-upserts-with-spring"
 
 tags:
   - "java"

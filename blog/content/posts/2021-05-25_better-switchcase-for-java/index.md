@@ -19,7 +19,8 @@ images:
 
 
 aliases:
-    - "/better-switch-case-for-java-b3b09f14cebc"
+    - "/better-switchcase-for-java"
+    - "/posts/better-switchcase-for-java"
 
 tags:
   - "java"

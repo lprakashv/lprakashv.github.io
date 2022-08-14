@@ -19,7 +19,8 @@ images:
 
 
 aliases:
-    - "/going-reactive-f6c22aa10597"
+    - "/going-reactive"
+    - "/posts/going-reactive"
 
 tags:
   - "reactive programming"

@@ -14,7 +14,8 @@ images:
 
 
 aliases:
-    - "/cushing-design-patterns-unnecessary-patterns-dda76bfdca07"
+    - "/cushing-design-patterns-unnecessary-patterns"
+    - "/posts/cushing-design-patterns-unnecessary-patterns"
 
 tags:
   - "design patterns"

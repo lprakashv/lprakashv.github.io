@@ -16,7 +16,8 @@ images:
 
 
 aliases:
-    - "/circuit-breaker-pattern-in-scala-185994512c07"
+    - "/circuit-breaker-pattern-in-scala"
+    - "/posts/circuit-breaker-pattern-in-scala"
 
 tags:
   - "scala"

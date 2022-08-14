@@ -15,7 +15,8 @@ images:
 
 
 aliases:
-    - "/handling-nulls-in-nested-objects-java-7079b9413ec9"
+    - "/handling-nulls-in-nested-objects-java"
+    - "/posts/handling-nulls-in-nested-objects-java"
 
 tags:
   - "java"
