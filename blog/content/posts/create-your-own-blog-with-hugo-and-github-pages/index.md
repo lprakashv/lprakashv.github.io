@@ -71,7 +71,7 @@ Creating a new site (your blog), it's better to create it as a sub-folder inside
 
 ```bash
 # clone you github.io repository
-git clone https://github.com/\<your-user-name\>/\<your-user-name\>.github.io.git
+git clone https://github.com/<your-user-name>/<your-user-name>.github.io.git
 
 # change directory into the cloned repository folder
 cd <your-user-name>.github.io
