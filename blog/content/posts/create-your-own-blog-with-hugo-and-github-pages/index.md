@@ -6,6 +6,18 @@ description: ""
 
 subtitle: "In this post we will explore how we can setup our own blog using Hugo, hosted on Github pages using Github Actions for auto deployment"
 
+image: "/posts/create-your-own-blog-with-hugo-and-github-pages/images/gh-hugo.png"
+images:
+ - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/go-hugo.png"
+ - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/1.png
+ - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/2.png
+ - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/3.png
+ - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/4.png
+ - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/5.png
+ - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/6.png
+ - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/7.png
+ - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/8.png
+
 aliases:
     - "/create-your-own-blog-with-hugo-and-github-pages"
 
@@ -19,6 +31,8 @@ tags:
   - markdown
 
 ---
+
+![Image](/posts/create-your-own-blog-with-hugo-and-github-pages/images/gh-hugo.png#layoutTextWidth)
 
 In this post we will explore how we can setup our own blog using [Hugo](https://gohugo.io/) which claims to be "_The world’s fastest framework for building websites_". And for hosting, we will use [Github pages](https://pages.github.com/) and automatic deployments using [Github Actions](https://github.com/features/actions) workflow.
 
@@ -262,15 +276,26 @@ Update your DNS records:
 - Edit the record with __type "CNAME"__ with value as your Github.io website (\<username\>.github.io).
 - Add 3 more __type "A"__ records with values having IP addresses __185.199.109.153__, __185.199.110.153__, __185.199.111.153__.
 
-![Click Actions](/posts/create-your-own-blog-with-hugo-and-github-pages/images/7.png#layoutTextWidth)
+![DNS Type A](/posts/create-your-own-blog-with-hugo-and-github-pages/images/7.png#layoutTextWidth)
 
-![Click Actions](/posts/create-your-own-blog-with-hugo-and-github-pages/images/8.png#layoutTextWidth)
+![DNS Type CNAME](/posts/create-your-own-blog-with-hugo-and-github-pages/images/8.png#layoutTextWidth)
 
 Now, setup your custom domain on you Github pages website.
 
 Click on __Settings__ tab, then click __pages__ on side bar, then enter the Custom domain in the __Custom domain__ section.
 
-![Click Actions](/posts/create-your-own-blog-with-hugo-and-github-pages/images/6.png#layoutTextWidth)
+![Custom Domain Click Actions](/posts/create-your-own-blog-with-hugo-and-github-pages/images/6.png#layoutTextWidth)
+
+Now, to update automatic CNAME addition on gh-pages deployment, edit your __Deploy__ (last) step workflow and add cname attirbute:
+
+```yml
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./blog/public
+          cname: <your-custom-domain> # <----- add this
+```
 
 <!--adsense-inarticle-->
 
