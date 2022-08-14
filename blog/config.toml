@@ -48,8 +48,8 @@ weight = 2
 
 [[menu.main]]
 name = "About"
-# url = "/about"
-url = "https://github.com/lprakashv/lprakashv"
+url = "/about"
+# url = "https://github.com/lprakashv/lprakashv"
 weight = 3
 
 [[menu.main]]
