@@ -10,7 +10,7 @@ theme = "archie"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
-paginate = 10 # articles per page
+paginate = 7 # articles per page
 
 # Social Tags
 
