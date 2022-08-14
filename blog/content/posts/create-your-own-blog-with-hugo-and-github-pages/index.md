@@ -8,15 +8,15 @@ subtitle: "In this post we will explore how we can setup our own blog using Hugo
 
 image: "/posts/create-your-own-blog-with-hugo-and-github-pages/images/gh-hugo.png"
 images:
- - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/go-hugo.png"
- - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/1.png
- - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/2.png
- - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/3.png
- - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/4.png
- - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/5.png
- - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/6.png
- - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/7.png
- - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/8.png
+  - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/gh-hugo.png"
+  - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/1.png"
+  - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/2.png"
+  - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/3.png"
+  - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/4.png"
+  - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/5.png"
+  - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/6.png"
+  - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/7.png"
+  - "/posts/create-your-own-blog-with-hugo-and-github-pages/images/8.png"
 
 aliases:
     - "/create-your-own-blog-with-hugo-and-github-pages"
