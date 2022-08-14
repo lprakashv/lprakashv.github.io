@@ -6,7 +6,7 @@ lastmod: 2022-08-13T01:14:48+05:30
 
 description: ""
 
-subtitle: "Let me break it to you, this post has nothing to do with charity! Now, let’s start with a question:"
+subtitle: "How do we enrich something? By making it abundant, rich in features and resourceful! In simple OOP terms, we add additional feature methods to the class!!"
 
 image: "/posts/2019-10-07_making-ordinary-classes-rich-scala/images/1.jpeg"
 images:

@@ -98,7 +98,7 @@ At this point, if you are a programmer, your brain should be screaming right now
 
 Meaning: Every command implementation does what it is meant for!
 
-{{ video src="https://c.tenor.com/gM3gv9qsN9MAAAPo/your-wish-is-my-command-geenie.mp4" autoPlay=true loop=true id="your-wish-is-my-command-geenie.mp4" }}
+{{< video src="https://c.tenor.com/gM3gv9qsN9MAAAPo/your-wish-is-my-command-geenie.mp4" autoPlay=true loop=true id="your-wish-is-my-command-geenie.mp4" >}}
 
 {{< script src="https://gist.github.com/lprakashv/c09c9975cc0828539c6e547ab10200e2.js" >}}
 
