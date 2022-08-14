@@ -133,7 +133,7 @@ pre code {
   margin-right: auto;
   max-width: 800px;
   padding: 0 1ch;
-  word-wrap: break-word;
+  /* word-wrap: break-word; */
 }
 
 .content-side {
