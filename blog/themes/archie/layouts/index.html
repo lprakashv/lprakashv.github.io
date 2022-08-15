@@ -18,7 +18,8 @@
 				{{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) }}
 				{{ range $paginator.Pages }}
 				<section class="list-item">
-					<h1 class="title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h1>
+          <!-- adding #disqus_thread to end of each article link -->
+					<h1 class="title"><a href="{{ .RelPermalink }}#disqus_thread">{{.Title}}</a></h1>
 					<time>{{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</time>
 					<br><div class="description">
 						{{ if (ne (.Params.description) "") }}
@@ -30,7 +31,8 @@
 						{{ end }}
 					<!-- </div> -->
           <!-- <div style="align-items: center;"><img src="{{ .Params.Image }}" height="200px" alt="Title image"/></div> -->
-					<a class="readmore" href="{{ .RelPermalink }}">Read more ⟶</a>
+          <!-- adding #disqus_thread to end of each article link -->
+					<a class="readmore" href="{{ .RelPermalink }}#disqus_thread">Read more ⟶</a>
           </div>
 				</section>
 				{{ end }}
@@ -41,5 +43,6 @@
     <div class="content-side">
       {{ partial "google/adsense-vertical.html" . }}
     </div>
+    {{ partial "diqus-body-script" . }}
 	</body>
 </html>
