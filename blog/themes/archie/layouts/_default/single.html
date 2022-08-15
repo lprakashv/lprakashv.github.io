@@ -34,7 +34,8 @@
 			{{ end }}
 			{{ end }}
 		</div>
-    {{ (partial "disqus-universal" .) | safeHTML }}
+    <!-- TODO - hack! fix by checking type of page and not the text -->
+    {{if (ne .Title "About Me")}}{{ (partial "disqus-universal" .) | safeHTML }}{{end}}
 	</article>
 </main>
 {{ end }}
