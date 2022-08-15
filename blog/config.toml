@@ -6,9 +6,16 @@ copyright = "© Lalit Prakash Vatsal"
 theme = "archie"
 
 # Code Highlight
-# pygmentsstyle = "monokai"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
+
+[markup.highlight]
+codeFences = true
+guessSyntax = true
+lineNoStart = 1
+noClasses = true
+tabWidth = 2
+style = "colorful"
 
 paginate = 7 # articles per page
 

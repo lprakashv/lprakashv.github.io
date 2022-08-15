@@ -203,7 +203,7 @@ Here, you can define your workflow in YAML format.
 
 This is the minimal setup to be required for Hugo deployment for deployment of your blog:
 
-```yml
+```yml {linenos=true,linenostart=1}
 name: blog site github pages publish
 
 # Controls when the workflow will run
@@ -289,13 +289,13 @@ Click on __Settings__ tab, then click __pages__ on side bar, then enter the Cust
 
 Now, to update automatic CNAME addition on gh-pages deployment, edit your __Deploy__ (last) step workflow and add cname attirbute:
 
-```yml
+```yml {linenos=true,hl_lines=[6],linenostart=35}
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./blog/public
-          cname: <your-custom-domain> # <----- add this
+          cname: <your-custom-domain>
 ```
 
 <!--adsense-inarticle-->
