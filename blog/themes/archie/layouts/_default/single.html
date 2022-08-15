@@ -3,6 +3,7 @@
 	<article>
 		<div class="title">
 			<h1 class="title">{{ .Title }}</h1>
+      <!-- TODO - hack! fix by checking type of page and not the text -->
 			{{if (ne .Title "About Me")}}<div class="meta">Posted on {{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>{{end}}
 		</div>
 		{{ if isset .Params "tldr" }}
@@ -13,9 +14,9 @@
 
 		<section class="body">
       <!-- {{ partial "google/adsense-horizontal.html" . }} -->
-      {{ $content := replace .Content "<!--adsense-inarticle-->" (partial "google/adsense-inarticle.html" .) }}
-      {{ $content = replace $content "<!--adsense-vertical-->" (partial "google/adsense-vertical.html" .) }}
-      {{ $content = replace $content "<!--adsense-horizontal-->" (partial "google/adsense-horizontal.html" .) }}
+      {{ $content := replace .Content "<!--adsense-inarticle-->" (partial "google/adsense-inarticle" .) }}
+      {{ $content = replace $content "<!--adsense-vertical-->" (partial "google/adsense-vertical" .) }}
+      {{ $content = replace $content "<!--adsense-horizontal-->" (partial "google/adsense-horizontal" .) }}
 			{{ $content | safeHTML }}
       <!-- {{ partial "google/adsense-horizontal.html" . }} -->
 		</section>
@@ -33,6 +34,7 @@
 			{{ end }}
 			{{ end }}
 		</div>
+    {{ (partial "disqus-universal" .) | safeHTML }}
 	</article>
 </main>
 {{ end }}

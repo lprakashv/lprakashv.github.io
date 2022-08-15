@@ -1,9 +1,14 @@
 baseURL = 'https://www.lprakashv.com/'
 languageCode = 'en-us'
-title = 'LPRAKASHV TECH BLOG'
+title = 'LPRAKASHV CODE BYTES'
 copyright = "© Lalit Prakash Vatsal"
+relativeurls = true
 
 theme = "archie"
+
+[params]
+# Change default color scheme with a variant one. Can be "red", "blue", "green".
+themeVariant = "blue"
 
 # Code Highlight
 pygmentscodefences = true
@@ -63,6 +68,8 @@ weight = 3
 name = "Tags"
 url = "/tags"
 weight = 4
+
+# Google Analytics and Adsense
 
 [params.adsense]
 client = "ca-pub-3468549466738898"
