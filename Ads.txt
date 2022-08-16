@@ -38,3 +38,5 @@ advertising.com, 8603, RESELLER
 contextweb.com, 560382, RESELLER
 openx.com, 539154393, RESELLER
 rubiconproject.com, 16698, RESELLER, 0bfd66d529a55807
+
+google.com, ca-pub-3468549466738898, DIRECT, f08c47fec0942fa0
