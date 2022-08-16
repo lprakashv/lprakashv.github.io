@@ -18,22 +18,7 @@
 				{{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) }}
 				{{ range $paginator.Pages }}
 				<section class="list-item">
-          <!-- adding #disqus_thread to end of each article link -->
-					<h1 class="title"><a href="{{ .RelPermalink }}#disqus_thread" data-disqus-identifier="{{.Title}}">{{.Title}}</a></h1>
-					<time>{{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</time>
-					<br><div class="description">
-						{{ if (ne (.Params.description) "") }}
-						{{ .Description }}
-            {{ else if isset .Params "subtitle" }}
-            {{ .Params.subtitle }}
-						{{ else }}
-						{{ .Summary }}&hellip;
-						{{ end }}
-					<!-- </div> -->
-          <!-- <div style="align-items: center;"><img src="{{ .Params.Image }}" height="200px" alt="Title image"/></div> -->
-          <!-- adding #disqus_thread to end of each article link -->
-					<a class="readmore" href="{{ .RelPermalink }}#disqus_thread" data-disqus-identifier="{{.Title}}">Read more ⟶</a>
-          </div>
+          {{ partial "post-list-item" . }}
 				</section>
 				{{ end }}
 				{{ template "partials/paginator.html" . }}
