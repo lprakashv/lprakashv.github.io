@@ -1,2 +1,1104 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>spring data on LPRAKASHV CODE BYTES</title><link>https://www.lprakashv.com/tags/spring-data/</link><description>Recent content in spring data on LPRAKASHV CODE BYTES</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>© Lalit Prakash Vatsal</copyright><lastBuildDate>Fri, 28 Aug 2020 21:08:07 +0000</lastBuildDate><atom:link href="https://www.lprakashv.com/tags/spring-data/index.xml" rel="self" type="application/rss+xml"/><item><title>Bulk RDBMS Upserts with Spring</title><link>https://www.lprakashv.com/posts/2020-08-28_bulk-rdbms-upserts-with-spring/</link><pubDate>Fri, 28 Aug 2020 21:08:07 +0000</pubDate><guid>https://www.lprakashv.com/posts/2020-08-28_bulk-rdbms-upserts-with-spring/</guid><description>Upsert is a fairly common terminology in databases, meaning Update if the record exists or Insert the new record. Upserts make more sense in case of simple object save requests with new information.
-Why Bulk? If we talk about any data sync, data migration or bulk data update jobs, we are bound to have a bulk upsert scenario to update whatever we have in the database and insert all the new rows.</description></item></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>spring data on LPRAKASHV CODE BYTES</title><link>https://www.lprakashv.com/tags/spring-data/</link><description>Recent content in spring data on LPRAKASHV CODE BYTES</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>© Lalit Prakash Vatsal</copyright><lastBuildDate>Fri, 28 Aug 2020 21:08:07 +0000</lastBuildDate><atom:link href="https://www.lprakashv.com/tags/spring-data/index.xml" rel="self" type="application/rss+xml"/><item><title>Create Your Own Blog With Hugo and Github Pages</title><link>https://www.lprakashv.com/posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/</link><pubDate>Sun, 14 Aug 2022 16:06:48 +0530</pubDate><guid>https://www.lprakashv.com/posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/</guid><description>&lt;p>&lt;img src="../../posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/images/gh-hugo.png#layoutTextWidth" alt="Image">&lt;/p>
+&lt;p>In this post we will explore how we can setup our own blog using &lt;a href="https://gohugo.io/">Hugo&lt;/a> which claims to be &amp;ldquo;&lt;em>The world’s fastest framework for building websites&lt;/em>&amp;rdquo;. And for hosting, we will use &lt;a href="https://pages.github.com/">Github pages&lt;/a> and automatic deployments using &lt;a href="https://github.com/features/actions">Github Actions&lt;/a> workflow.&lt;/p>
+&lt;p>So let&amp;rsquo;s get started, shall we?&lt;/p>
+&lt;h2 id="the-githubio-repository">The Github.io Repository&lt;/h2>
+&lt;p>If you have a &lt;a href="github.com">Github.com&lt;/a> account, you can create your personal static website easily by creating a special repository with name &lt;strong>&amp;quot;&amp;lt;your-github-user-name&amp;gt;.github.io&amp;quot;&lt;/strong>.&lt;/p>
+&lt;p>&lt;img src="../../posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/images/1.png#layoutTextWidth" alt="repo setup">&lt;/p>
+&lt;ul>
+&lt;li>By default, you&amp;rsquo;ll be able to see the contents of the README.md file by opening the link &lt;strong>&amp;quot;&amp;lt;your-github-user-name&amp;gt;.github.io&amp;quot;&lt;/strong>.&lt;/li>
+&lt;li>You can place an &lt;strong>index.html&lt;/strong> file along with other static content (css, images, js, etc files) in the repository to render your desired website content.&lt;/li>
+&lt;/ul>
+&lt;p>Elaborate steps to setup your own Github pages website can be found &lt;a href="https://pages.github.com/">here&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Problem:&lt;/strong> We have found a way to host our static website for free but we need to still create our actual website, which can become quite tedious if you do it from scratch.&lt;/p>
+&lt;p>To overcome this problem, we can use any of the static site generators available in the market, for example &lt;a href="https://jekyllrb.com/">Jekyll&lt;/a>, Hugo, and many more. However, we will limit ourselves to using Hugo and try to build our site using that.&lt;/p>
+&lt;h2 id="hugohttpsgohugoio">&lt;a href="https://gohugo.io/">Hugo&lt;/a>&lt;/h2>
+&lt;blockquote>
+&lt;p>Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites fun again.&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="install-and-setup">Install and Setup&lt;/h3>
+&lt;p>Install using Homebrew:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>brew install hugo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>for other methods if installing, please refer &lt;a href="https://gohugo.io/getting-started/installing">this&lt;/a>&lt;/p>
+&lt;p>Creating a new site (your blog), it&amp;rsquo;s better to create it as a sub-folder inside your github.io repository:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># clone you github.io repository&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git clone https://github.com/&amp;lt;your-user-name&amp;gt;/&amp;lt;your-user-name&amp;gt;.github.io.git
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># change directory into the cloned repository folder&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> &amp;lt;your-user-name&amp;gt;.github.io
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># now create a blog site sub-folder named &amp;#34;blog&amp;#34; using hugo&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hugo new site blog
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>You can then test you website in development mode using:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> blog
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hugo server -D
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="adding-theme">Adding Theme&lt;/h3>
+&lt;p>There are lots of pre-built themes for you Hugo site, you can choose from this &lt;a href="https://themes.gohugo.io/">hugo themes gallery&lt;/a>.&lt;/p>
+&lt;p>We will use &lt;a href="https://themes.gohugo.io/themes/archie/">archie theme&lt;/a> for our blog, which looks something like:&lt;/p>
+&lt;p>&lt;img src="../../posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/images/2.png#layoutTextWidth" alt="Archie Theme">&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> blog
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git submodule add https://github.com/athul/archie.git themes/ananke
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Open &lt;code>blog/config.toml&lt;/code> file in an editor and add the line:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>theme = &amp;#34;archie&amp;#34;&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="creating-posts">Creating Posts&lt;/h3>
+&lt;p>You can create a post by running the command &lt;code>hugo new posts/&amp;lt;any-subdirectory-to-be-created&amp;gt;/&amp;lt;name-of-the-post-with-hyphenated-words&amp;gt;.md&lt;/code> in &lt;strong>blog&lt;/strong> folder:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># make sure you are under hugo site folder&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> blog
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hugo new posts/my-first-post.md
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This will create a markdown file with name &lt;strong>my-first-post.md&lt;/strong> under folder &lt;strong>blog/content/posts&lt;/strong> with contents:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-md" data-lang="md">&lt;span style="display:flex;">&lt;span>---
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>title: &amp;#34;My First Post&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>date: 2022-08-14T16:06:48+05:30
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>draft: true
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>---
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This is called the &lt;strong>front-matter&lt;/strong> for your post and you can even add more metadata parameters like &lt;strong>tags&lt;/strong>, &lt;strong>description&lt;/strong>, &lt;strong>subtitle&lt;/strong>, &lt;strong>images&lt;/strong> etc. You can refer &lt;a href="https://gohugo.io/content-management/front-matter/">this&lt;/a> for more details.&lt;/p>
+&lt;p>You can now edit this file and add content in &lt;a href="https://www.markdownguide.org/cheat-sheet/">markdown format&lt;/a>.&lt;/p>
+&lt;h4 id="create-posts-inside-sub-folder">Create posts inside sub-folder&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># make sure you are under hugo site folder&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> blog
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hugo new posts/my-first-post/index.md
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This will create a folder named &lt;strong>my-first-post&lt;/strong> containing &lt;strong>index.md&lt;/strong> file with the same content instead of just one file.&lt;/p>
+&lt;p>This way we can have other static content like images/videos/gifs in out post folder and we can use those in our &lt;strong>index.md&lt;/strong> file, this ways we can manage separate files for each post.&lt;/p>
+&lt;h3 id="starting-server--building-deployable-static-content">Starting Server &amp;amp; Building Deployable Static Content&lt;/h3>
+&lt;p>Running Hugo server to see changes locally&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ hugo server -D
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> | EN
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>+------------------+----+
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Pages | &lt;span style="color:#60e;font-weight:bold">10&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Paginator pages | &lt;span style="color:#60e;font-weight:bold">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Non-page files | &lt;span style="color:#60e;font-weight:bold">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Static files | &lt;span style="color:#60e;font-weight:bold">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Processed images | &lt;span style="color:#60e;font-weight:bold">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Aliases | &lt;span style="color:#60e;font-weight:bold">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Sitemaps | &lt;span style="color:#60e;font-weight:bold">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Cleaned | &lt;span style="color:#60e;font-weight:bold">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Total in &lt;span style="color:#60e;font-weight:bold">11&lt;/span> ms
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Watching &lt;span style="color:#080;font-weight:bold">for&lt;/span> changes in /Users/bep/quickstart/&lt;span style="color:#333">{&lt;/span>content,data,layouts,static,themes&lt;span style="color:#333">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Watching &lt;span style="color:#080;font-weight:bold">for&lt;/span> config changes in /Users/bep/quickstart/config.toml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Environment: &lt;span style="background-color:#fff0f0">&amp;#34;development&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Serving pages from memory
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Web Server is available at http://localhost:1313/ &lt;span style="color:#333">(&lt;/span>&lt;span style="color:#007020">bind&lt;/span> address 127.0.0.1&lt;span style="color:#333">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Press Ctrl+C to stop
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Building static content to deploy on any hosting side (github pages in our case)&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>hugo -D
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This will translate our markdown content for our posts into HTML/CSS files in &lt;strong>blog/public&lt;/strong> folder, which can directly be served for our website.&lt;/p>
+&lt;p>We can also use &lt;code>hugo --minify&lt;/code> to have the minified static files for production deployment).&lt;/p>
+&lt;h2 id="github-actions">Github Actions&lt;/h2>
+&lt;p>Github Actions workflow provide an out of the box CI/D (continuous integration / continuous deployment) for our code. We can provide the actions to be taken on our code (such as run commands, copy data etc.) based on activities being performed on the repository (branch push, merge etc.).&lt;/p>
+&lt;h3 id="setup-workflow-to-deploy-githubio-site">Setup Workflow to deploy Github.io site&lt;/h3>
+&lt;p>Click on &lt;strong>Actions&lt;/strong> tab on your repository page&lt;/p>
+&lt;p>&lt;img src="../../posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/images/3.png#layoutTextWidth" alt="Click Actions">&lt;/p>
+&lt;p>Then, navigate &lt;strong>New workflow&lt;/strong> -&amp;gt; &lt;strong>setup a workflow yourself&lt;/strong>&lt;/p>
+&lt;p>&lt;img src="../../posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/images/4.png#layoutTextWidth" alt="Click Actions">&lt;/p>
+&lt;p>Here, you can define your workflow in YAML format.&lt;/p>
+&lt;p>This is the minimal setup to be required for Hugo deployment for deployment of your blog:&lt;/p>
+&lt;div class="highlight">&lt;div style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#070">name&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>blog site github pages publish&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#888"># Controls when the workflow will run&lt;/span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#070">on&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#888"># Triggers the workflow on push or pull request events but only for the &amp;#34;master&amp;#34; branch&lt;/span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">push&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">branches&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[&lt;span style="background-color:#fff0f0">&amp;#34;master&amp;#34;&lt;/span>]&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#888"># Allows you to run this workflow manually from the Actions tab&lt;/span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">workflow_dispatch&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#888"># A workflow run is made up of one or more jobs that can run sequentially or in parallel&lt;/span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#070">jobs&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">deploy&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#888"># The type of runner that the job will run on&lt;/span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">runs-on&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>ubuntu-latest&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#888"># Steps represent a sequence of tasks that will be executed as part of the job&lt;/span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">steps&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#888"># Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it&lt;/span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>- &lt;span style="color:#070">uses&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>actions/checkout@v3&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">with&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">submodules&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#080;font-weight:bold">true&lt;/span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#888"># Fetch Hugo themes (true OR recursive)&lt;/span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">fetch-depth&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#60e;font-weight:bold">0&lt;/span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#888"># Fetch all history for .GitInfo and .Lastmod&lt;/span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>- &lt;span style="color:#070">name&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>Setup Hugo&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">uses&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>peaceiris/actions-hugo@v2&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">with&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">hugo-version&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>&lt;span style="background-color:#fff0f0">&amp;#34;latest&amp;#34;&lt;/span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">extended&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#080;font-weight:bold">true&lt;/span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>- &lt;span style="color:#070">name&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>Build&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">working-directory&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>./blog&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">run&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>hugo --minify&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>- &lt;span style="color:#070">name&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>Deploy&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">uses&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>peaceiris/actions-gh-pages@v3&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">with&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">github_token&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>${{ secrets.GITHUB_TOKEN }}&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">publish_dir&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>./blog/public&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>The above workflow simply defines:&lt;/p>
+&lt;ul>
+&lt;li>Workflow is triggered when we push changes in &lt;strong>&amp;ldquo;master&amp;rdquo;&lt;/strong> branch&lt;/li>
+&lt;li>Runs the job &lt;strong>&amp;ldquo;deploy&amp;rdquo;&lt;/strong> when triggered&lt;/li>
+&lt;li>deploy has 3 steps:
+&lt;ul>
+&lt;li>checkout the branch using built-in &lt;strong>actions/checkout@v3&lt;/strong> plugin&lt;/li>
+&lt;li>setup hugo using 3rd party plugin named &lt;strong>peaceiris/actions-hugo@v2&lt;/strong>, this installs &lt;strong>hugo&lt;/strong> on the workflow system&lt;/li>
+&lt;li>build by running command &lt;code>hugo --minify&lt;/code> inside directly &lt;strong>./blog&lt;/strong>&lt;/li>
+&lt;li>deploy using 3rd party Github Pages plugin &lt;strong>peaceiris/actions-gh-pages@v3&lt;/strong>, with publish directory as &lt;strong>./blog/public&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>Once this in place and well understood, click on &lt;strong>Start commit&lt;/strong>, then &lt;strong>Commit changes&lt;/strong>.&lt;/p>
+&lt;p>This will create a &lt;strong>main.yml&lt;/strong> with the above content under &lt;strong>.github/workflows&lt;/strong> folder in your repository, you can separately edit that later if required.&lt;/p>
+&lt;p>The gh-pages plugin used in the workflow actually creates another branch named &lt;strong>gh-pages&lt;/strong> for deployment. So, to use that in our Github.io website we need to switch our deployment branch from &lt;strong>master&lt;/strong> to &lt;strong>gh-pages&lt;/strong>.&lt;/p>
+&lt;p>Click on &lt;strong>Setting&lt;/strong> tab, then click on &lt;strong>pages&lt;/strong> on side bar, then select the branch as gh-pages from Deploy from branch section:&lt;/p>
+&lt;p>&lt;img src="../../posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/images/5.png#layoutTextWidth" alt="Click Actions">&lt;/p>
+&lt;p>Voila, now your blog site up and running! You can now go and open your website using &lt;strong>&amp;lt;your-github-username&amp;gt;.github.io&lt;/strong>.&lt;/p>
+&lt;h3 id="setup-your-custom-domain-for-githubio-site-optional">Setup your Custom Domain for Github.io site (optional)&lt;/h3>
+&lt;p>If you already have purchased a domain for yourself, you can definitely use that to point to your blog site. You just need to update your DNS provider&amp;rsquo;s (mine is &lt;a href="godaddy.com">GoDaddy.com&lt;/a>) settings to point to your Github.io website.&lt;/p>
+&lt;p>Update your DNS records:&lt;/p>
+&lt;ul>
+&lt;li>Edit the record with &lt;strong>type &amp;ldquo;A&amp;rdquo;&lt;/strong> with value to IP address &lt;strong>185.199.108.153&lt;/strong>. This will point your custom domain to GitHub&amp;rsquo;s server over HTTPS.&lt;/li>
+&lt;li>Edit the record with &lt;strong>type &amp;ldquo;CNAME&amp;rdquo;&lt;/strong> with value as your Github.io website (&amp;lt;username&amp;gt;.github.io).&lt;/li>
+&lt;li>Add 3 more &lt;strong>type &amp;ldquo;A&amp;rdquo;&lt;/strong> records with values having IP addresses &lt;strong>185.199.109.153&lt;/strong>, &lt;strong>185.199.110.153&lt;/strong>, &lt;strong>185.199.111.153&lt;/strong>.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="../../posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/images/7.png#layoutTextWidth" alt="DNS Type A">&lt;/p>
+&lt;p>&lt;img src="../../posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/images/8.png#layoutTextWidth" alt="DNS Type CNAME">&lt;/p>
+&lt;p>Now, setup your custom domain on you Github pages website.&lt;/p>
+&lt;p>Click on &lt;strong>Settings&lt;/strong> tab, then click &lt;strong>pages&lt;/strong> on side bar, then enter the Custom domain in the &lt;strong>Custom domain&lt;/strong> section.&lt;/p>
+&lt;p>&lt;img src="../../posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/images/6.png#layoutTextWidth" alt="Custom Domain Click Actions">&lt;/p>
+&lt;p>Now, to update automatic CNAME addition on gh-pages deployment, edit your &lt;strong>Deploy&lt;/strong> (last) step workflow and add cname attirbute:&lt;/p>
+&lt;div class="highlight">&lt;div style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;display:grid;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;display:grid;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="background-color:#e5e5e5">&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;display:grid;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>- &lt;span style="color:#070">name&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>Deploy&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">uses&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>peaceiris/actions-gh-pages@v3&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">with&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">github_token&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>${{ secrets.GITHUB_TOKEN }}&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">publish_dir&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>./blog/public&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex; background-color:#e5e5e5">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">cname&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>&amp;lt;your-custom-domain&amp;gt;&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>In this article, we built and deployed our blog site from scratch and for free!&lt;/p>
+&lt;p>We touched upon various topics:&lt;/p>
+&lt;ul>
+&lt;li>Github pages and setting up your own user site&lt;/li>
+&lt;li>Hugo static site generator and creating site and adding posts to the site using markdown&lt;/li>
+&lt;li>Github Actions workflows and setting up a workflow to deploy your hugo site on each code push&lt;/li>
+&lt;li>Setting up your custom domain to point to your Github pages website&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>Fin.&lt;/em>&lt;/p></description></item><item><title>Better Switch-Case for Java!</title><link>https://www.lprakashv.com/posts/2021-05-25_better-switchcase-for-java/</link><pubDate>Tue, 25 May 2021 11:30:29 +0000</pubDate><guid>https://www.lprakashv.com/posts/2021-05-25_better-switchcase-for-java/</guid><description>&lt;p>&lt;img src="../../posts/2021-05-25_better-switchcase-for-java/images/1.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Let’s start with the question, what is wrong with the switch-case anyway? Here’s a simple example of a switch-case in Java:&lt;/p>
+&lt;p>&lt;img src="../../posts/2021-05-25_better-switchcase-for-java/images/2.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Can you see the problem here? It is the unnecessary “ceremony” of writing the “break” statement on each case!&lt;/p>
+&lt;p>You can argue that we can just return after each case-block, while this is a brilliant idea but, then the ceremony would be of writing “return” in each block 😜 you can even miss that!&lt;/p>
+&lt;p>In fact, the return statement at every case-block means that every block should &lt;strong>always&lt;/strong> “return” or “evaluate” to something! Which is the most fundamental idea in Functional Programming, where &lt;strong>&lt;em>every expression must return or evaluate something&lt;/em>&lt;/strong> just like a mathematical “function”.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>value := **F(x)** &amp;lt;--- always returns a value!
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>In, fact this switch-case with always returning case blocks is omnipresent in all the FP languages as &lt;strong>“Pattern Matching”&lt;/strong>, here is a simple determistic example code in Clojure:&lt;/p>
+&lt;p>&lt;img src="../../posts/2021-05-25_better-switchcase-for-java/images/3.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Some languages like Scala, Haskell take this idea even further to allow partial match or even destructured matches on the input argument:&lt;/p>
+&lt;p>&lt;img src="../../posts/2021-05-25_better-switchcase-for-java/images/4.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Enough features of other languages now! Now let’s come back to our hero here “&lt;strong>JAVA&lt;/strong>”, can we do similar things in Java?&lt;/p>
+&lt;blockquote>
+&lt;p>Yes and No.&lt;/p>
+&lt;/blockquote>
+&lt;p>The standard library doesn’t have any similar feature but there are a few libraries supporting this, one among those is &lt;a href="https://docs.vavr.io/#_pattern_matching">&lt;strong>Vavr&lt;/strong>&lt;/a> check it out!&lt;/p>
+&lt;p>However, I am going to shamelessly endorse my own library for this &lt;a href="https://github.com/lprakashv/patternmatcher4j">job: &lt;strong>“patternmatcher4j”&lt;/strong>&lt;/a>. **** You can start by adding the dependency:&lt;/p>
+&lt;p>&lt;strong>&lt;em>Maven:&lt;/em>&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-xml" data-lang="xml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#070">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#070">&amp;lt;groupId&amp;gt;&lt;/span>io.github.lprakashv&lt;span style="color:#070">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#070">&amp;lt;artifactId&amp;gt;&lt;/span>patternmatcher4j&lt;span style="color:#070">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#070">&amp;lt;version&amp;gt;&lt;/span>0.2.0&lt;span style="color:#070">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#070">&amp;lt;/dependency&amp;gt;&lt;/span>`
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>&lt;em>Gradle:&lt;/em>&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-gradle" data-lang="gradle">&lt;span style="display:flex;">&lt;span>implementation &lt;span style="background-color:#fff0f0">&amp;#39;io.github.lprakashv:patternmatcher4j:0.2.0&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Here is our simple case-match with the enum:&lt;/p>
+&lt;p>&lt;img src="../../posts/2021-05-25_better-switchcase-for-java/images/5.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Now, let’s see some advanced match-cases:&lt;/p>
+&lt;p>&lt;img src="../../posts/2021-05-25_better-switchcase-for-java/images/6.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Ins’nt this awesome? Short explanation of the library code-test above:&lt;/p>
+&lt;p>&lt;strong>PMatcher&amp;lt;T, R&amp;gt;:&lt;/strong>&lt;/p>
+&lt;p>This is like an actual switch-case block, we initialize it using a constructor taking an object to be matched. This is a parameterized class where T = input matched object type and R = return type of the block.&lt;/p>
+&lt;p>&lt;strong>Match Cases:&lt;/strong>&lt;/p>
+&lt;p>We can create a match-case using:&lt;/p>
+&lt;ol>
+&lt;li>&lt;code>.matchValue(value)&lt;/code> — to match the matched-object with the passed value using Java’s &lt;strong>&lt;em>equals()&lt;/em>&lt;/strong> method,&lt;/li>
+&lt;li>&lt;code>.matchRef(ref)&lt;/code> — to matched the reference of the original matched-object with the passed ref.&lt;/li>
+&lt;li>&lt;code>.matchCase(..)&lt;/code> — advanced matching!&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>Advanced matchCase():&lt;/strong>&lt;/p>
+&lt;p>We can match using 3 different types of cases:&lt;/p>
+&lt;ol>
+&lt;li>Predicate match: To match the matched-object using a predicate. — &lt;code>.matchCase(p -&amp;gt; methodReturningBoolean(p))&lt;/code>&lt;/li>
+&lt;li>Class match: To match the class of the matched-object — &lt;code>.matchCase(SomeClass.class)&lt;/code>&lt;/li>
+&lt;li>De-structured match: To match matched-object’s fields (which internally uses Reflection API). &lt;em>You can even use the recursive match with the&lt;/em> &lt;strong>&lt;em>MField&lt;/em>&lt;/strong> &lt;em>objects passed to the matchCase passing any of predicate, class, further de-structured matches&lt;/em>— &lt;code>.matchCase(MField.with(&amp;quot;field1&amp;quot;, ...), MField.withValue(&amp;quot;field2&amp;quot;, field2Value), MField.with(&amp;quot;field3&amp;quot;, Field3.class))&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>Actions:&lt;/strong>&lt;/p>
+&lt;p>Each of the matchCase, matchValue and matchRef produces an object of class “CaseActionAppender” which has 3 “action” methods which you can use to define action on the preceding match-case.&lt;/p>
+&lt;ol>
+&lt;li>&lt;code>.thenReturn(R returnValue)&lt;/code> — to return the value on the preceding match-case.&lt;/li>
+&lt;li>&lt;code>.thenSupply(Supplier&amp;lt;R&amp;gt; supplier)&lt;/code> — to evaluate the return value lazily using a supplier.&lt;/li>
+&lt;li>&lt;code>.thenTransform(Function&amp;lt;T,R&amp;gt; fn)&lt;/code> — to evaluate the return value by performing transformation operation on the matched-object.&lt;/li>
+&lt;/ol>
+&lt;!-- raw HTML omitted -->
+&lt;h2 id="fin">Fin&lt;/h2>
+&lt;p>Please use the library and provide your valuable feedback, you can even raise a PR and I will look into it. This was my very first maven-central deployment so any suggestion will be welcomed :)&lt;/p>
+&lt;p>Thanks for reading!&lt;/p></description></item><item><title>Bulk RDBMS Upserts with Spring</title><link>https://www.lprakashv.com/posts/2020-08-28_bulk-rdbms-upserts-with-spring/</link><pubDate>Fri, 28 Aug 2020 21:08:07 +0000</pubDate><guid>https://www.lprakashv.com/posts/2020-08-28_bulk-rdbms-upserts-with-spring/</guid><description>&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/1.jpeg#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Upsert is a fairly common terminology in databases, meaning &lt;strong>&lt;em>Up&lt;/em>&lt;strong>date if the record exists or In&lt;/strong>&lt;em>sert&lt;/em>&lt;/strong> the new record. Upserts make more sense in case of simple object save requests with new information.&lt;/p>
+&lt;h3 id="why-bulk">Why Bulk?&lt;/h3>
+&lt;p>If we talk about any &lt;strong>&lt;em>data sync&lt;/em>&lt;/strong>, &lt;strong>&lt;em>data migration&lt;/em>&lt;/strong> or &lt;strong>&lt;em>bulk data update jobs&lt;/em>&lt;/strong>, we are bound to have a bulk upsert scenario to update whatever we have in the database and insert all the new rows.&lt;/p>
+&lt;h3 id="solutions">Solutions&lt;/h3>
+&lt;p>We will be discussing about the solutions present in the Spring Boot environment and inferences we make out of them.&lt;/p>
+&lt;p>For the testing, I will be using MS SQL Server as the database and will be limited to it’s functionality but the concepts are fairly generalisable.&lt;/p>
+&lt;h4 id="1-standard-saveall-solution-using-spring-jpa">#1 Standard &lt;code>saveAll()&lt;/code> Solution using Spring JPA&lt;/h4>
+&lt;p>Consider we have a &lt;code>price&lt;/code> table with a composite unique key/constraints having like with structure:&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/2.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Then, our entity’s composite primary key and entity classes would look like:&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/3.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Assume we are consuming a stream of record batches to upsert. To mock this, we have a supplier to generate a random &lt;code>Price1&lt;/code> object batches of size 1000. The ingestion code:&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/4.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Let’s see the results:&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/5.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Now, on looking closely the time taken to persist each batch increases as the table get filled up! What is this?&lt;/p>
+&lt;p>The culprit is the the method &lt;code>.save()&lt;/code> of &lt;code>SimpleJPARepository&lt;/code> class:&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/6.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Since, the save performs both the insert and update operation, it has to check whether an entity is “new” or not. For which, it has to either check in the persistence context or query the database, which will get complex in time as the table get filled up.&lt;/p>
+&lt;h4 id="2-optimisations-for-bulk-save">#2 Optimisations for Bulk save&lt;/h4>
+&lt;p>Our bottleneck in the previous approach was continuous reads from the DB for a primary key combination to check whether to perform &lt;code>.persist()&lt;/code> / insert or &lt;code>.merge()&lt;/code> / update.&lt;/p>
+&lt;p>To avoid additional querying on the table for &lt;code>.isNew()&lt;/code> we could have another auto generated unique field (row) which is independent of the business logic. So that, every new object will have a unique id and will always do &lt;code>.persist()&lt;/code> for them.&lt;/p>
+&lt;p>Let’s do the modifications on a completely new table (keeping the business columns as they are), with an additional auto-incremented “identity” column :&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/7.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Here is our entity:&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/8.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Testing out similar ingestion code will yield the result like below:&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/9.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Hooray, Constant time and faster inserts! But wait,&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/10.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>There are now duplicate rows with &lt;code>upc, store_id&lt;/code> combinations&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/11.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Which is understandable, as we are doing no updates.&lt;/p>
+&lt;h4 id="3-plain-inserts-then-merge">#3 Plain inserts then merge&lt;/h4>
+&lt;p>The above 2 experiments have encouraged us to keep the insert model for faster inserts and somehow merge (do updates) later.&lt;/p>
+&lt;p>To achieve this, we can have a “stage” table having a unique auto-generated id for inserts, separate from our target main table. And a pos-ingestion job for merging the records after de-duplicating.&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/12.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Plain inserts can go as the done above, we will now try to write a “merge” step. This step can very well be database stored procedure due to following reasons:&lt;/p>
+&lt;ol>
+&lt;li>To avoid movement of data and process the bulk data where it resides.&lt;/li>
+&lt;li>Database specific optimisations are built-in.&lt;/li>
+&lt;/ol>
+&lt;p>Following is an example naive implementation of a merge stored procedure for MS SQL, similar merge query features are present most of the mainstream databases.&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/13.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Executing this took less than a second!&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/14.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>&lt;strong>Important Notes:&lt;/strong> The above stored procedure implementation is a very naive approach just to demonstrate and misses on a lot of the aspects to be taken care of in a production environment, like:&lt;/p>
+&lt;ul>
+&lt;li>Over utilising transaction log size due to huge data in the merge statement, **&lt;em>batch-wise merging with id range&lt;/em>**could be implemented here.&lt;/li>
+&lt;li>Monitoring and logging procedure failures, a TRY-CATCH based procedure with logging failures in a &lt;strong>&lt;em>procedure-audit logging table&lt;/em>&lt;/strong> could be used.&lt;/li>
+&lt;li>A successfully merged batch-range delete instead of truncating the stage table.&lt;/li>
+&lt;/ul>
+&lt;h4 id="extra-further-improving-batch-inserts">#Extra: Further Improving batch inserts&lt;/h4>
+&lt;p>If we try to log the hibernate generated SQL statements for our &lt;code>.saveAll()&lt;/code> operation, we will get something like this:&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/15.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Here, we are firing single insert statements with values to insert, each going over the network.&lt;/p>
+&lt;p>There are some improvements that can be done here:&lt;/p>
+&lt;ol>
+&lt;li>Batch the queries and fire in call to the database over network.&lt;/li>
+&lt;li>Rewrite the single queries into a form of single multi-row query.&lt;/li>
+&lt;/ol>
+&lt;p>For first, we can make use of hibernate properties:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>spring.jpa.properties.hibernate.jdbc.batch_size=1000
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>spring.jpa.properties.hibernate.order_inserts=true
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>For second, there are bulk (multi-row) insert query options available in most of the mainstream database solutions (Postgres, MySQL, Oracle). With syntax like:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">insert&lt;/span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#080;font-weight:bold">into&lt;/span>&lt;span style="color:#bbb"> &lt;/span>myschema.my_table&lt;span style="color:#bbb"> &lt;/span>(col1,&lt;span style="color:#bbb"> &lt;/span>col2,&lt;span style="color:#bbb"> &lt;/span>col3)&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#080;font-weight:bold">values&lt;/span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>(val11,&lt;span style="color:#bbb"> &lt;/span>val12,&lt;span style="color:#bbb"> &lt;/span>val13),&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>(val21,&lt;span style="color:#bbb"> &lt;/span>val22,&lt;span style="color:#bbb"> &lt;/span>val23),&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>....&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>(valn1,&lt;span style="color:#bbb"> &lt;/span>valn2,&lt;span style="color:#bbb"> &lt;/span>valn3);&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>While, Postgres and MySQL do support this features with the help of JDBC flag: &lt;strong>&lt;em>reWriteBatchedInserts=true&lt;/em>&lt;/strong>&lt;/p>
+&lt;p>But unfortunately, according to &lt;a href="https://docs.microsoft.com/en-us/sql/connect/jdbc/use-bulk-copy-api-batch-insert-operation?view=sql-server-ver15">this resource&lt;/a>, ms-sql JDBC driver does not support the multi-row rewrite of the queries. So, if we want to do this, we would have to write the insert queries manually.&lt;/p>
+&lt;p>Manual insert query creation could look like:&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/16.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>The ingestion code would use &lt;code>entityManager.createNativeQuery()&lt;/code> method:&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/17.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Let’s test it out:&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/18.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Wow!! Those batches of 1000 records took less than a second, let’s look at the milli seconds now:&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/19.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>We can safely infer from our above experiments that:&lt;/p>
+&lt;ol>
+&lt;li>Achieving bulk Upserts are really complicated in relational databases.&lt;/li>
+&lt;li>Spring JPA and Hibernate provided out-of-the-box save methods won’t scale for huge loads.&lt;/li>
+&lt;li>A decoupled (from business columns/fields) independent primary key will help improve the insert performance of the inserts, but will eventually insert duplicate records.&lt;/li>
+&lt;li>Separating insert-only and read (actual) table can be used to improve ingestion performance.&lt;/li>
+&lt;li>A post insert, merge strategy can be used for de-duplicating inserted records. Stored procedures work well in this scenario.&lt;/li>
+&lt;li>Native SQL queries will give the most performant result, use solutions which are as close to the database as possible where performance is critical.&lt;/li>
+&lt;/ol>
+&lt;h3 id="testing-environment">Testing Environment&lt;/h3>
+&lt;ul>
+&lt;li>Macbook Pro 2016 model 15&amp;quot; with 16 GB RAM.&lt;/li>
+&lt;li>Application uses Java 1.8 with Spring Boot 2.3.3.&lt;/li>
+&lt;li>MS SQL server 2017 database in a Docker container.&lt;/li>
+&lt;/ul>
+&lt;p>Thanks for Reading :)&lt;/p></description></item><item><title>Going Reactive!</title><link>https://www.lprakashv.com/posts/2020-04-16_going-reactive/</link><pubDate>Thu, 16 Apr 2020 10:47:47 +0000</pubDate><guid>https://www.lprakashv.com/posts/2020-04-16_going-reactive/</guid><description>&lt;p>&lt;img src="../../posts/2020-04-16_going-reactive/images/1.png#layoutTextWidth" alt="image">
+Logo courtesy: &lt;a href="http://reactivex.io/">http://reactivex.io/&lt;/a>&lt;/p>
+&lt;p>There is a lot of hype around this shiny new thing in web applications development world called being “Reactive”! There are many frameworks popping up with this slogan, e.g., Vert.x, Akka, Spring Webflux, Play, RxJava, RxJS etc. to name a few. What does it mean? and why is this hype? is it worth your time? Let’s explore…&lt;/p>
+&lt;h3 id="what-does-reactive-mean-exactly">What does Reactive mean exactly?&lt;/h3>
+&lt;p>Being reactive means &lt;strong>&lt;em>ability to “react” to “events/changes”.&lt;/em>&lt;/strong> One very simple example is how a column in excel-sheet gets updated (reacts) if the column which it depends upon changes.&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-04-16_going-reactive/images/2.gif#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>This is a known design pattern and &lt;strong>&lt;em>can be implemented using “Observer pattern” or a “Publisher-Subscriber pattern”&lt;/em>&lt;/strong>, where there is a publisher and one or more subscribers to it.&lt;/p>
+&lt;p>There are two distinct things which are Reactive, [a] &lt;strong>Reactive programming&lt;/strong>, which uses the reactive programming principles (including the above stated observer pattern) and [b] &lt;strong>Reactive system&lt;/strong> where an entire system follows the guidelines of the “&lt;a href="http://www.reactivemanifesto.org/">reactive manifesto&lt;/a>”. The latter one in fact is much bigger picture.&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-04-16_going-reactive/images/3.png#layoutTextWidth" alt="image">
+Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactive-programming-versus-reactive-systems">https://www.lightbend.com/white-papers-and-reports/reactive-programming-versus-reactive-systems&lt;/a>&lt;/p>
+&lt;p>There is a really &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactive-programming-versus-reactive-systems">cool post&lt;/a> about this difference from Lightbend, do check it out! &lt;strong>&lt;em>We will however stick to the “reactive-programming” for the scope of this article&lt;/em>&lt;/strong>.&lt;/p>
+&lt;h3 id="reactive-programming">Reactive Programming&lt;/h3>
+&lt;p>We just saw that we can implement reactive using our plain-old Observer pattern or a Publisher-Subscriber (PubSub) pattern.&lt;/p>
+&lt;blockquote>
+&lt;p>So, is this it?&lt;/p>
+&lt;/blockquote>
+&lt;p>Try to fit every piece of your code with a Pub-Sub pattern, you would need certain disciplinary guidelines to be able to make use of it without pulling your hairs out! In fact there are more than just PubSub and Observer pattern to implement reactive e.g., event-loop, actor model etc.&lt;/p>
+&lt;p>There are some fundamental building block of the reactive programming model:&lt;/p>
+&lt;p>&lt;strong>&lt;em>Non-blocking:&lt;/em>&lt;/strong> Execution of a task shouldn’t block another task’s execution.&lt;/p>
+&lt;blockquote>
+&lt;p>In our PuSub context, any event should be handled without blocking the execution of upcoming events.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>&lt;em>Asynchronous:&lt;/em>&lt;/strong> Tasks happen asynchronously/separately and may notify after they’re done. Most popular programming pattern seen with this model is callbacks.&lt;/p>
+&lt;p>CompletableFuture is a very good example for asynchronous programming in Java:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/a0a9f913f58b3a64f392b46c88bbe344.js'>&lt;/script>
+&lt;p>The above code is asynchronous as well as it won’t block! Most often than not, &lt;strong>&lt;em>non-blocking and asynchronous are the same thing&lt;/em>&lt;/strong>. If a piece of code is asynchronous, it has to be non-blocking and vice-versa.&lt;/p>
+&lt;p>There is one major problem with the callbacks, and that is the &lt;a href="http://callbackhell.com/">&lt;strong>&lt;em>Callback Hell&lt;/em>&lt;/strong>&lt;/a> when we have more than 2 nested callbacks, the code starts to look obscure and becomes unmaintainable very quickly.&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/73cdeb5053ae790f45ac29e7c242b5ed.js'>&lt;/script>
+&lt;p>&lt;strong>&lt;em>Functional/Declarative:&lt;/em>&lt;/strong> To overcome the callback hell and be able to compose (or chain) the operations on the events subscribed, we should use the functional/declarative style. Suppose there is a high level construct of Publisher and Subscriber such that we could use:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/e74478507095de99f6b2c26c4e2c20bf.js'>&lt;/script>
+&lt;p>The above code looks more elegant even though it performs a lot of things in steps with a merge chaining of functions. It was just an example taken from Spring Webflux’s Publisher/Subscriber API. There are other reactive libraries and frameworks where this type of functional composition and chaining is possible.&lt;/p>
+&lt;p>Java 9 also has introduced &lt;a href="https://www.reactive-streams.org/">Reactive Streams&lt;/a> and it would be exciting to see how this evolves over time.&lt;/p>
+&lt;h3 id="ok-what-to-i-get-from-being-reactive">OK, what to I get from being Reactive?&lt;/h3>
+&lt;p>In a traditional blocking code, a thread may get blocked and awaits for the result of some other task. While waiting, it is simply doing nothing! But since, the thread is there, it will consume the precious CPU cycles, waking up checking if the execution is completed and going back to sleep if the result has not arrived.&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-04-16_going-reactive/images/4.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>While, non-blocking code usually implemented using either,&lt;/p>
+&lt;p>&lt;strong>&lt;em>Event-loop&lt;/em>&lt;/strong>: I is essentially just a single thread! This event-loop executes/notifies the process to be run/invoked next without getting blocked. Hence, instead of multiple threads waiting for the resource, there’s just this one thread which handles all the I/O and resource allocation to different requests. Just like a waiter does for multiple customers. Example implementations are Vert.x, nodejs, etc.&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-04-16_going-reactive/images/5.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>&lt;strong>&lt;em>Event driven thread-pool backed mechanism&lt;/em>&lt;/strong>: Event driven mechanism involving very small number of threads usually employs some virtual process units (actors, verticles, queue etc.) on top of a thread-pool framework (Fork-Join) making an efficient use of it. Example implementations are Akka Actor model, Reactor, etc.&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-04-16_going-reactive/images/6.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>In addition to that, subscribers being notified (push based) on events by the publisher means that subscribers don’t have to keep polling for the events, saving further more CPU resources.&lt;/p>
+&lt;p>Ultimately this all leads to better resource management and this is why the reactive model can work with even lesser number threads.&lt;/p>
+&lt;h3 id="why-the-sudden-need">Why the sudden Need?&lt;/h3>
+&lt;p>We live in the era of “clouds” and “scale”. And by scale, I mean massive scale with thousands to hundreds of thousands users concurrently using your application.&lt;/p>
+&lt;p>Before the “reactive” hype, every web application out there used to work on a synchronous/blocking &lt;strong>&lt;em>“1 thread per request model”&lt;/em>&lt;/strong>. Which means that &lt;strong>a thread is allocated for every request&lt;/strong>! This model served perfectly well for us in past, but in today’s age of mobile apps cheaper and accessible internet, the number of users a “viral” app has to handle can grow really fast.&lt;/p>
+&lt;p>This massive scale demands resources (larger or more machines) and getting resources in cloud costs money! So, we desperately needed a model which could scale even with lesser resources. In our case lesser number of threads for a highly concurrent application.&lt;/p>
+&lt;h3 id="use-cases">Use cases&lt;/h3>
+&lt;p>As we discussed about this reactive model of programming, you might have had the impression of this being the holy grail for modern web programming. This does in fact also add some noticeable complexity to the system. As they say,&lt;/p>
+&lt;blockquote>
+&lt;p>If you consider all you have is as a hammer, everything else will start looking like a nail!&lt;/p>
+&lt;/blockquote>
+&lt;p>There is a lot, which is required from a developer to develop truly reactive applications:&lt;/p>
+&lt;p>&lt;strong>&lt;em>Discipline is Needed:&lt;/em>&lt;/strong> If you are using a reactive framework and the database driver is blocking, you will end up blocking threads, same applies to every other block of you system. Hence, to have a proper reactive application, you have no option but to go &lt;strong>&lt;em>“all reactive”&lt;/em>&lt;/strong>!&lt;/p>
+&lt;figure>&lt;img src="https://media4.giphy.com/media/j3KXqE52HwpQcatFj5/giphy.gif?cid=790b7611301d508f9af34d6b8c45b49360970b1b15d3050a&amp;amp;rid=giphy.gif&amp;amp;ct=g"/>
+&lt;/figure>
+&lt;p>This adds even more complexity and does influence many critical design decisions that have to be made, such as:&lt;/p>
+&lt;ol>
+&lt;li>Which DB to use, does it have reactive drivers?&lt;/li>
+&lt;li>Does the libraries I am using support reactive?&lt;/li>
+&lt;li>Is there any blocking operation that I am doing within my system?&lt;/li>
+&lt;li>Do I have written appropriate adapter/wrappers over all the non-reactive components?&lt;/li>
+&lt;/ol>
+&lt;!-- raw HTML omitted -->
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>So, better stick to the traditional frameworks unless there is a need otherwise. Some such scenarios could be:&lt;/p>
+&lt;ul>
+&lt;li>Highly concurrent application.&lt;/li>
+&lt;li>With limited resources.&lt;/li>
+&lt;li>Handling request spikes (back-pressure).&lt;/li>
+&lt;/ul>
+&lt;p>This is all from me and hope you got some reactive knowledge out of this post.&lt;/p>
+&lt;p>Thanks for Reading and have a Good day :)&lt;/p></description></item><item><title>Akka Streams in Java Spring Boot!</title><link>https://www.lprakashv.com/posts/2020-04-12_akka-streams-in-java-spring-boot/</link><pubDate>Sun, 12 Apr 2020 10:45:58 +0000</pubDate><guid>https://www.lprakashv.com/posts/2020-04-12_akka-streams-in-java-spring-boot/</guid><description>&lt;p>&lt;img src="../../posts/2020-04-12_akka-streams-in-java-spring-boot/images/1.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Streaming data from a Source to Sink is a very trivial task in today’s data processing and data pipelining systems. Ergo, there are many streaming solutions out there like: Kafka Stream, Spark Streaming, Apache Flink etc.&lt;/p>
+&lt;p>All of them in one way or another either need an infrastructure to be setup to be able to fully take advantage of them (e.g., HDFS, Spark cluster, Kafka streaming setup etc.) or we need some kind of orchestration among the streaming jobs (e.g., Apache Airflow).&lt;/p>
+&lt;h3 id="akka-streams">Akka Streams&lt;/h3>
+&lt;p>Akka streams stands out in this battle and have this advantage of being totally application driven. Akka stream is build on top of the Akka’s celebrated Actor model (which in fact is inspired from Erlang’s actor model). Hence, Akka streams can leverage its battle tested &lt;a href="https://www.lightbend.com/blog/why-do-we-need-a-reactive-manifesto">resiliency, elastic, event-driven and responsive&lt;/a> (see &lt;a href="https://www.reactivemanifesto.org/">reactive manifesto&lt;/a>) capabilities.&lt;/p>
+&lt;p>&lt;strong>Problems with Akka:&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>Java developer community has been staying away from the “made-for and built-on scala” Akka platform.&lt;/li>
+&lt;li>Not much documentation and support for the most popular Java framework, “Spring”.&lt;/li>
+&lt;/ol>
+&lt;p>I’m here to tell you otherwise! Inspite of lack of resources available on the internet, we can in-fact do akka-streams in Java and do it with ease.&lt;/p>
+&lt;p>In this post we will build an Akka stream application &lt;strong>in Java&lt;/strong> and with &lt;strong>Spring Boot!&lt;/strong> And we will analyse the out of the box benefits we can get using Akka streams. So, let’s ge started…&lt;/p>
+&lt;h3 id="problem-statement">Problem Statement&lt;/h3>
+&lt;p>We need a simple realtime stream which consumes all the updates published on a Kafka topic and persists the events in a SQL server database after parsing. And we only want to commit the Kafka offset after the record has been inserted into the database.&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-04-12_akka-streams-in-java-spring-boot/images/2.png#layoutTextWidth" alt="image">
+&lt;strong>Lets start a fresh Spring boot project from Spring Initialzr.&lt;/strong>&lt;/p>
+&lt;p>&lt;a href="https://start.spring.io/">Spring Initializr&lt;/a>&lt;/p>
+&lt;p>We will make the project organised like the tree below which is a pretty standard maven directory structure (since we have chosen to use maven here). You could go with gradle also if you like.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-txt" data-lang="txt">&lt;span style="display:flex;">&lt;span>.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── pom.xml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>└── src
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── main
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── java
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ │ └── com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ │ └── lprakashv
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ │ └── springalpakka
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ │ ├── SpringCommandLineApplication.java
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ │ ├── configs
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ │ │ ├── AkkaConfig.java
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ │ │ └── StreamConfig.java
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ │ ├── dtos
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ │ │ └── Event.java
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ │ ├── services
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ │ │ └── StreamService.java
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ │ └── utils
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ │ └── StreamUtils.java
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ └── resources
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── application.yml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ └── stream.conf
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── test
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── java
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── lprakashv
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── springalpakka
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Don’t bother about the code files in the tree, we will shortly talk about those.&lt;/p>
+&lt;p>&lt;strong>Add all the required dependencies:&lt;/strong>&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-04-12_akka-streams-in-java-spring-boot/images/3.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>&lt;strong>Setup Foundational Akka configurations:&lt;/strong>&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/0928b8c9628407ad6d7f5a0d9a76a165.js'>&lt;/script>
+&lt;p>In every Akka/Akka-Stream application the very basic components needed are the Akka’s &lt;strong>ActorSystem&lt;/strong> and &lt;strong>Materializer&lt;/strong>. These are needed for a lot of things in this eco-system like, spawning actors, creating stream components, running streams, materializing streams etc.&lt;/p>
+&lt;p>In the above code, we made sure:&lt;/p>
+&lt;ol>
+&lt;li>We have only one instance beans of both ActorSystem and Materializer throughout our application.&lt;/li>
+&lt;li>Will be instantiated only if &lt;strong>&lt;em>akka.stream.javadsl.Source&lt;/em>&lt;/strong> is in scope.&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>Our Kafka Event DTO to consume:&lt;/strong>&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/94d2a2eddb36b429ed9a9de4bb36b43c.js'>&lt;/script>
+&lt;p>&lt;strong>Let’s write our Source (Kafka)&lt;/strong>: We would like to commit the offsets later hence using a &lt;a href="https://doc.akka.io/api/alpakka-kafka/2.0.2/akka/kafka/scaladsl/Consumer$.html#plainSource%5BK,V%5D%28settings:akka.kafka.ConsumerSettings%5BK,V%5D,subscription:akka.kafka.Subscription%29:akka.stream.scaladsl.Source%5Borg.apache.kafka.clients.consumer.ConsumerRecord%5BK,V%5D,akka.kafka.scaladsl.Consumer.Control%5D">committableSource&lt;/a>. We will create a Bean out of our committable source to be autowired in our service classes.&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/cc7ad527353aad10ea8c0bdc5c4d0a98.js'>&lt;/script>
+&lt;p>&lt;strong>Now let’s write our Flow (Slick):&lt;/strong> We could have cerated a Sink if we were to not bother about persist result and commit Kafka offset anyway (using a “&lt;a href="https://doc.akka.io/api/alpakka-kafka/2.0.2/akka/kafka/scaladsl/Consumer$.html#plainSource%5BK,V%5D%28settings:akka.kafka.ConsumerSettings%5BK,V%5D,subscription:akka.kafka.Subscription%29:akka.stream.scaladsl.Source%5Borg.apache.kafka.clients.consumer.ConsumerRecord%5BK,V%5D,akka.kafka.scaladsl.Consumer.Control%5D">plainSource&lt;/a>”). We are using flow instead of sink because we want to propagate the committable-offset even after the database stage. We will add the following code in our same config class.&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/865822e16f46cb3cd6274a832a3e9f6f.js'>&lt;/script>
+&lt;p>You might be wondering what is in the &lt;strong>&lt;em>stream.conf&lt;/em>&lt;/strong> file and where did that &lt;strong>&lt;em>committableMesssageToDTO&lt;/em>&lt;/strong> and &lt;strong>&lt;em>insertEventQuery&lt;/em>&lt;/strong> came from?&lt;/p>
+&lt;p>Slick needs a configuration to create a session which will execute all our DB queries. This config needs to follow the below structure in a &lt;strong>&lt;em>.conf&lt;/em>&lt;/strong> file (which is the standard way to access configs in the typesafe/lightbend world).&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>event-sqlserver {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> profile = &amp;#34;slick.jdbc.SQLServerProfile$&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> db {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> dataSourceClass = &amp;#34;slick.jdbc.DriverDataSource&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> properties {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> driver = &amp;#34;com.microsoft.sqlserver.jdbc.SQLServerDriver&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> url = &amp;#34;your-db-url!&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> user = &amp;#34;your-db-user!&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> password = &amp;#34;your-db-pass&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>While, the &lt;strong>&lt;em>committableMesssageToDTO&lt;/em>&lt;/strong> and &lt;strong>&lt;em>insertEventQuery&lt;/em>&lt;/strong> are functions which will convert our CommittableMessage to DTO (our record class) and then to SQL insert query.&lt;/p>
+&lt;p>We can write a Utils class with static functions to generate the SQL like:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/3a60d3145df7fa49c1ea0480a3f6cf4d.js'>&lt;/script>
+&lt;p>&lt;strong>Now, let’s piece them together and build a stream:&lt;/strong>&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/91808cad95f56de6099b5d3d7525a795.js'>&lt;/script>
+&lt;p>This is it! We can now invoke the startKafkaToDatabaseStream() method from anywhere and it will do our job.&lt;/p>
+&lt;p>There were a lot of highlighting features there in a single “terse” chain! Let me explain each:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>&lt;em>.buffer(size, overflowStrategy)&lt;/em>&lt;/strong>: This will add a fixed-&lt;strong>&lt;em>size&lt;/em>&lt;/strong> buffer into our “flow” which will protect the downstream system from a faster upstream source. We can use the strategies for discarding the messages if the size is full: &lt;strong>&lt;em>backpressure&lt;/em>&lt;/strong> — will down the consumption, &lt;strong>&lt;em>drophead/droptail/dropbuffer&lt;/em>&lt;/strong> — will drop the messages and won’t backpressure and &lt;strong>&lt;em>fail&lt;/em>&lt;/strong> — fails the stream on buffer full.&lt;/li>
+&lt;li>&lt;strong>&lt;em>.idleTimeout(duration)&lt;/em>&lt;/strong>: It will throw a &lt;strong>&lt;em>java.util.concurrent.TimeoutException&lt;/em>&lt;/strong> on idle timeout duration which can be handled using recover/recoverWith.&lt;/li>
+&lt;li>&lt;strong>&lt;em>.recoverWith(ThrowableClass, fallbackSourceConsumer)&lt;/em>&lt;/strong>: Whenever a ThrowableClass.class exception is intercepted, the original source is replaced by a Source received from the fallbackSourceConsumer.&lt;/li>
+&lt;li>&lt;strong>&lt;em>.throttle(elements, per, maximumburst, mode)&lt;/em>&lt;/strong>: Sends elements downstream with a speed limited to (&lt;strong>&lt;em>elements/per&lt;/em>&lt;/strong>), mode=Shaping — makes pauses before emitting to meet the throttle rate, mode=Enforcing — fails with exception when upstream is faster than the throttle rate.&lt;/li>
+&lt;li>&lt;strong>&lt;em>.mapAsync(parallelism, () -&amp;lt; CompletionStage(value))&lt;/em>&lt;/strong>: To process the stage in asynchronous mode with parallelism defined.&lt;/li>
+&lt;li>&lt;strong>&lt;em>CommitterSettings.create(actorSystem)&lt;/em>&lt;/strong>: Creates a default committer settings.&lt;/li>
+&lt;/ol>
+&lt;p>The DrainingControl can be used as:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/91808cad95f56de6099b5d3d7525a795.js'>&lt;/script>
+&lt;p>There are a lot of other features of akka stream which were not in scope of this post but still worth to explore. Please checkout &lt;a href="https://doc.akka.io/docs/akka/current/stream/index.html">&lt;strong>akka-stream&lt;/strong>&lt;/a> and &lt;a href="https://doc.akka.io/docs/alpakka/current/index.html">&lt;strong>alpakka’s&lt;/strong>&lt;/a> documentations.&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>We saw that we could easily integrate Akka streams into our Spring Boot projects and leverage Spring’s dependency injection to manage our Akka/Stream beans easily.&lt;/p>
+&lt;p>There are a lot of streaming features like back-pressure and throttling to name a few which would easily take up a lot of developer hours and brains. And yet, we would have missed some corner cases if not tested thoroughly. Those things we got out-of-the-box in akka-stream’s toolkit.&lt;/p>
+&lt;p>All in all, Akka-streams along with Alpakka are great tools to have in a data platform stack.&lt;/p>
+&lt;p>Thanks for reading!&lt;/p></description></item><item><title>Handling Nulls in nested objects (Java)</title><link>https://www.lprakashv.com/posts/2020-03-29_handling-nulls-in-nested-objects-java/</link><pubDate>Sun, 29 Mar 2020 09:14:32 +0000</pubDate><guid>https://www.lprakashv.com/posts/2020-03-29_handling-nulls-in-nested-objects-java/</guid><description>&lt;p>&lt;img src="../../posts/2020-03-29_handling-nulls-in-nested-objects-java/images/1.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Handling NullPointerException and keeping track of all the nullable values has always been a pain for Java developers.&lt;/p>
+&lt;p>This is even worse when you are working with deeply nested objects and handling all the null values grows exponentially with each nullable nested value. This is visible by all the statements like:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">if&lt;/span> &lt;span style="color:#333">(&lt;/span>x&lt;span style="color:#333">.&lt;/span>&lt;span style="color:#00c">y&lt;/span>&lt;span style="color:#333">().&lt;/span>&lt;span style="color:#00c">z&lt;/span>&lt;span style="color:#333">()..&lt;/span> &lt;span style="color:#333">!=&lt;/span> &lt;span style="color:#080;font-weight:bold">null&lt;/span>&lt;span style="color:#333">)&lt;/span> &lt;span style="color:#333">{&lt;/span>&lt;span style="color:#f00;background-color:#faa">…&lt;/span>&lt;span style="color:#333">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>In this article, we will explore some of the techniques starting with the naive approach to a more advanced one for handling such scenarios.So, are you ready? Let’s dive in…&lt;/p>
+&lt;p>Suppose we have a simple but nested object structure like:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>root {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> first-level {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> second-level {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> third-level {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> name: &amp;#34;string&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>where each object and/or value can be nullable. Say our objective is to create a greeting for the name nested three level deep behind root object.&lt;/p>
+&lt;p>Here are our test objects with our testing code:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/57284252c43370da7a47fe2a361d43ef.js'>&lt;/script>
+&lt;p>Let’s start with the solutions:&lt;/p>
+&lt;h3 id="unsafe-approach">&lt;strong>Unsafe Approach:&lt;/strong>&lt;/h3>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/38af049e1d4971a31a7cd8a394fd1b74.js'>&lt;/script>
+&lt;p>This can result in a NullPointerException!&lt;/p>
+&lt;p>Result:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Failed to greet for r1 !
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Failed to greet for r2 !
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Failed to greet for r3 !
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r4 : Hello null
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r5 : Hello Lalit
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="naive-safe-approach">&lt;strong>Naive Safe Approach:&lt;/strong>&lt;/h3>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/f68f7f55cb60e42562a0e47a594c856f.js'>&lt;/script>
+&lt;p>Result:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Greeting for r1 : Hey There!
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r2 : Hey There!
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r3 : Hey There!
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r4 : Hey There!
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r5 : Hello Lalit
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Look at the indentation increasing with the increasing nesting level. Although, we could combine the null checks, but if we wanted to do other operation on each nested object then we would have to adopt the above approach.&lt;/p>
+&lt;h3 id="the-optional-approach">&lt;strong>The Optional Approach&lt;/strong>&lt;/h3>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/71d96300fb967d53825895b32351c1f7.js'>&lt;/script>
+&lt;p>Now, we will jump into the functional territory to solve this problem. Java 8’s Optional&amp;lt;T&amp;lt; comes to our rescue:&lt;/p>
+&lt;p>This works like a charm! The only problem is we cannot control and determine which stage failed or is null, and cannot have failover for each stage.&lt;/p>
+&lt;p>To implement that in Optional, we have to do like:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/5e446053cd0c236aca7d496fa987642e.js'>&lt;/script>
+&lt;p>Result:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Greeting for r1 : Hello first level is null
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r2 : Hello second level null
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r3 : Hello third level is null
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r4 : Hey There!
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r5 : Hello Lalit
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This will work, but we had to write a lot of orElse statements to handle a particular null case and we have to be careful as to where we want to put them.&lt;/p>
+&lt;p>What if there was a way to pass a default at each map stage…?&lt;/p>
+&lt;h3 id="custom-wrapper-approach">&lt;strong>Custom Wrapper Approach&lt;/strong>&lt;/h3>
+&lt;p>Let’s write our own NullableWrapper with mapper taking a default value at each map stage (We’ll consider null otherwise). Let’s call our object as NullableWrapper&amp;lt;T&amp;lt; which:&lt;/p>
+&lt;ol>
+&lt;li>Takes a &lt;strong>supplier&lt;/strong> returning a value of type T (denoting lazy computation) or a value of type T.&lt;/li>
+&lt;li>&lt;strong>May take&lt;/strong> a &lt;strong>default value&lt;/strong> of type T (if the supplier or value results in null) which is by default set to null.&lt;/li>
+&lt;li>Can &lt;strong>map&lt;/strong> the current wrapper&amp;lt;T&amp;lt; to new wrapper&amp;lt;R&amp;lt; by providing a transforming function Function&amp;lt;T,R&amp;lt; and &lt;strong>may take&lt;/strong> a &lt;strong>new default value&lt;/strong> of type R which is otherwise set to null.&lt;/li>
+&lt;li>Can &lt;strong>get&lt;/strong> the value by providing a &lt;strong>new default value&lt;/strong> of type T which is otherwise set to null.&lt;/li>
+&lt;/ol>
+&lt;p>Now we have all the ingredients for the recipe, let’s start cooking!&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/9c8b6e5db3c96f992724159524f2a36d.js'>&lt;/script>
+&lt;p>Now, let’s taste it! I mean test it with the &lt;strong>mapWithDefault&lt;/strong> feature (the other map will work exactly like Optional).&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/d92be758bbffd36928f9330d6ea5f150.js'>&lt;/script>
+&lt;p>This will also work just like we expected, and the code looks more elegant.&lt;/p>
+&lt;p>One more benefit of this is that &lt;strong>we don’t have to use the getOrElse every time as NullableWrapper’s .get() will return a default value or null&lt;/strong> (in case default not provided) instead of blowing up:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">// will blow up!
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>Optional&lt;span style="color:#333">.&lt;/span>&lt;span style="color:#00c">ofNullable&lt;/span>&lt;span style="color:#333">(&lt;/span>&lt;span style="color:#080;font-weight:bold">null&lt;/span>&lt;span style="color:#333">).&lt;/span>&lt;span style="color:#00c">map&lt;/span>&lt;span style="color:#333">(&lt;/span>x &lt;span style="color:#333">-&amp;gt;&lt;/span> &lt;span style="background-color:#fff0f0">&amp;#34;Hello &amp;#34;&lt;/span> &lt;span style="color:#333">+&lt;/span> x&lt;span style="color:#333">).&lt;/span>&lt;span style="color:#00c">get&lt;/span>&lt;span style="color:#333">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">// will return null
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>&lt;span style="color:#080;font-weight:bold">new&lt;/span> NullableWrapper&lt;span style="color:#333">(()&lt;/span> &lt;span style="color:#333">-&amp;lt;&lt;/span> &lt;span style="color:#080;font-weight:bold">null&lt;/span>&lt;span style="color:#333">).&lt;/span>&lt;span style="color:#00c">map&lt;/span>&lt;span style="color:#333">(&lt;/span>x &lt;span style="color:#333">-&amp;gt;&lt;/span> &lt;span style="background-color:#fff0f0">&amp;#34;Hello &amp;#34;&lt;/span> &lt;span style="color:#333">+&lt;/span> x&lt;span style="color:#333">).&lt;/span>&lt;span style="color:#00c">get&lt;/span>&lt;span style="color:#333">();&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now, let’s see the NullableWrapper&amp;laquo;() from the point of view of a library user. It asks for a supplier or a value of type T and a default value.&lt;/p>
+&lt;p>This makes me think that the &lt;strong>supplier evaluation must also be safe&lt;/strong> as it would be lazily evaluated inside the wrapper! Let’s try it out:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/8132c283fc608077bbbb6835d3d71773.js'>&lt;/script>
+&lt;p>Result:&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-03-29_handling-nulls-in-nested-objects-java/images/2.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Uh oh! What happened there?&lt;/p>
+&lt;p>This means the .get() operation is not that safe as we thought! How to make it safe? Let’s try to fix this by gulping all the NPEs:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/9333bc660e955883cbc61167a289aad4.js'>&lt;/script>
+&lt;p>Now, we also want to do mapping by ignoring NPEs:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/959dda9f696f099105ebc22f9054cb8a.js'>&lt;/script>
+&lt;p>Let’s try that again:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/36fcc9f772c38b0b5ef05c6852b031a5.js'>&lt;/script>
+&lt;p>Result:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Hey There!
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Hi Lalit
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>We saw how we can utilise the power of Optionals and functional programming concepts to get the safety of the null checks as well as the control over the outcome with a default value.&lt;/p>
+&lt;p>Our own NullableWrapper gives following advantages over builtin Optional:&lt;/p>
+&lt;ul>
+&lt;li>Mapping with a default value at any stage.&lt;/li>
+&lt;li>Defining initial default value.&lt;/li>
+&lt;li>Super safe lazy computation by ignoring NPEs.&lt;/li>
+&lt;li>Safer than NullableWrapper’s get() is more safer than Optional’s get() as it will return null or a default value as the final result and won’t just blow up.&lt;/li>
+&lt;/ul>
+&lt;p>Hope you liked it. Thanks for reading :)&lt;/p></description></item><item><title>Circuit Breaker pattern in Scala</title><link>https://www.lprakashv.com/posts/2020-03-28_circuit-breaker-pattern-in-scala/</link><pubDate>Sat, 28 Mar 2020 20:30:28 +0000</pubDate><guid>https://www.lprakashv.com/posts/2020-03-28_circuit-breaker-pattern-in-scala/</guid><description>&lt;p>&lt;img src="../../posts/2020-03-28_circuit-breaker-pattern-in-scala/images/1.jpeg#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>&lt;a href="https://martinfowler.com/bliki/CircuitBreaker.html">&lt;strong>Circuit breaker pattern&lt;/strong>&lt;/a> is a common microservice resiliency pattern to make system responsive after series of failures and have a fallback mechanism.&lt;/p>
+&lt;p>[NOTE] Spoiler — This would be a simple implementation and the Scala code would be stateful and have side-effects.&lt;/p>
+&lt;h3 id="the-need">The Need&lt;/h3>
+&lt;p>Doing a remote call or executing a task which is outside the domain boundary of the system is very common in modern applications. Especially in microservice world, we are bound to make calls to other microservices.&lt;/p>
+&lt;p>In such scenarios, we need to consider eventual failures. If some failures are too continuous and consistent in nature, they can hog too much of the system resources resulting into failures. We can avoid such cases using the circuit-breaker pattern.&lt;/p>
+&lt;h3 id="the-concept">The Concept&lt;/h3>
+&lt;p>&lt;img src="../../posts/2020-03-28_circuit-breaker-pattern-in-scala/images/2.png#layoutTextWidth" alt="image">
+courtesy: &lt;a href="https://martinfowler.com/bliki/CircuitBreaker.html">https://martinfowler.com/bliki/CircuitBreaker.html&lt;/a>&lt;/p>
+&lt;p>The concept is simple, the circuit represents the connection between the caller and the callee. It can only have 3 states: &lt;strong>closed&lt;/strong>, &lt;strong>open&lt;/strong> and &lt;strong>half-open&lt;/strong>. The system starts with the “closed” circuit initially.&lt;/p>
+&lt;p>We monitor the consecutive (or within a time window) failures from the callee and when the failures exceed a threshold we trip the circuit to “open” and all the further calls from the caller won’t reach the callee and rather caller is returned with a default fallback result.&lt;/p>
+&lt;blockquote>
+&lt;p>— can be implemented using a &lt;strong>failure result counter.&lt;/strong>&lt;/p>
+&lt;/blockquote>
+&lt;p>We also keep monitoring the time since opening the circuit and when a certain timeout is reached, we put the circuit to “half-open” meaning, only one ‘probe’ call will pass through and its result will determine if the circuit will be closed or opened based on its success or failure.&lt;/p>
+&lt;blockquote>
+&lt;p>— can be implemented using a &lt;strong>background timer.&lt;/strong>&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="implementation">Implementation&lt;/h3>
+&lt;p>&lt;strong>CircuitState&lt;/strong> — a trait extended by possible states&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/3b9aceb424a00f7b62289db568e8bdfe.js'>&lt;/script>
+&lt;p>&lt;strong>CircuitResult[T]&lt;/strong> — a trait extended by Success and Failure results of the Circuit with success return type T.&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/9457e7f0670f05bad084f60802789e0d.js'>&lt;/script>
+&lt;p>&lt;strong>Circuit[R]&lt;/strong> — a class denoting a circuit where the call returns the result of type Future[R], future denoting an async call.&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/f91ade5061ab15a70a08ff34065f61e1.js'>&lt;/script>
+&lt;p>States of the Circuit&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/875480ef20e6e1191fcce3405e7bba90.js'>&lt;/script>
+&lt;p>Transition of states&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/1e06d37addcca8af52968e33e89dfa86.js'>&lt;/script>
+&lt;p>&lt;strong>Main block execution handler&lt;/strong> — It acts as a router and invokes other handlers based on the Circuit’s state. After state transition, the thread request may come back here to be routed again based on the updated state.&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/5d73aed0e919a43bf6a2e3620e8ddf05.js'>&lt;/script>
+&lt;p>&lt;strong>Handling failure response from the Callee&lt;/strong> —&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/3d55a8db8e545be12459e24ca8cf7942.js'>&lt;/script>
+&lt;p>&lt;strong>Handling closed circuit&lt;/strong>— Executing the provided block of code and yield a success or failure as the result asynchronously, while maintaining/updating the count of consecutive failures.&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/ff0aecba16bf2b41730e56a9f9f205dd.js'>&lt;/script>
+&lt;p>&lt;strong>Handling Half-Open Circuit&lt;/strong> —&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/e83dc09914510936594920693b89a61f.js'>&lt;/script>
+&lt;p>&lt;strong>Handling open circuit&lt;/strong>— return the successful future with CircuitSuccess wrapping the default value.&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/4bf1d46eb8a5ea9a38290c970d86d185.js'>&lt;/script>
+&lt;p>&lt;strong>Half-Opener Background Timer&lt;/strong> — Will trip the circuit to half-open after timeout reached since opening the circuit.&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/fc539d500f17fe3e2f82094a358d4a0f.js'>&lt;/script>
+&lt;p>&lt;strong>CircuitImplicits&lt;/strong> — Implicits making the use of our Circuit class a breeze!&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/1dfe69c3d933da42de263444b7667247.js'>&lt;/script>
+&lt;p>We can now do something like:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-scala" data-lang="scala">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">implicit&lt;/span> &lt;span style="color:#080;font-weight:bold">val&lt;/span> sampleCircuit&lt;span style="color:#080;font-weight:bold">:&lt;/span> &lt;span style="color:#339;font-weight:bold">Circuit&lt;/span>&lt;span style="color:#333">[&lt;/span>&lt;span style="color:#339;font-weight:bold">Int&lt;/span>&lt;span style="color:#333">]&lt;/span> &lt;span style="color:#080;font-weight:bold">=&lt;/span> &lt;span style="color:#080;font-weight:bold">new&lt;/span> &lt;span style="color:#b06;font-weight:bold">Circuit&lt;/span>&lt;span style="color:#333">[&lt;/span>&lt;span style="color:#339;font-weight:bold">Int&lt;/span>&lt;span style="color:#333">](&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="background-color:#fff0f0">&amp;#34;sample-circuit&amp;#34;&lt;/span>&lt;span style="color:#333">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00d;font-weight:bold">5&lt;/span>&lt;span style="color:#333">,&lt;/span> &lt;span style="color:#888">// max allowed consecutive closed failures
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span> &lt;span style="color:#60e;font-weight:bold">5.&lt;/span>seconds&lt;span style="color:#333">,&lt;/span> &lt;span style="color:#888">// half-opener timeout
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span> &lt;span style="color:#00d;font-weight:bold">1&lt;/span>&lt;span style="color:#333">,&lt;/span> &lt;span style="color:#888">// max allowed consecutive half-open failures
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span> &lt;span style="color:#333">-&lt;/span>&lt;span style="color:#00d;font-weight:bold">1&lt;/span>&lt;span style="color:#333">,&lt;/span> &lt;span style="color:#888">// invalid success result
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span> &lt;span style="color:#b06;font-weight:bold">_println&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">_&lt;/span>&lt;span style="color:#333">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//this will use the above created circuit to execute
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>&lt;span style="color:#b06;font-weight:bold">Future&lt;/span>&lt;span style="color:#333">.&lt;/span>successful&lt;span style="color:#333">(&lt;/span>&lt;span style="color:#00d;font-weight:bold">2&lt;/span> &lt;span style="color:#333">+&lt;/span> &lt;span style="color:#00d;font-weight:bold">2&lt;/span>&lt;span style="color:#333">).&lt;/span>executeAsync
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;p>&lt;strong>Testing it out&lt;/strong> — You can find the test cases &lt;a href="https://github.com/lprakashv/scala-utils/blob/master/src/test/scala/com/lprakashv/resiliency/CircuitTest.scala">here&lt;/a>.&lt;/p>
+&lt;p>&lt;img src="../../posts/2020-03-28_circuit-breaker-pattern-in-scala/images/3.png#layoutTextWidth" alt="image">&lt;/p></description></item><item><title>How to keep your sanity working with Scala Implicit!</title><link>https://www.lprakashv.com/posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/</link><pubDate>Thu, 17 Oct 2019 08:14:10 +0000</pubDate><guid>https://www.lprakashv.com/posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/</guid><description>&lt;p>&lt;img src="../../posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/images/1.jpeg#layoutTextWidth" alt="image">
+Courtesy: &lt;a href="https://www.pexels.com/photo/calm-daylight-evening-grass-267967/">https://www.pexels.com/&lt;/a>&lt;/p>
+&lt;h2 id="intro">Intro&lt;/h2>
+&lt;p>Scala Implicits provide a lot of power and flexibility to express the code in such beautiful ways that development sometimes feel like and art and are nothing short of a “&lt;a href="https://en.wikipedia.org/wiki/Brahmastra">Brahmastra&lt;/a>” in the hand of a library developer.&lt;/p>
+&lt;p>And, as Spider-man’s uncle said,&lt;/p>
+&lt;blockquote>
+&lt;p>“With great power, comes greater responsibility!”&lt;/p>
+&lt;/blockquote>
+&lt;p>The abuse of such a powerful feature has made working with them a nightmare sometimes for the end users. For example:&lt;/p>
+&lt;p>&lt;img src="../../posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/images/2.gif#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>You will keep you head scratching over the above script until you find an implicit conversion (from Int to String) and an extension method (toHindiDigits) coming from just two imports!&lt;/p>
+&lt;p>&lt;img src="../../posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/images/3.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>&lt;img src="../../posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/images/4.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Even &lt;a href="https://en.wikipedia.org/wiki/Martin_Odersky">Martin Odersky&lt;/a> ( 🙌), the creator of Scala has admitted that he has made quite a few mistakes with the Implicits while designing the Scala language 😱!&lt;/p>
+&lt;div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+&lt;iframe src="https://www.youtube.com/embed/1h8xNBykZqM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video">&lt;/iframe>
+&lt;/div>
+&lt;p>While this can be really disheartening, this is not enough of a reason to move away from an amazing programming language, just because of a really abused feature! After all, there are other languages with much more horrible warts!&lt;/p>
+&lt;p>&lt;img src="../../posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/images/5.png#layoutTextWidth" alt="image">
+Courtesy: &lt;a href="https://me.me">https://me.me&lt;/a>&lt;/p>
+&lt;p>And JS is the most popular language right now 😉So, coming onto our topic, keeping the sanity of our mind! For that, we can follow some tips:&lt;/p>
+&lt;h3 id="use-an-ide">Use an IDE&lt;/h3>
+&lt;p>Personal choice, IntelliJ IDEA with Scala plugin.&lt;/p>
+&lt;p>Look at features from &lt;a href="https://blog.jetbrains.com/scala/">JetBrain’s Scala plugin blog&lt;/a>:&lt;/p>
+&lt;p>You can show implicitly passed parameters in a function, using “show implicit hints” feature, so that there’ll be &lt;strong>&lt;em>no surprises&lt;/em>&lt;/strong> as what was passed:&lt;/p>
+&lt;p>&lt;img src="../../posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/images/6.gif#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Similar example,&lt;/p>
+&lt;p>&lt;img src="../../posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/images/7.gif#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>&lt;img src="../../posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/images/8.gif#layoutTextWidth" alt="image">&lt;/p>
+&lt;h3 id="avoid-implicit-conversionsdefs">Avoid implicit conversions/defs&lt;/h3>
+&lt;p>This can become a complete nightmare if a String or any type gets converted to another on the fly without even telling us and we spend hours debugging the issue&lt;/p>
+&lt;p>Even Scala compiler will warn you if you use implicit conversion without a specific import ( &lt;strong>scala.language.implicitConversions&lt;/strong> ):&lt;/p>
+&lt;p>&lt;img src="../../posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/images/9.png#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>So, the tip is, &lt;strong>&lt;em>avoid implicit conversions at all costs&lt;/em>&lt;/strong>. When you absolutely need a conversion in your code in a convenient manner, please use &lt;a href="https://medium.com/@lprakashv/making-ordinary-classes-rich-scala-ab7f991d690">implicit classes with extension method&lt;/a> like:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-scala" data-lang="scala">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">trait&lt;/span> &lt;span style="color:#b06;font-weight:bold">A&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">trait&lt;/span> &lt;span style="color:#b06;font-weight:bold">B&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//avoid this:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//implicit def aToB(a: A): B = ???
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//do this instead:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>&lt;span style="color:#080;font-weight:bold">implicit&lt;/span> &lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">RichA&lt;/span>&lt;span style="color:#333">(&lt;/span>a&lt;span style="color:#080;font-weight:bold">:&lt;/span> &lt;span style="color:#339;font-weight:bold">A&lt;/span>&lt;span style="color:#333">)&lt;/span> &lt;span style="color:#333">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">def&lt;/span> toB &lt;span style="color:#080;font-weight:bold">=&lt;/span> &lt;span style="color:#333">???&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#333">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//use it like this:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>&lt;span style="color:#080;font-weight:bold">val&lt;/span> someA&lt;span style="color:#080;font-weight:bold">:&lt;/span> &lt;span style="color:#339;font-weight:bold">A&lt;/span> &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#333">???&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">val&lt;/span> someB&lt;span style="color:#080;font-weight:bold">:&lt;/span> &lt;span style="color:#339;font-weight:bold">SomeB&lt;/span> &lt;span style="color:#333">=&lt;/span> someA&lt;span style="color:#333">.&lt;/span>toB
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//so that, this will be avoided:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//val someB: SomeB = someA
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="ditch-the-type-inference-and-annotate-the-required-types">Ditch the type inference and annotate the required types&lt;/h3>
+&lt;p>Simple logic: Avoid surprises 😅 and let compilation fail on mismatches!&lt;/p>
+&lt;h3 id="check-the-imports">Check the imports&lt;/h3>
+&lt;p>Any underscore imports may contain implicit conversions, parameters and/or somewhat safe implicit classes.&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>So, these were my highly opinionated rules to avoid surprises and headaches while working with Scala Implicit! They are really powerful tools for writing really awesome code, please use them, don’t abuse them :)&lt;/p></description></item><item><title>Making ordinary classes Rich! (Scala)</title><link>https://www.lprakashv.com/posts/2019-10-07_making-ordinary-classes-rich-scala/</link><pubDate>Mon, 07 Oct 2019 17:24:21 +0000</pubDate><guid>https://www.lprakashv.com/posts/2019-10-07_making-ordinary-classes-rich-scala/</guid><description>&lt;p>&lt;img src="../../posts/2019-10-07_making-ordinary-classes-rich-scala/images/1.jpeg#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>Let me break it to you, this post has nothing to do with charity! Now, let’s start with a question:&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>How do we enrich something?&lt;/strong>&lt;/p>
+&lt;/blockquote>
+&lt;p>By making it abundant, rich in features and resourceful!&lt;/p>
+&lt;p>In simple OOP terms, we add additional feature methods to the class!!&lt;/p>
+&lt;p>Let’s try to enrich a Person class, starting with the basic class:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/802d185e9a3bdbebbf95da9ff8b44242.js'>&lt;/script>
+&lt;p>Now, to make a person speak French, we have to &lt;strong>add another method&lt;/strong> to our Person class:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/7a20470c58ef5187c67e6696c5ae49e0.js'>&lt;/script>
+&lt;p>This is perfectly fine! Just add the additional feature to the existing class and make it rich.&lt;/p>
+&lt;p>But… &lt;strong>&lt;em>there are cases when we cannot add features/methods to classes, like, library classes&lt;/em>&lt;/strong> (java.util.Date, String, etc).&lt;/p>
+&lt;p>To add features to such classes we have to make &lt;strong>&lt;em>“wrapper classes”&lt;/em>&lt;/strong>. Suppose we want to add the “spell the digits” feature in the standard libraries Int class, we would have to make a wrapper class over Int.&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/23463905122a10c1cdb32306c92ae101.js'>&lt;/script>
+&lt;p>Problem with this wrapper class approach is, if the desired class’ objects are used in a lot of places, then &lt;strong>&lt;em>refactoring the class objects to our Rich-Wrapper class objects becomes a real pain!&lt;/em>&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>Solution: Implicit classes and extension methods&lt;/strong>&lt;/p>
+&lt;/blockquote>
+&lt;p>We will now make slight changes to our wrapper class:&lt;/p>
+&lt;ol>
+&lt;li>Add an &lt;strong>&lt;em>implicit&lt;/em>&lt;/strong> keyword in front of the class.&lt;/li>
+&lt;li>Put the implicit class in a container object, which has a reason but also is generally a good practice. This way, we can import the “rich” feature at will!&lt;/li>
+&lt;li>Import contents of the container object.&lt;/li>
+&lt;li>Use the method on simple objects directly!&lt;/li>
+&lt;/ol>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/7cbb9b7d81ee139ed33cdc3a2b394e7e.js'>&lt;/script>
+&lt;p>This pattern of creating an implicit class to enhance a library’s features has a funny name&lt;/p>
+&lt;blockquote>
+&lt;p>“Pimp My Library Pattern”&lt;/p>
+&lt;/blockquote>
+&lt;!-- raw HTML omitted -->
+&lt;p>The example we shown above was a very basic example of Implicit class and its extension methods. The application of Implicit classes reach far beyond this!&lt;/p>
+&lt;p>One such example, is creating a generic method time profiler:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/85c214c605dca2f7a9359ca4f9e447e9.js'>&lt;/script>
+&lt;p>Then, what are your waiting for? Since, now you’ve learned to “pimp” any library, go make the mundane library objects rich with features you like!&lt;/p>
+&lt;div class="container" style="display:flex;flex-direction:row;align-items:center;">
+&lt;div id='themoreyouknow-more.mp4' style="margin:auto;">&lt;/div>
+&lt;/div>
+&lt;script
+type="text/javascript"
+src="https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.min.js"
+>
+&lt;/script>
+&lt;script>
+var playerElement = document.getElementById('themoreyouknow-more.mp4');
+var player = new Clappr.Player({
+source: "https://c.tenor.com/qGM0NI-m_rgAAAPo/themoreyouknow-more.mp4",
+mute: true,
+height: 360,
+width: 640,
+autoPlay: true ,
+loop: true ,
+});
+player.attachTo(playerElement);
+player.pl
+&lt;/script>
+&lt;p>&lt;em>fin.&lt;/em>&lt;/p></description></item><item><title>Cushing Design Patterns! — Unnecessary Patterns.</title><link>https://www.lprakashv.com/posts/2019-09-30_cushing-design-patternsunnecessary-patterns./</link><pubDate>Mon, 30 Sep 2019 05:16:43 +0000</pubDate><guid>https://www.lprakashv.com/posts/2019-09-30_cushing-design-patternsunnecessary-patterns./</guid><description>&lt;p>&lt;img src="../../posts/2019-09-30_cushing-design-patternsunnecessary-patterns./images/1.jpeg#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>This is the part-II in the continuation of the “Crushing Design Patterns” series (&lt;a href="../2019-09-26_crushing-design-patterns-with-scalachain-of-responsibility">Part-I&lt;/a>) where we debunk the idea of having to use the design patterns to design the system.&lt;/p>
+&lt;h2 id="intro">Intro&lt;/h2>
+&lt;p>They are either just so natural that we have been using them unconsciously or there are better ways in which we don’t have to focus on ceremoniously writing them.Here we go.&lt;/p>
+&lt;h3 id="1-builder-pattern">1. Builder Pattern&lt;/h3>
+&lt;blockquote>
+&lt;p>The intent of the Builder design pattern is to separate the construction of a complex object from its representation.&amp;gt; — Wikipedia&lt;/p>
+&lt;/blockquote>
+&lt;p>Meaning in plain english: &lt;em>A way to create objects with a flexibility to use any number of parameters for its creation.&lt;/em>&lt;/p>
+&lt;p>Question: what is wrong with the constructors?&lt;/p>
+&lt;script type="application/javascript" src="https://gist.github.com/d26672d894bc16fa175f55ef308d6f35/2cde574aa004d277509e1b37d25a3b405ea17969.js">&lt;/script>
+&lt;p>Actual video of me deciding which parameters to put in constructors&lt;/p>
+&lt;div class="container" style="display:flex;flex-direction:row;align-items:center;">
+&lt;div id='bird-blocks.mp4' style="margin:auto;">&lt;/div>
+&lt;/div>
+&lt;script
+type="text/javascript"
+src="https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.min.js"
+>
+&lt;/script>
+&lt;script>
+var playerElement = document.getElementById('bird-blocks.mp4');
+var player = new Clappr.Player({
+source: "https://c.tenor.com/X_L4uaFnF0QAAAPo/bird-blocks.mp4",
+mute: true,
+height: 360,
+width: 640,
+autoPlay: true ,
+loop: true ,
+});
+player.attachTo(playerElement);
+player.pl
+&lt;/script>
+&lt;p>Counter question: How many would you make? To answer that, I’ll have show off my high school mathematics:&lt;/p>
+&lt;blockquote>
+&lt;p>If there are &lt;strong>&lt;em>n&lt;/em>&lt;/strong> optional parameters/fields, there will be &lt;strong>&lt;em>2^n&lt;/em>&lt;/strong> possible combinations of them, that means we’ll have to create those many constructors.&lt;/p>
+&lt;/blockquote>
+&lt;p>Turns out it will be 64 for our 6 optional veggies. Oh God, Java will make me die unhealthy!&lt;/p>
+&lt;div class="container" style="display:flex;flex-direction:row;align-items:center;">
+&lt;div id='cookie-monster-vegetables.mp4' style="margin:auto;">&lt;/div>
+&lt;/div>
+&lt;script
+type="text/javascript"
+src="https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.min.js"
+>
+&lt;/script>
+&lt;script>
+var playerElement = document.getElementById('cookie-monster-vegetables.mp4');
+var player = new Clappr.Player({
+source: "https://c.tenor.com/7nksOF9d4XQAAAPo/cookie-monster-vegetables.mp4",
+mute: true,
+height: 360,
+width: 640,
+autoPlay: true ,
+loop: true ,
+});
+player.attachTo(playerElement);
+player.pl
+&lt;/script>
+&lt;p>Here comes the Builder pattern for our rescue,&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/c739b9ebcbbcc06979711bed37ed0236.js'>&lt;/script>
+&lt;p>But hey, this is 2019 and remember, we don’t need to do it like this! Behold, Java has a saviour now, &lt;a href="https://projectlombok.org/features/all">&lt;strong>&lt;em>lombok&lt;/em>&lt;/strong>&lt;/a>&lt;strong>&lt;em>!&lt;/em>&lt;/strong> Let’s rewrite our lombok-y Sandwich class:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/47feb00c232296a0105c86ee3f911a55.js'>&lt;/script>
+&lt;div class="container" style="display:flex;flex-direction:row;align-items:center;">
+&lt;div id='jake-adventure-time.mp4' style="margin:auto;">&lt;/div>
+&lt;/div>
+&lt;script
+type="text/javascript"
+src="https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.min.js"
+>
+&lt;/script>
+&lt;script>
+var playerElement = document.getElementById('jake-adventure-time.mp4');
+var player = new Clappr.Player({
+source: "https://c.tenor.com/8zE-Vg8zqV8AAAPo/jake-adventure-time.mp4",
+mute: true,
+height: 360,
+width: 640,
+autoPlay: true ,
+loop: true ,
+});
+player.attachTo(playerElement);
+player.pl
+&lt;/script>
+&lt;p>That is it! Heck, we didn’t even need write the getters and setters ourselves, lombok does it all for you ! How do we use it, if you ask. Simple:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/28770ff78553c0dc2578afc72c509641.js'>&lt;/script>
+&lt;blockquote>
+&lt;p>&lt;strong>Pro Tip:&lt;/strong> If you are a Java dev, you should definitely check out the &lt;a href="https://projectlombok.org/features/all">&lt;strong>Project Lombok&lt;/strong>&lt;/a>, it offer dozens of cool modern features with simple annotations. &lt;strong>All the lombok annotated code simply de-sugars at the compile time into the ugly Java we don’t wanna write!&lt;/strong>&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>&lt;em>Verdict: Builder Pattern is unnecessary in Java due to lombok! Some languages provide features like named and default arguments (Scala, Clojure, Python etc) making the object building easier.&lt;/em>&lt;/strong>&lt;/p>
+&lt;h3 id="2-iterator-pattern">2. Iterator Pattern&lt;/h3>
+&lt;blockquote>
+&lt;p>The&lt;strong>iterator pattern&lt;/strong> is a design pattern in which an iterator is used to traverse a container and access the container’s elements. The iterator pattern decouples algorithms from containers.&amp;gt; — Wikipedia&lt;/p>
+&lt;/blockquote>
+&lt;p>Meaning: &lt;em>It’s a pattern where&lt;/em> &lt;strong>&lt;em>an abstract container&lt;/em>&lt;/strong> &lt;em>providing a&lt;/em> &lt;strong>&lt;em>next()&lt;/em>&lt;/strong> &lt;em>method and in some cases hasNext() method as well.&lt;/em>&lt;/p>
+&lt;p>{{ video src=&amp;ldquo;&lt;a href="https://c.tenor.com/H1P0_7Aq8vMAAAPo/next-britney-spears.mp4%22">https://c.tenor.com/H1P0_7Aq8vMAAAPo/next-britney-spears.mp4&amp;quot;&lt;/a> autoPlay=true loop=true id=&amp;ldquo;next-britney-spears.mp4&amp;rdquo; }}&lt;/p>
+&lt;p>At this point, if you are a programmer, your brain should be screaming right now. &lt;strong>We already have those in every mainstream programming language!!&lt;/strong>.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Java&lt;/strong> has &lt;strong>Iterator&amp;lt;T&amp;lt;&lt;/strong> interface.&lt;/li>
+&lt;li>&lt;strong>Python&lt;/strong> objects provides &lt;strong>&lt;strong>next&lt;/strong>()&lt;/strong> method.&lt;/li>
+&lt;li>&lt;strong>Scala and other functional languages&lt;/strong> provide &lt;strong>sequences&lt;/strong> and &lt;strong>lazy sequences&lt;/strong>.&lt;/li>
+&lt;/ul>
+&lt;h3 id="3-command-pattern">3. Command Pattern&lt;/h3>
+&lt;blockquote>
+&lt;p>Here, object is used to encapsulate all information needed to perform an action or trigger an event at a later time.&amp;gt; — Wikipedia&lt;/p>
+&lt;/blockquote>
+&lt;p>Meaning: Every command implementation does what it is meant for!&lt;/p>
+&lt;div class="container" style="display:flex;flex-direction:row;align-items:center;">
+&lt;div id='your-wish-is-my-command-geenie.mp4' style="margin:auto;">&lt;/div>
+&lt;/div>
+&lt;script
+type="text/javascript"
+src="https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.min.js"
+>
+&lt;/script>
+&lt;script>
+var playerElement = document.getElementById('your-wish-is-my-command-geenie.mp4');
+var player = new Clappr.Player({
+source: "https://c.tenor.com/gM3gv9qsN9MAAAPo/your-wish-is-my-command-geenie.mp4",
+mute: true,
+height: 360,
+width: 640,
+autoPlay: true ,
+loop: true ,
+});
+player.attachTo(playerElement);
+player.pl
+&lt;/script>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/c09c9975cc0828539c6e547ab10200e2.js'>&lt;/script>
+&lt;p>Usage:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/c21f5e07a76638eae91bd7bde520b9dc.js'>&lt;/script>
+&lt;p>You got the point right! Now, I want to you to pay attention and see that “&lt;em>we only care about the encapsulated execute() method”&lt;/em>. So, in a nutshell, the &lt;strong>&lt;em>Command pattern is just a function/method!&lt;/em>&lt;/strong>&lt;/p>
+&lt;p>This becomes very intuitive with Java-8 lambdas, we don’t need to create LoginCommand and LogoutCommand wrapper implementations of the Command interface:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/a79701e737154861496d6b172a993af7.js'>&lt;/script>
+&lt;p>BTW, this is very easy in functional languages, let’s take Scala for example:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/d6f1bec5c5928acdcb9ba63e88e1fa47.js'>&lt;/script>
+&lt;h3 id="4-strategy-pattern">4. Strategy Pattern&lt;/h3>
+&lt;blockquote>
+&lt;p>S&lt;strong>trategy pattern&lt;/strong> (also known as the &lt;strong>policy pattern&lt;/strong>) enables selecting an algorithm at runtime. Instead of implementing a single algorithm directly, code receives run-time instructions as to which in a family of algorithms to use.&amp;gt; — Wikipedia&lt;/p>
+&lt;/blockquote>
+&lt;p>Meaning: &lt;strong>&lt;em>Injecting the algorithm/strategy for some computation at runtime.&lt;/em>&lt;/strong>&lt;/p>
+&lt;p>For example, suppose we are running a country named LaLaLand and are running out of cash. What would be the best way to fill up our stash?&lt;/p>
+&lt;div class="container" style="display:flex;flex-direction:row;align-items:center;">
+&lt;div id='taxes-tax.mp4' style="margin:auto;">&lt;/div>
+&lt;/div>
+&lt;script
+type="text/javascript"
+src="https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.min.js"
+>
+&lt;/script>
+&lt;script>
+var playerElement = document.getElementById('taxes-tax.mp4');
+var player = new Clappr.Player({
+source: "https://c.tenor.com/qcon77gJQxUAAAPo/taxes-tax.mp4",
+mute: true,
+height: 360,
+width: 640,
+autoPlay: true ,
+loop: true ,
+});
+player.attachTo(playerElement);
+player.pl
+&lt;/script>
+&lt;p>We start making a taxing strategy, let’s tax a quarter of the income of everybody.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># quarter-taxing-strategy:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tax &lt;span style="color:#333">=&lt;/span> user&lt;span style="color:#333">.&lt;/span>income &lt;span style="color:#333">/&lt;/span> &lt;span style="color:#00d;font-weight:bold">4&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>But , when we think about the good people running a kitten orphanage NGO, we feel bad for them. Also, we want to tax more the black money holders now. &lt;strong>We need more strategies&lt;/strong>!&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># non-profit-taxing-strategy:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tax &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#00d;font-weight:bold">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># half-taxing-strategy:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tax &lt;span style="color:#333">=&lt;/span> user&lt;span style="color:#333">.&lt;/span>income &lt;span style="color:#333">/&lt;/span> &lt;span style="color:#00d;font-weight:bold">2&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Here, &lt;strong>&lt;em>the algorithm is the taxing strategy&lt;/em>&lt;/strong> to compute the taxes from users. More strategies mean, more algorithms (functions). Let’s start with good old Java way:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/2156908af1a9a6f5f0321d287728b51a.js'>&lt;/script>
+&lt;p>For every new strategy, we need to create another implementation class! Usage:&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/6b49ae0861f6bfaec9295bb7e3bca424.js'>&lt;/script>
+&lt;p>Smart ones among you might already have guessed that &lt;strong>&lt;em>we don’t need the wrapper implementation classes, we just need functions as strategies and pass them around arguments&lt;/em>&lt;/strong>!&lt;/p>
+&lt;p>Let’s do it in functional way (no need to create multiple implementations of Strategy interface):&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/594d5e7397e7dd2ec4fcaf80218195c6.js'>&lt;/script>
+&lt;div class="container" style="display:flex;flex-direction:row;align-items:center;">
+&lt;div id='cool-coolbeans.mp4' style="margin:auto;">&lt;/div>
+&lt;/div>
+&lt;script
+type="text/javascript"
+src="https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.min.js"
+>
+&lt;/script>
+&lt;script>
+var playerElement = document.getElementById('cool-coolbeans.mp4');
+var player = new Clappr.Player({
+source: "https://c.tenor.com/HDaAEuOODc4AAAPo/cool-coolbeans.mp4",
+mute: true,
+height: 360,
+width: 640,
+autoPlay: true ,
+loop: true ,
+});
+player.attachTo(playerElement);
+player.pl
+&lt;/script>
+&lt;p>In functional languages (Scala):&lt;/p>
+&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/ba85d532183912bf0fcf6f193c197b09.js'>&lt;/script>
+&lt;!-- raw HTML omitted -->
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>We have discussed 4 pattern in this post: Builder, Iterator, Command and Strategy. Each one can be used without writing any pattern, simply by just intuitively using language features (even in Java). Each pattern has been right in front of us hiding in the language!&lt;/p>
+&lt;p>In summary:&lt;/p>
+&lt;ol>
+&lt;li>&lt;em>Builder — Lombok’s Builder annotation in Java, named and default parameters in other languages (Scala, Clojure, Python etc).&lt;/em>&lt;/li>
+&lt;li>&lt;em>Iterator — Readily available interfaces/abstractions in many languages.&lt;/em>&lt;/li>
+&lt;li>&lt;em>Command — Just pure functions.&lt;/em>&lt;/li>
+&lt;li>&lt;em>Strategy — passing functions as strategy at runtime.&lt;/em>&lt;/li>
+&lt;/ol></description></item><item><title>Crushing Design Patterns with Scala! — Chain of responsibility</title><link>https://www.lprakashv.com/posts/2019-09-26_crushing-design-patterns-with-scalachain-of-responsibility/</link><pubDate>Thu, 26 Sep 2019 06:06:23 +0000</pubDate><guid>https://www.lprakashv.com/posts/2019-09-26_crushing-design-patterns-with-scalachain-of-responsibility/</guid><description>&lt;p>&lt;img src="../../posts/2019-09-26_crushing-design-patterns-with-scalachain-of-responsibility/images/1.jpeg#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>&lt;strong>&lt;em>Starting this chain of responsibility of debunking the idea of really needing to use the&lt;/em>&lt;/strong>&lt;a href="https://en.wikipedia.org/wiki/Design_Patterns">&lt;strong>&lt;em>Design Patterns&lt;/em>&lt;/strong>&lt;/a>&lt;strong>&lt;em>!&lt;/em>&lt;/strong>. I believe that design patterns were created to standardise the OO patterns needed to solve the common problems arising due to not having a standard way of solving them using the programming language itself.&lt;/p>
+&lt;blockquote>
+&lt;p>Design patterns should be used only as communication tool and not the way we have been using as a design tool. — Mr. &lt;a href="https://twitter.com/venkat_s">Venkat Subramaniam&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>Coming on to our language, &lt;strong>Scala, being a multi-paradigm programming language gets the goodness of both functional and OO worlds&lt;/strong>. This is truly visible with the functional magic being applied in the OO design patterns.&lt;/p>
+&lt;p>We will start with our pattern “Chain of Responsibility”, its definition says:&lt;/p>
+&lt;blockquote>
+&lt;p>In object-oriented design, the &lt;strong>chain-of-responsibility pattern&lt;/strong> is a design pattern consisting of a source of command objects and a series of processing objects. Each processing object contains logic that defines the types of command objects that it can handle; the rest are passed to the next processing object in the chain. A mechanism also exists for adding new processing objects to the end of this chain&amp;gt; - Wikipedia
+&lt;img src="../../posts/2019-09-26_crushing-design-patterns-with-scalachain-of-responsibility/images/2.gif#layoutTextWidth" alt="image">&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>&lt;em>To put it simply, the chain of responsibility pattern can be considered as an assembly line, each processing unit doing their own part and then passing the other processing units.&lt;/em>&lt;/strong>&lt;/p>
+&lt;p>Let’s consider a problem to solve. Consider You want to filter out (beep) profanity out of a public chat system (&lt;em>This example is inspired from Mykhailo Kozik’s post&lt;/em> &lt;a href="http://mishadoff.com/blog/clojure-design-patterns/#episode-16-chain-of-responsibility">&lt;strong>&lt;em>Clojure Design Patterns&lt;/em>&lt;/strong>&lt;em>.&lt;/em>&lt;/a>).&lt;/p>
+&lt;p>Further more, you would only want to &lt;em>beep&lt;/em> the profanity coming from a certain respectable person. You can leave the rest of the world with their freedom of expression ;)&lt;/p>
+&lt;p>Consider your chat stream looks something like this:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-txt" data-lang="txt">&lt;span style="display:flex;">&lt;span>#format: [user] comment
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[Suresh01] Hello!
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[RameshXX] Hi Suresh, how are you.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[TheMostRejectableGuyInTown] Yo wazzup people.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[Suresh01] Not you again Ramesh! curse you!
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[MrRespectable007] curse all of you, I curse the world!!
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>You would now want to extend this a little further and wanna have provision to log, reject and &lt;em>beep&lt;/em> out (transform) certain words.&lt;/p>
+&lt;p>Solution:&lt;/p>
+&lt;p>Simple! We just need to filter the sh*t out of everything.&lt;/p>
+&lt;p>Let me talk a bit in Java now, &lt;em>we will create a Filter abstraction and create Rejector, Moderator, Logger etc implementations of it.&lt;/em>&lt;/p>
+&lt;p>Abstraction for the Filter:&lt;/p>
+&lt;script type="application/javascript" src="https://gist.github.com/fd7dd335418f3a2b7faeb0ef8deaa3d2/1bb5c74e79ae83fdc26c2fbcb09423cfebbc5b12.js">&lt;/script>
+&lt;p>Implementations of the Filter:&lt;/p>
+&lt;script type="application/javascript" src="https://gist.github.com/ac1df3e6a1b04aad4769a570fa4f0af4/0a79c91841c22a60b54f3599697aa346ca87ba3e.js">&lt;/script>
+&lt;p>Wow, that was some effort for such a simple task!&lt;/p>
+&lt;p>Now, let’s use the filters chained to work together in the order we define.&lt;/p>
+&lt;script type="application/javascript" src="https://gist.github.com/f6ce039c1f1960faa45e3261124722db/928308d0f6e75540cf48460d7cd6e84da29c1170.js">&lt;/script>
+&lt;p>We could do the exact same thing with Scala too, well, it doesn’t restrict (or force) you from doing what you want! You are free to jump in your own created well.&lt;/p>
+&lt;p>If we take a step back and look at the pattern (or rather problem) again, we could see that &lt;strong>&lt;em>we just care about the process method and the order in which they are applied.&lt;/em>&lt;/strong>&lt;/p>
+&lt;p>Since, &lt;strong>functions are the first class citizens in Scala&lt;/strong>, we could argue that we just want the methods and not the entire Filter classes, and some way of composing them.&lt;/p>
+&lt;p>Voila, we have our answer here, &lt;strong>“functional composition”&lt;/strong> using &lt;strong>&lt;em>andThen&lt;/em>&lt;/strong>.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-scala" data-lang="scala">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">/* For single argument function, andThen method signature looks like */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">trait&lt;/span> &lt;span style="color:#b06;font-weight:bold">Function1&lt;/span>&lt;span style="color:#333">[&lt;/span>&lt;span style="color:#339;font-weight:bold">-T1&lt;/span>, &lt;span style="color:#339;font-weight:bold">+R&lt;/span>&lt;span style="color:#333">]&lt;/span> &lt;span style="color:#333">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">def&lt;/span> apply&lt;span style="color:#333">(&lt;/span>v1&lt;span style="color:#080;font-weight:bold">:&lt;/span> &lt;span style="color:#339;font-weight:bold">T1&lt;/span>&lt;span style="color:#333">)&lt;/span>&lt;span style="color:#080;font-weight:bold">:&lt;/span> &lt;span style="color:#339;font-weight:bold">R&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">def&lt;/span> andThen&lt;span style="color:#333">[&lt;/span>&lt;span style="color:#339;font-weight:bold">A&lt;/span>&lt;span style="color:#333">](&lt;/span>g&lt;span style="color:#080;font-weight:bold">:&lt;/span> &lt;span style="color:#339;font-weight:bold">R&lt;/span> &lt;span style="color:#333">=&amp;lt;&lt;/span> A&lt;span style="color:#333">)&lt;/span>&lt;span style="color:#080;font-weight:bold">:&lt;/span> &lt;span style="color:#339;font-weight:bold">T1&lt;/span> &lt;span style="color:#333">=&amp;lt;&lt;/span> A &lt;span style="color:#080;font-weight:bold">=&lt;/span> &lt;span style="color:#333">{&lt;/span> x &lt;span style="color:#333">=&amp;lt;&lt;/span> g&lt;span style="color:#333">(&lt;/span>apply&lt;span style="color:#333">(&lt;/span>x&lt;span style="color:#333">))&lt;/span> &lt;span style="color:#333">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#333">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>In plain english, it takes function with input type the same as the return type of the current function it is applied on (R) and returning a new type (A) value. andThen passes the result of the current function to the function passed in and then returns output of the passed function.&lt;/em>&lt;/p>
+&lt;p>Some syntactic sugar in Scala:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-scala" data-lang="scala">&lt;span style="display:flex;">&lt;span>a&lt;span style="color:#333">.&lt;/span>method&lt;span style="color:#333">(&lt;/span>b&lt;span style="color:#333">.&lt;/span>innerMethod&lt;span style="color:#333">(&lt;/span>c&lt;span style="color:#333">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">/* is equivalent to */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>a method &lt;span style="color:#333">(&lt;/span>b innerMethod c&lt;span style="color:#333">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>a&lt;span style="color:#333">.&lt;/span>method1&lt;span style="color:#333">(&lt;/span>b&lt;span style="color:#333">).&lt;/span>method2&lt;span style="color:#333">(&lt;/span>c&lt;span style="color:#333">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">/* is equivalent to */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>a method1 b method2 c
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now, using all our magic here,&lt;/p>
+&lt;script type="application/javascript" src="https://gist.github.com/a8a82dd6ef7d5f1813e3e813a087f0e8/1c179fd7582da567da4aff9831026a95eaec2a98.js">&lt;/script>
+&lt;p>Pretty neat huh! Remember, there is no magic just some hard work behind the scenes. In our case, it’s the Scala compiler.&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>In conclusion, we shouldn’t have to worry about writing tedious patterns for standard well known problems if the language itself provides them out of the box! We could just take a break from the computer screen and say “Hello world!” literally, in the time we save :)&lt;/p>
+&lt;figure>&lt;img src="https://c.tenor.com/FxCJGKCeVBIAAAAC/take-a-break-break.gif"/>
+&lt;/figure>
+&lt;p>Thank you! And here is &lt;a href="../2019-09-30_cushing-design-patternsunnecessary-patterns.">Part-II&lt;/a>.&lt;/p></description></item></channel></rss>
