@@ -3,8 +3,9 @@
 	<article>
 		<div class="title">
 			<h1 class="title">{{ .Title }}</h1>
-      <!-- TODO - hack! fix by checking type of page and not the text -->
-			{{if (ne .Title "About Me")}}<div class="meta">Posted on {{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>{{end}}
+			{{- if (and (eq .Section "posts") (eq .Kind "page")) -}}
+      <div class="meta">Posted on {{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
+      {{- end -}}
 		</div>
 		{{ if isset .Params "tldr" }}
 		<div class="tldr">
@@ -34,8 +35,11 @@
 			{{ end }}
 			{{ end }}
 		</div>
-    <!-- TODO - hack! fix by checking type of page and not the text -->
-    {{if (ne .Title "About Me")}}{{ (partial "disqus-universal" .) | safeHTML }}{{end}}
+    {{- if (and (eq .Section "posts") (eq .Kind "page")) -}}
+    {{- (partial "diff-blog" . ) | safeHTML -}}
+    {{- (partial "disqus-universal" .) | safeHTML -}}
+    {{- end -}}
+    <!-- {{if (ne .Title "About Me")}}{{ (partial "disqus-universal" .) | safeHTML }}{{end}} -->
 	</article>
 </main>
 {{ end }}
