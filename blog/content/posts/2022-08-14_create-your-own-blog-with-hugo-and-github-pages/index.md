@@ -26,7 +26,6 @@ tags:
   - hugo
   - blog
   - github pages
-  - tutorial
   - website
   - github actions
   - markdown
