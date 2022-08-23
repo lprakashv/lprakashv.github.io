@@ -1,6 +1,6 @@
 ---
 title: "Intro to OpenTelemetry"
-date: 2022-08-17T16:34:15+05:30
+date: 2022-08-24T00:15:00+05:30
 draft: false
 
 image: "/posts/2022-08-24_intro-to-opentelemetry/images/opentelemetry-horizontal-color.png"
