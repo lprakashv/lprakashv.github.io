@@ -1,4 +1,96 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Categories on LPRAKASHV CODE BYTES</title><link>https://www.lprakashv.com/categories/</link><description>Recent content in Categories on LPRAKASHV CODE BYTES</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>© Lalit Prakash Vatsal</copyright><atom:link href="https://www.lprakashv.com/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>Create Your Own Blog With Hugo and Github Pages</title><link>https://www.lprakashv.com/posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/</link><pubDate>Sun, 14 Aug 2022 16:06:48 +0530</pubDate><guid>https://www.lprakashv.com/posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/</guid><description>&lt;p>&lt;img src="../posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/images/gh-hugo.png#layoutTextWidth" alt="Image">&lt;/p>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Categories on LPRAKASHV CODE BYTES</title><link>https://www.lprakashv.com/categories/</link><description>Recent content in Categories on LPRAKASHV CODE BYTES</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>© Lalit Prakash Vatsal</copyright><atom:link href="https://www.lprakashv.com/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>Intro to OpenTelemetry</title><link>https://www.lprakashv.com/posts/2022-08-24_intro-to-opentelemetry/</link><pubDate>Wed, 17 Aug 2022 16:34:15 +0530</pubDate><guid>https://www.lprakashv.com/posts/2022-08-24_intro-to-opentelemetry/</guid><description>&lt;p>&lt;img src="images/opentelemetry-horizontal-color.png#layoutTextWidth" alt="Image">&lt;/p>
+&lt;p>To understand the OpenTelemetry, we need to understand the foundational concept of &lt;strong>Observability&lt;/strong> first.&lt;/p>
+&lt;h2 id="observability">Observability&lt;/h2>
+&lt;p>In the modern day distributed micro-service applications, it is increasingly becoming difficult for developers to monitor and systems with multiple dependencies due the sheer scale and diversity of technologies involved in the system.&lt;/p>
+&lt;p>This brings the need for a standard way to understand the running system in a more scalable way.&lt;/p>
+&lt;blockquote>
+&lt;p>Observability is a methodology to understand a system from the outside without knowing its inner workings.&lt;/p>
+&lt;/blockquote>
+&lt;p>The system is called &lt;strong>&amp;ldquo;observable&amp;rdquo;&lt;/strong>, if it the application code is instrumented to emit traces, metrics, and logs.&lt;/p>
+&lt;p>&lt;img src="images/observability.png" alt="observability">&lt;/p>
+&lt;h2 id="background-history-of-observability-and-opentelemetry">Background History of Observability and OpenTelemetry&lt;/h2>
+&lt;p>In the past, there as no standard way in which code was instrumented. And each Observability back-end (Ziplin, Jaeger, Prometheus etc.) had its own instrumentation libraries and agents for emitting data to the tools.&lt;/p>
+&lt;p>This meant:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Lack of Standardized Format:&lt;/strong> There was no standardized data format for sending data to an Observability back-end.&lt;/li>
+&lt;li>&lt;strong>Lack of Portability:&lt;/strong> If a user chose to switch Observability back-ends, they would have to re-instrument their code and configure new agents to be able to emit telemetry data to the new tool of choice.&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="images/observability-in-the-past.png" alt="observability-in-the-past">&lt;/p>
+&lt;p>Recognizing the need for standardization and portability, the cloud community came together, and two open-source projects were born:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>OpenTracing&lt;/strong> (a Cloud Native Computing Foundation (CNCF) project): This provided a vendor-neutral API for sending telemetry data over to an Observability back-end; however, it relied on developers to implement their own libraries to meet the specification.&lt;/li>
+&lt;li>&lt;strong>OpenCensus&lt;/strong> (a Google Open Source community project): This provided a set of language-specific libraries that developers could use to instrument their code and send to any one of their supported back-ends.&lt;/li>
+&lt;/ol>
+&lt;p>To standardize things further, in May 2019, &lt;strong>OpenCensus and OpenTracing were merged to form &amp;ldquo;OpenTelemetry&amp;rdquo;&lt;/strong> (OTel for short). As a CNCF incubating project, OpenTelemetry takes the best of both worlds, and then some.&lt;/p>
+&lt;p>&lt;img src="images/opentelemetry-opentracing-opencensus.png" alt="opentelemetry-opentracing-opencensus">&lt;/p>
+&lt;h2 id="opentelemetry">OpenTelemetry&lt;/h2>
+&lt;p>OpenTelemetry is the mechanism by which application code is instrumented, to help make a system observable.&lt;/p>
+&lt;p>OTel&amp;rsquo;s goal is to provide a set of standardized vendor-agnostic SDKs, APIs, and tools for ingesting, transforming, and sending data to an Observability back-end (i.e. open-source or commercial vendor).&lt;/p>
+&lt;h3 id="opentelemetry-signals">OpenTelemetry Signals&lt;/h3>
+&lt;p>In OpenTelemetry, a &lt;strong>Signal&lt;/strong> refers to the categories of telemetry that are supported by the specification. It currently supports the Signals below, and more may be added in the future.&lt;/p>
+&lt;p>&lt;strong>Traces&lt;/strong> - Traces give us the big picture of what happens when a request is made by user or an application.&lt;/p>
+&lt;p>&lt;strong>Metrics&lt;/strong> - A metric is a measurement about a service, captured at runtime.&lt;/p>
+&lt;p>&lt;strong>Logs&lt;/strong> - A log is a timestamped text record, either structured (recommended) or unstructured, with metadata.&lt;/p>
+&lt;p>&lt;strong>Baggage&lt;/strong> - Baggage refers to contextual information that&amp;rsquo;s passed between spans&lt;/p>
+&lt;h3 id="language-specific-instrumentation-libraries-vendor-agnostic">Language specific Instrumentation Libraries (vendor-agnostic)&lt;/h3>
+&lt;ul>
+&lt;li>&lt;a href="https://opentelemetry.io/docs/instrumentation/">OpenTelemetry code instrumentation is supported for many popular programming languages&lt;/a>&lt;/li>
+&lt;li>Some programming languages support both auto-instrumentation and manual instrumentation while others may support only one of them based on language limitations.&lt;/li>
+&lt;/ul>
+&lt;p>Checkout &lt;a href="https://opentelemetry.io/docs/concepts/instrumenting/">instrumenting&lt;/a> for more details.&lt;/p>
+&lt;h3 id="collector-vendor-neutral">Collector (vendor-neutral)&lt;/h3>
+&lt;p>OpenTelemetry Collector (otel-collector) is a vendor-neutral component which allows telemetry data (signals) to be collected, processed upon and exported to an observability backend in their respective formats.&lt;/p>
+&lt;p>OpenTelemetry Collector can be customized using its configuration, an example configuration would look like:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#070">receivers&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">otlp&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">protocols&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">grpc&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">http&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#070">processors&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">batch&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#070">exporters&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">otlp&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">endpoint&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>otelcol:4317&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#070">extensions&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">health_check&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">pprof&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">zpages&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#070">service&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">extensions&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[health_check,pprof,zpages]&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">pipelines&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">traces&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">receivers&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[otlp]&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">processors&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[batch]&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">exporters&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[otlp]&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">metrics&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">receivers&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[otlp]&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">processors&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[batch]&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">exporters&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[otlp]&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">logs&lt;/span>:&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">receivers&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[otlp]&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">processors&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[batch]&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">exporters&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[otlp]&lt;span style="color:#bbb">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>We can specify &amp;ldquo;pipelines&amp;rdquo; in the otel-collector, each for &lt;strong>metrics&lt;/strong>, &lt;strong>traces&lt;/strong> and &lt;strong>logs&lt;/strong> which are comprised of:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Receivers:&lt;/strong> A receiver accepts data in a specified format, translates it into the internal format and passes it to processors and exporters defined in the applicable pipelines&lt;/li>
+&lt;li>&lt;strong>Processors:&lt;/strong> A processor pre-processes data before it is exported (e.g. modify attributes or sample) or helps ensure that data makes it through a pipeline successfully (e.g. batch/retry).&lt;/li>
+&lt;li>&lt;strong>Exporters:&lt;/strong> An exporter translates the internal format into another defined format.&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>Extensions:&lt;/strong> There is another type of component called &amp;ldquo;extensions&amp;rdquo;, which provides capabilities on top of the primary functionality of the collector. Generally, extensions are used for implementing components that can be added to the Collector, but which do not require direct access to telemetry data and are not part of the pipelines (like receivers, processors or exporters)&lt;/p>
+&lt;p>There are 2 flavors of otel-collector present:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/open-telemetry/opentelemetry-collector">Core otel-collector&lt;/a>: This is the standard collector provided by the open-telemetry and have certain receivers, processors, exporters and extensions built-in for any generic usage.&lt;/li>
+&lt;li>&lt;a href="https://github.com/open-telemetry/opentelemetry-collector-contrib">otel-collector-contrib&lt;/a>: This is a superset of standard otel-collector, this includes open source community contributed components for vendor specific data-formats. Use this if you want to have any vendor-specific observability backends or data sources (instrumentation, applications etc.) to support in your system.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="images/opentelemetry-collector.png" alt="opentelemetry-collector">&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>To conclude this, OpenTelemetry provides robust standards, rich set of libraries for various programming languages, and tools for instrumenting, collecting, transforming and exporting telemetry data to make the system observable.&lt;/p>
+&lt;p>Here is the general OpenTelemetry workflow diagram:&lt;/p>
+&lt;p>&lt;img src="images/opentelemetry-overview.png" alt="opentelemetry-overview">&lt;/p></description></item><item><title>Create Your Own Blog With Hugo and Github Pages</title><link>https://www.lprakashv.com/posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/</link><pubDate>Sun, 14 Aug 2022 16:06:48 +0530</pubDate><guid>https://www.lprakashv.com/posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/</guid><description>&lt;p>&lt;img src="../posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/images/gh-hugo.png#layoutTextWidth" alt="Image">&lt;/p>
 &lt;p>In this post we will explore how we can setup our own blog using &lt;a href="https://gohugo.io/">Hugo&lt;/a> which claims to be &amp;ldquo;&lt;em>The world’s fastest framework for building websites&lt;/em>&amp;rdquo;. And for hosting, we will use &lt;a href="https://pages.github.com/">Github pages&lt;/a> and automatic deployments using &lt;a href="https://github.com/features/actions">Github Actions&lt;/a> workflow.&lt;/p>
 &lt;p>So let&amp;rsquo;s get started, shall we?&lt;/p>
 &lt;h2 id="the-githubio-repository">The Github.io Repository&lt;/h2>
