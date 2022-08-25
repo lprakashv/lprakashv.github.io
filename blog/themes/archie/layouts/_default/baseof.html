@@ -2,16 +2,16 @@
 <html>
     {{- partial "header.html" . -}}
     <body>
-      <div class="content-side">
-        <!-- {{ partial "google/adsense-vertical.html" . }} -->
+      <!-- <div class="content-side">
+        {{ partial "google/adsense-vertical.html" . }}
+      </div> -->
+      <div class="content">
+      {{- partial "head.html" . -}}
+      {{- block "main" . }}{{- end }}
+      {{- partial "footer.html" . -}}
       </div>
-        <div class="content">
-        {{- partial "head.html" . -}}
-        {{- block "main" . }}{{- end }}
-        {{- partial "footer.html" . -}}
-        </div>
-        <div class="content-side">
-          {{ partial "google/adsense-vertical.html" . }}
-        </div>
+      <!-- <div class="content-side">
+        {{ partial "google/adsense-vertical.html" . }}
+      </div> -->
     </body>
 </html>
