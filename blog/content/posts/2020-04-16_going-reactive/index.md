@@ -69,17 +69,17 @@ There are some fundamental building block of the reactive programming model:
 
 CompletableFuture is a very good example for asynchronous programming in Java:
 
-{{< script src="https://gist.github.com/lprakashv/a0a9f913f58b3a64f392b46c88bbe344.js" >}}
+{{< gist lprakashv a0a9f913f58b3a64f392b46c88bbe344 >}}
 
 The above code is asynchronous as well as it won’t block! Most often than not, **_non-blocking and asynchronous are the same thing_**. If a piece of code is asynchronous, it has to be non-blocking and vice-versa.
 
 There is one major problem with the callbacks, and that is the [**_Callback Hell_**](http://callbackhell.com/) when we have more than 2 nested callbacks, the code starts to look obscure and becomes unmaintainable very quickly.
 
-{{< script src="https://gist.github.com/lprakashv/73cdeb5053ae790f45ac29e7c242b5ed.js" >}}
+{{< gist lprakashv 73cdeb5053ae790f45ac29e7c242b5ed >}}
 
 **_Functional/Declarative:_** To overcome the callback hell and be able to compose (or chain) the operations on the events subscribed, we should use the functional/declarative style. Suppose there is a high level construct of Publisher and Subscriber such that we could use:
 
-{{< script src="https://gist.github.com/lprakashv/e74478507095de99f6b2c26c4e2c20bf.js" >}}
+{{< gist lprakashv e74478507095de99f6b2c26c4e2c20bf >}}
 
 The above code looks more elegant even though it performs a lot of things in steps with a merge chaining of functions. It was just an example taken from Spring Webflux’s Publisher/Subscriber API. There are other reactive libraries and frameworks where this type of functional composition and chaining is possible.
 

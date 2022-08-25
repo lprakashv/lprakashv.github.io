@@ -35,11 +35,11 @@ In simple OOP terms, we add additional feature methods to the class!!
 
 Let’s try to enrich a Person class, starting with the basic class:
 
-{{< script src="https://gist.github.com/lprakashv/802d185e9a3bdbebbf95da9ff8b44242.js" >}}
+{{< gist lprakashv 802d185e9a3bdbebbf95da9ff8b44242 >}}
 
 Now, to make a person speak French, we have to **add another method** to our Person class:
 
-{{< script src="https://gist.github.com/lprakashv/7a20470c58ef5187c67e6696c5ae49e0.js" >}}
+{{< gist lprakashv 7a20470c58ef5187c67e6696c5ae49e0 >}}
 
 This is perfectly fine! Just add the additional feature to the existing class and make it rich.
 
@@ -47,7 +47,7 @@ But… **_there are cases when we cannot add features/methods to classes, like, 
 
 To add features to such classes we have to make **_“wrapper classes”_**. Suppose we want to add the “spell the digits” feature in the standard libraries Int class, we would have to make a wrapper class over Int.
 
-{{< script src="https://gist.github.com/lprakashv/23463905122a10c1cdb32306c92ae101.js" >}}
+{{< gist lprakashv 23463905122a10c1cdb32306c92ae101 >}}
 
 Problem with this wrapper class approach is, if the desired class’ objects are used in a lot of places, then **_refactoring the class objects to our Rich-Wrapper class objects becomes a real pain!_**
 > **Solution: Implicit classes and extension methods**
@@ -59,7 +59,7 @@ We will now make slight changes to our wrapper class:
 3. Import contents of the container object.
 4. Use the method on simple objects directly!
 
-{{< script src="https://gist.github.com/lprakashv/7cbb9b7d81ee139ed33cdc3a2b394e7e.js" >}}
+{{< gist lprakashv 7cbb9b7d81ee139ed33cdc3a2b394e7e >}}
 
 This pattern of creating an implicit class to enhance a library’s features has a funny name
 > “Pimp My Library Pattern”
@@ -68,7 +68,7 @@ The example we shown above was a very basic example of Implicit class and its ex
 
 One such example, is creating a generic method time profiler:
 
-{{< script src="https://gist.github.com/lprakashv/85c214c605dca2f7a9359ca4f9e447e9.js" >}}
+{{< gist lprakashv 85c214c605dca2f7a9359ca4f9e447e9 >}}
 
 Then, what are your waiting for? Since, now you’ve learned to “pimp” any library, go make the mundane library objects rich with features you like!
 

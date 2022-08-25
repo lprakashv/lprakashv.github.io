@@ -115,4 +115,4 @@ In conclusion, we shouldn’t have to worry about writing tedious patterns for s
 
 {{< figure src="https://c.tenor.com/FxCJGKCeVBIAAAAC/take-a-break-break.gif" >}}
 
-Thank you! And here is [Part-II](../2019-09-30_cushing-design-patternsunnecessary-patterns.).
+Thank you! And here is [Part-II](../2019-09-30_cushing-design-patternsunnecessary-patterns).

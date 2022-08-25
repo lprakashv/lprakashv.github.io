@@ -55,51 +55,51 @@ We also keep monitoring the time since opening the circuit and when a certain ti
 
 **CircuitState** — a trait extended by possible states
 
-{{< script src="https://gist.github.com/lprakashv/3b9aceb424a00f7b62289db568e8bdfe.js" >}}
+{{< gist lprakashv 3b9aceb424a00f7b62289db568e8bdfe >}}
 
 **CircuitResult[T]** — a trait extended by Success and Failure results of the Circuit with success return type T.
 
-{{< script src="https://gist.github.com/lprakashv/9457e7f0670f05bad084f60802789e0d.js" >}}
+{{< gist lprakashv 9457e7f0670f05bad084f60802789e0d >}}
 
 **Circuit[R]** — a class denoting a circuit where the call returns the result of type Future[R], future denoting an async call.
 
-{{< script src="https://gist.github.com/lprakashv/f91ade5061ab15a70a08ff34065f61e1.js" >}}
+{{< gist lprakashv f91ade5061ab15a70a08ff34065f61e1 >}}
 
 States of the Circuit
 
-{{< script src="https://gist.github.com/lprakashv/875480ef20e6e1191fcce3405e7bba90.js" >}}
+{{< gist lprakashv 875480ef20e6e1191fcce3405e7bba90 >}}
 
 Transition of states
 
-{{< script src="https://gist.github.com/lprakashv/1e06d37addcca8af52968e33e89dfa86.js" >}}
+{{< gist lprakashv 1e06d37addcca8af52968e33e89dfa86 >}}
 
 **Main block execution handler** — It acts as a router and invokes other handlers based on the Circuit’s state. After state transition, the thread request may come back here to be routed again based on the updated state.
 
-{{< script src="https://gist.github.com/lprakashv/5d73aed0e919a43bf6a2e3620e8ddf05.js" >}}
+{{< gist lprakashv 5d73aed0e919a43bf6a2e3620e8ddf05 >}}
 
 **Handling failure response from the Callee** —
 
-{{< script src="https://gist.github.com/lprakashv/3d55a8db8e545be12459e24ca8cf7942.js" >}}
+{{< gist lprakashv 3d55a8db8e545be12459e24ca8cf7942 >}}
 
 **Handling closed circuit**— Executing the provided block of code and yield a success or failure as the result asynchronously, while maintaining/updating the count of consecutive failures.
 
-{{< script src="https://gist.github.com/lprakashv/ff0aecba16bf2b41730e56a9f9f205dd.js" >}}
+{{< gist lprakashv ff0aecba16bf2b41730e56a9f9f205dd >}}
 
 **Handling Half-Open Circuit** —
 
-{{< script src="https://gist.github.com/lprakashv/e83dc09914510936594920693b89a61f.js" >}}
+{{< gist lprakashv e83dc09914510936594920693b89a61f >}}
 
 **Handling open circuit**— return the successful future with CircuitSuccess wrapping the default value.
 
-{{< script src="https://gist.github.com/lprakashv/4bf1d46eb8a5ea9a38290c970d86d185.js" >}}
+{{< gist lprakashv 4bf1d46eb8a5ea9a38290c970d86d185 >}}
 
 **Half-Opener Background Timer** — Will trip the circuit to half-open after timeout reached since opening the circuit.
 
-{{< script src="https://gist.github.com/lprakashv/fc539d500f17fe3e2f82094a358d4a0f.js" >}}
+{{< gist lprakashv fc539d500f17fe3e2f82094a358d4a0f >}}
 
 **CircuitImplicits** — Implicits making the use of our Circuit class a breeze!
 
-{{< script src="https://gist.github.com/lprakashv/1dfe69c3d933da42de263444b7667247.js" >}}
+{{< gist lprakashv 1dfe69c3d933da42de263444b7667247 >}}
 
 We can now do something like:
 

@@ -58,13 +58,13 @@ where each object and/or value can be nullable. Say our objective is to create a
 
 Here are our test objects with our testing code:
 
-{{< script src="https://gist.github.com/lprakashv/57284252c43370da7a47fe2a361d43ef.js" >}}
+{{< gist lprakashv 57284252c43370da7a47fe2a361d43ef >}}
 
 Let’s start with the solutions:
 
 ### **Unsafe Approach:**
 
-{{< script src="https://gist.github.com/lprakashv/38af049e1d4971a31a7cd8a394fd1b74.js" >}}
+{{< gist lprakashv 38af049e1d4971a31a7cd8a394fd1b74 >}}
 
 This can result in a NullPointerException!
 
@@ -80,7 +80,7 @@ Greeting for r5 : Hello Lalit
 
 ### **Naive Safe Approach:**
 
-{{< script src="https://gist.github.com/lprakashv/f68f7f55cb60e42562a0e47a594c856f.js" >}}
+{{< gist lprakashv f68f7f55cb60e42562a0e47a594c856f >}}
 
 Result:
 
@@ -96,7 +96,7 @@ Look at the indentation increasing with the increasing nesting level. Although, 
 
 ### **The Optional Approach**
 
-{{< script src="https://gist.github.com/lprakashv/71d96300fb967d53825895b32351c1f7.js" >}}
+{{< gist lprakashv 71d96300fb967d53825895b32351c1f7 >}}
 
 Now, we will jump into the functional territory to solve this problem. Java 8’s Optional<T< comes to our rescue:
 
@@ -104,7 +104,7 @@ This works like a charm! The only problem is we cannot control and determine whi
 
 To implement that in Optional, we have to do like:
 
-{{< script src="https://gist.github.com/lprakashv/5e446053cd0c236aca7d496fa987642e.js" >}}
+{{< gist lprakashv 5e446053cd0c236aca7d496fa987642e >}}
 
 Result:
 
@@ -131,11 +131,11 @@ Let’s write our own NullableWrapper with mapper taking a default value at each
 
 Now we have all the ingredients for the recipe, let’s start cooking!
 
-{{< script src="https://gist.github.com/lprakashv/9c8b6e5db3c96f992724159524f2a36d.js" >}}
+{{< gist lprakashv 9c8b6e5db3c96f992724159524f2a36d >}}
 
 Now, let’s taste it! I mean test it with the **mapWithDefault** feature (the other map will work exactly like Optional).
 
-{{< script src="https://gist.github.com/lprakashv/d92be758bbffd36928f9330d6ea5f150.js" >}}
+{{< gist lprakashv d92be758bbffd36928f9330d6ea5f150 >}}
 
 This will also work just like we expected, and the code looks more elegant.
 
@@ -153,7 +153,7 @@ Now, let’s see the NullableWrapper<<() from the point of view of a library use
 
 This makes me think that the **supplier evaluation must also be safe** as it would be lazily evaluated inside the wrapper! Let’s try it out:
 
-{{< script src="https://gist.github.com/lprakashv/8132c283fc608077bbbb6835d3d71773.js" >}}
+{{< gist lprakashv 8132c283fc608077bbbb6835d3d71773 >}}
 
 Result:
 
@@ -163,15 +163,15 @@ Uh oh! What happened there?
 
 This means the .get() operation is not that safe as we thought! How to make it safe? Let’s try to fix this by gulping all the NPEs:
 
-{{< script src="https://gist.github.com/lprakashv/9333bc660e955883cbc61167a289aad4.js" >}}
+{{< gist lprakashv 9333bc660e955883cbc61167a289aad4 >}}
 
 Now, we also want to do mapping by ignoring NPEs:
 
-{{< script src="https://gist.github.com/lprakashv/959dda9f696f099105ebc22f9054cb8a.js" >}}
+{{< gist lprakashv 959dda9f696f099105ebc22f9054cb8a >}}
 
 Let’s try that again:
 
-{{< script src="https://gist.github.com/lprakashv/36fcc9f772c38b0b5ef05c6852b031a5.js" >}}
+{{< gist lprakashv 36fcc9f772c38b0b5ef05c6852b031a5 >}}
 
 Result:
 

@@ -96,7 +96,7 @@ Don’t bother about the code files in the tree, we will shortly talk about thos
 
 **Setup Foundational Akka configurations:**
 
-{{< script src="https://gist.github.com/lprakashv/0928b8c9628407ad6d7f5a0d9a76a165.js" >}}
+{{< gist lprakashv 0928b8c9628407ad6d7f5a0d9a76a165 >}}
 
 In every Akka/Akka-Stream application the very basic components needed are the Akka’s **ActorSystem** and **Materializer**. These are needed for a lot of things in this eco-system like, spawning actors, creating stream components, running streams, materializing streams etc.
 
@@ -107,15 +107,15 @@ In the above code, we made sure:
 
 **Our Kafka Event DTO to consume:**
 
-{{< script src="https://gist.github.com/lprakashv/94d2a2eddb36b429ed9a9de4bb36b43c.js" >}}
+{{< gist lprakashv 94d2a2eddb36b429ed9a9de4bb36b43c >}}
 
 **Let’s write our Source (Kafka)**: We would like to commit the offsets later hence using a [committableSource](https://doc.akka.io/api/alpakka-kafka/2.0.2/akka/kafka/scaladsl/Consumer$.html#plainSource[K,V]%28settings:akka.kafka.ConsumerSettings[K,V],subscription:akka.kafka.Subscription%29:akka.stream.scaladsl.Source[org.apache.kafka.clients.consumer.ConsumerRecord[K,V],akka.kafka.scaladsl.Consumer.Control]). We will create a Bean out of our committable source to be autowired in our service classes.
 
-{{< script src="https://gist.github.com/lprakashv/cc7ad527353aad10ea8c0bdc5c4d0a98.js" >}}
+{{< gist lprakashv cc7ad527353aad10ea8c0bdc5c4d0a98 >}}
 
 **Now let’s write our Flow (Slick):** We could have cerated a Sink if we were to not bother about persist result and commit Kafka offset anyway (using a “[plainSource](https://doc.akka.io/api/alpakka-kafka/2.0.2/akka/kafka/scaladsl/Consumer$.html#plainSource[K,V]%28settings:akka.kafka.ConsumerSettings[K,V],subscription:akka.kafka.Subscription%29:akka.stream.scaladsl.Source[org.apache.kafka.clients.consumer.ConsumerRecord[K,V],akka.kafka.scaladsl.Consumer.Control])”). We are using flow instead of sink because we want to propagate the committable-offset even after the database stage. We will add the following code in our same config class.
 
-{{< script src="https://gist.github.com/lprakashv/865822e16f46cb3cd6274a832a3e9f6f.js" >}}
+{{< gist lprakashv 865822e16f46cb3cd6274a832a3e9f6f >}}
 
 You might be wondering what is in the **_stream.conf_** file and where did that **_committableMesssageToDTO_** and **_insertEventQuery_** came from?
 
@@ -140,11 +140,11 @@ While, the **_committableMesssageToDTO_** and **_insertEventQuery_** are functio
 
 We can write a Utils class with static functions to generate the SQL like:
 
-{{< script src="https://gist.github.com/lprakashv/3a60d3145df7fa49c1ea0480a3f6cf4d.js" >}}
+{{< gist lprakashv 3a60d3145df7fa49c1ea0480a3f6cf4d >}}
 
 **Now, let’s piece them together and build a stream:**
 
-{{< script src="https://gist.github.com/lprakashv/91808cad95f56de6099b5d3d7525a795.js" >}}
+{{< gist lprakashv 91808cad95f56de6099b5d3d7525a795 >}}
 
 This is it! We can now invoke the startKafkaToDatabaseStream() method from anywhere and it will do our job.
 
@@ -159,7 +159,7 @@ There were a lot of highlighting features there in a single “terse” chain! L
 
 The DrainingControl can be used as:
 
-{{< script src="https://gist.github.com/lprakashv/91808cad95f56de6099b5d3d7525a795.js" >}}
+{{< gist lprakashv 91808cad95f56de6099b5d3d7525a795 >}}
 
 There are a lot of other features of akka stream which were not in scope of this post but still worth to explore. Please checkout [**akka-stream**](https://doc.akka.io/docs/akka/current/stream/index.html) and [**alpakka’s**](https://doc.akka.io/docs/alpakka/current/index.html) documentations.
 

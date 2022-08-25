@@ -8,9 +8,9 @@ description: ""
 
 subtitle: "This is the part-II in the continuation of the “Crushing Design Patterns” series (Part-I) where we debunk the idea of having to use the…"
 
-image: "/posts/2019-09-30_cushing-design-patternsunnecessary-patterns./images/1.jpeg"
+image: "/posts/2019-09-30_cushing-design-patternsunnecessary-patterns/images/1.jpeg"
 images:
- - "/posts/2019-09-30_cushing-design-patternsunnecessary-patterns./images/1.jpeg"
+ - "/posts/2019-09-30_cushing-design-patternsunnecessary-patterns/images/1.jpeg"
 
 
 aliases:
@@ -32,7 +32,7 @@ tags:
 
 ---
 
-![image](/posts/2019-09-30_cushing-design-patternsunnecessary-patterns./images/1.jpeg#layoutTextWidth)
+![image](/posts/2019-09-30_cushing-design-patternsunnecessary-patterns/images/1.jpeg#layoutTextWidth)
 
 This is the part-II in the continuation of the “Crushing Design Patterns” series ([Part-I](../2019-09-26_crushing-design-patterns-with-scalachain-of-responsibility)) where we debunk the idea of having to use the design patterns to design the system.
 
@@ -63,17 +63,17 @@ Turns out it will be 64 for our 6 optional veggies. Oh God, Java will make me di
 
 Here comes the Builder pattern for our rescue,
 
-{{< script src="https://gist.github.com/lprakashv/c739b9ebcbbcc06979711bed37ed0236.js" >}}
+{{< gist lprakashv c739b9ebcbbcc06979711bed37ed0236 >}}
 
 But hey, this is 2019 and remember, we don’t need to do it like this! Behold, Java has a saviour now, [**_lombok_**](https://projectlombok.org/features/all)**_!_** Let’s rewrite our lombok-y Sandwich class:
 
-{{< script src="https://gist.github.com/lprakashv/47feb00c232296a0105c86ee3f911a55.js" >}}
+{{< gist lprakashv 47feb00c232296a0105c86ee3f911a55 >}}
 
 {{< video src="https://c.tenor.com/8zE-Vg8zqV8AAAPo/jake-adventure-time.mp4" autoPlay=true loop=true id="jake-adventure-time.mp4" >}}
 
 That is it! Heck, we didn’t even need write the getters and setters ourselves, lombok does it all for you ! How do we use it, if you ask. Simple:
 
-{{< script src="https://gist.github.com/lprakashv/28770ff78553c0dc2578afc72c509641.js" >}}
+{{< gist lprakashv 28770ff78553c0dc2578afc72c509641 >}}
 
 > **Pro Tip:** If you are a Java dev, you should definitely check out the [**Project Lombok**](https://projectlombok.org/features/all), it offer dozens of cool modern features with simple annotations. **All the lombok annotated code simply de-sugars at the compile time into the ugly Java we don’t wanna write!**
 
@@ -101,21 +101,21 @@ Meaning: Every command implementation does what it is meant for!
 
 {{< video src="https://c.tenor.com/gM3gv9qsN9MAAAPo/your-wish-is-my-command-geenie.mp4" autoPlay=true loop=true id="your-wish-is-my-command-geenie.mp4" >}}
 
-{{< script src="https://gist.github.com/lprakashv/c09c9975cc0828539c6e547ab10200e2.js" >}}
+{{< gist lprakashv c09c9975cc0828539c6e547ab10200e2 >}}
 
 Usage:
 
-{{< script src="https://gist.github.com/lprakashv/c21f5e07a76638eae91bd7bde520b9dc.js" >}}
+{{< gist lprakashv c21f5e07a76638eae91bd7bde520b9dc >}}
 
 You got the point right! Now, I want to you to pay attention and see that “_we only care about the encapsulated execute() method”_. So, in a nutshell, the **_Command pattern is just a function/method!_**
 
 This becomes very intuitive with Java-8 lambdas, we don’t need to create LoginCommand and LogoutCommand wrapper implementations of the Command interface:
 
-{{< script src="https://gist.github.com/lprakashv/a79701e737154861496d6b172a993af7.js" >}}
+{{< gist lprakashv a79701e737154861496d6b172a993af7 >}}
 
 BTW, this is very easy in functional languages, let’s take Scala for example:
 
-{{< script src="https://gist.github.com/lprakashv/d6f1bec5c5928acdcb9ba63e88e1fa47.js" >}}
+{{< gist lprakashv d6f1bec5c5928acdcb9ba63e88e1fa47 >}}
 
 ### 4. Strategy Pattern
 
@@ -145,23 +145,23 @@ tax = user.income / 2
 
 Here, **_the algorithm is the taxing strategy_** to compute the taxes from users. More strategies mean, more algorithms (functions). Let’s start with good old Java way:
 
-{{< script src="https://gist.github.com/lprakashv/2156908af1a9a6f5f0321d287728b51a.js" >}}
+{{< gist lprakashv 2156908af1a9a6f5f0321d287728b51a >}}
 
 For every new strategy, we need to create another implementation class! Usage:
 
-{{< script src="https://gist.github.com/lprakashv/6b49ae0861f6bfaec9295bb7e3bca424.js" >}}
+{{< gist lprakashv 6b49ae0861f6bfaec9295bb7e3bca424 >}}
 
 Smart ones among you might already have guessed that **_we don’t need the wrapper implementation classes, we just need functions as strategies and pass them around arguments_**!
 
 Let’s do it in functional way (no need to create multiple implementations of Strategy interface):
 
-{{< script src="https://gist.github.com/lprakashv/594d5e7397e7dd2ec4fcaf80218195c6.js" >}}
+{{< gist lprakashv 594d5e7397e7dd2ec4fcaf80218195c6 >}}
 
 {{< video src="https://c.tenor.com/HDaAEuOODc4AAAPo/cool-coolbeans.mp4" autoPlay=true loop=true id="cool-coolbeans.mp4" >}}
 
 In functional languages (Scala):
 
-{{< script src="https://gist.github.com/lprakashv/ba85d532183912bf0fcf6f193c197b09.js" >}}
+{{< gist lprakashv ba85d532183912bf0fcf6f193c197b09 >}}
 
 ## Conclusion
 
