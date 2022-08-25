@@ -324,8 +324,7 @@
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex; background-color:#e5e5e5">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">cname&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>&amp;lt;your-custom-domain&amp;gt;&lt;span style="color:#bbb">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;!-- raw HTML omitted -->
-&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;/div>&lt;h2 id="conclusion">Conclusion&lt;/h2>
 &lt;p>In this article, we built and deployed our blog site from scratch and for free!&lt;/p>
 &lt;p>We touched upon various topics:&lt;/p>
 &lt;ul>
@@ -387,7 +386,6 @@
 &lt;li>&lt;code>.thenSupply(Supplier&amp;lt;R&amp;gt; supplier)&lt;/code> — to evaluate the return value lazily using a supplier.&lt;/li>
 &lt;li>&lt;code>.thenTransform(Function&amp;lt;T,R&amp;gt; fn)&lt;/code> — to evaluate the return value by performing transformation operation on the matched-object.&lt;/li>
 &lt;/ol>
-&lt;!-- raw HTML omitted -->
 &lt;h2 id="fin">Fin&lt;/h2>
 &lt;p>Please use the library and provide your valuable feedback, you can even raise a PR and I will look into it. This was my very first maven-central deployment so any suggestion will be welcomed :)&lt;/p>
 &lt;p>Thanks for reading!&lt;/p></description></item><item><title>Bulk RDBMS Upserts with Spring</title><link>https://www.lprakashv.com/posts/2020-08-28_bulk-rdbms-upserts-with-spring/</link><pubDate>Fri, 28 Aug 2020 21:08:07 +0000</pubDate><guid>https://www.lprakashv.com/posts/2020-08-28_bulk-rdbms-upserts-with-spring/</guid><description>&lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/1.jpeg#layoutTextWidth" alt="image">&lt;/p>
@@ -472,7 +470,6 @@
 &lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/18.png#layoutTextWidth" alt="image">&lt;/p>
 &lt;p>Wow!! Those batches of 1000 records took less than a second, let’s look at the milli seconds now:&lt;/p>
 &lt;p>&lt;img src="../../posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/19.png#layoutTextWidth" alt="image">&lt;/p>
-&lt;!-- raw HTML omitted -->
 &lt;h2 id="conclusion">Conclusion&lt;/h2>
 &lt;p>We can safely infer from our above experiments that:&lt;/p>
 &lt;ol>
@@ -551,7 +548,6 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;li>Is there any blocking operation that I am doing within my system?&lt;/li>
 &lt;li>Do I have written appropriate adapter/wrappers over all the non-reactive components?&lt;/li>
 &lt;/ol>
-&lt;!-- raw HTML omitted -->
 &lt;h2 id="conclusion">Conclusion&lt;/h2>
 &lt;p>So, better stick to the traditional frameworks unless there is a need otherwise. Some such scenarios could be:&lt;/p>
 &lt;ul>
@@ -653,7 +649,6 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;p>The DrainingControl can be used as:&lt;/p>
 &lt;script type="application/javascript" src='https://gist.github.com/lprakashv/91808cad95f56de6099b5d3d7525a795.js'>&lt;/script>
 &lt;p>There are a lot of other features of akka stream which were not in scope of this post but still worth to explore. Please checkout &lt;a href="https://doc.akka.io/docs/akka/current/stream/index.html">&lt;strong>akka-stream&lt;/strong>&lt;/a> and &lt;a href="https://doc.akka.io/docs/alpakka/current/index.html">&lt;strong>alpakka’s&lt;/strong>&lt;/a> documentations.&lt;/p>
-&lt;!-- raw HTML omitted -->
 &lt;h2 id="conclusion">Conclusion&lt;/h2>
 &lt;p>We saw that we could easily integrate Akka streams into our Spring Boot projects and leverage Spring’s dependency injection to manage our Akka/Stream beans easily.&lt;/p>
 &lt;p>There are a lot of streaming features like back-pressure and throttling to name a few which would easily take up a lot of developer hours and brains. And yet, we would have missed some corner cases if not tested thoroughly. Those things we got out-of-the-box in akka-stream’s toolkit.&lt;/p>
@@ -743,8 +738,7 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;p>Result:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Hey There!
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Hi Lalit
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;!-- raw HTML omitted -->
-&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="conclusion">Conclusion&lt;/h2>
 &lt;p>We saw how we can utilise the power of Optionals and functional programming concepts to get the safety of the null checks as well as the control over the outcome with a default value.&lt;/p>
 &lt;p>Our own NullableWrapper gives following advantages over builtin Optional:&lt;/p>
 &lt;ul>
@@ -808,8 +802,7 @@ courtesy: &lt;a href="https://martinfowler.com/bliki/CircuitBreaker.html">https:
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//this will use the above created circuit to execute
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>&lt;span style="color:#b06;font-weight:bold">Future&lt;/span>&lt;span style="color:#333">.&lt;/span>successful&lt;span style="color:#333">(&lt;/span>&lt;span style="color:#00d;font-weight:bold">2&lt;/span> &lt;span style="color:#333">+&lt;/span> &lt;span style="color:#00d;font-weight:bold">2&lt;/span>&lt;span style="color:#333">).&lt;/span>executeAsync
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;!-- raw HTML omitted -->
-&lt;p>&lt;strong>Testing it out&lt;/strong> — You can find the test cases &lt;a href="https://github.com/lprakashv/scala-utils/blob/master/src/test/scala/com/lprakashv/resiliency/CircuitTest.scala">here&lt;/a>.&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>Testing it out&lt;/strong> — You can find the test cases &lt;a href="https://github.com/lprakashv/scala-utils/blob/master/src/test/scala/com/lprakashv/resiliency/CircuitTest.scala">here&lt;/a>.&lt;/p>
 &lt;p>&lt;img src="../../posts/2020-03-28_circuit-breaker-pattern-in-scala/images/3.png#layoutTextWidth" alt="image">&lt;/p></description></item><item><title>How to keep your sanity working with Scala Implicit!</title><link>https://www.lprakashv.com/posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/</link><pubDate>Thu, 17 Oct 2019 08:14:10 +0000</pubDate><guid>https://www.lprakashv.com/posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/</guid><description>&lt;p>&lt;img src="../../posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/images/1.jpeg#layoutTextWidth" alt="image">
 Courtesy: &lt;a href="https://www.pexels.com/photo/calm-daylight-evening-grass-267967/">https://www.pexels.com/&lt;/a>&lt;/p>
 &lt;h2 id="intro">Intro&lt;/h2>
@@ -865,7 +858,6 @@ Courtesy: &lt;a href="https://me.me">https://me.me&lt;/a>&lt;/p>
 &lt;p>Simple logic: Avoid surprises 😅 and let compilation fail on mismatches!&lt;/p>
 &lt;h3 id="check-the-imports">Check the imports&lt;/h3>
 &lt;p>Any underscore imports may contain implicit conversions, parameters and/or somewhat safe implicit classes.&lt;/p>
-&lt;!-- raw HTML omitted -->
 &lt;h2 id="conclusion">Conclusion&lt;/h2>
 &lt;p>So, these were my highly opinionated rules to avoid surprises and headaches while working with Scala Implicit! They are really powerful tools for writing really awesome code, please use them, don’t abuse them :)&lt;/p></description></item><item><title>Making ordinary classes Rich! (Scala)</title><link>https://www.lprakashv.com/posts/2019-10-07_making-ordinary-classes-rich-scala/</link><pubDate>Mon, 07 Oct 2019 17:24:21 +0000</pubDate><guid>https://www.lprakashv.com/posts/2019-10-07_making-ordinary-classes-rich-scala/</guid><description>&lt;p>&lt;img src="../../posts/2019-10-07_making-ordinary-classes-rich-scala/images/1.jpeg#layoutTextWidth" alt="image">&lt;/p>
 &lt;p>Let me break it to you, this post has nothing to do with charity! Now, let’s start with a question:&lt;/p>
@@ -898,7 +890,6 @@ Courtesy: &lt;a href="https://me.me">https://me.me&lt;/a>&lt;/p>
 &lt;blockquote>
 &lt;p>“Pimp My Library Pattern”&lt;/p>
 &lt;/blockquote>
-&lt;!-- raw HTML omitted -->
 &lt;p>The example we shown above was a very basic example of Implicit class and its extension methods. The application of Implicit classes reach far beyond this!&lt;/p>
 &lt;p>One such example, is creating a generic method time profiler:&lt;/p>
 &lt;script type="application/javascript" src='https://gist.github.com/lprakashv/85c214c605dca2f7a9359ca4f9e447e9.js'>&lt;/script>
@@ -1125,7 +1116,6 @@ player.pl
 &lt;/script>
 &lt;p>In functional languages (Scala):&lt;/p>
 &lt;script type="application/javascript" src='https://gist.github.com/lprakashv/ba85d532183912bf0fcf6f193c197b09.js'>&lt;/script>
-&lt;!-- raw HTML omitted -->
 &lt;h2 id="conclusion">Conclusion&lt;/h2>
 &lt;p>We have discussed 4 pattern in this post: Builder, Iterator, Command and Strategy. Each one can be used without writing any pattern, simply by just intuitively using language features (even in Java). Each pattern has been right in front of us hiding in the language!&lt;/p>
 &lt;p>In summary:&lt;/p>
@@ -1188,7 +1178,6 @@ player.pl
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now, using all our magic here,&lt;/p>
 &lt;script type="application/javascript" src="https://gist.github.com/a8a82dd6ef7d5f1813e3e813a087f0e8/1c179fd7582da567da4aff9831026a95eaec2a98.js">&lt;/script>
 &lt;p>Pretty neat huh! Remember, there is no magic just some hard work behind the scenes. In our case, it’s the Scala compiler.&lt;/p>
-&lt;!-- raw HTML omitted -->
 &lt;h2 id="conclusion">Conclusion&lt;/h2>
 &lt;p>In conclusion, we shouldn’t have to worry about writing tedious patterns for standard well known problems if the language itself provides them out of the box! We could just take a break from the computer screen and say “Hello world!” literally, in the time we save :)&lt;/p>
 &lt;figure>&lt;img src="https://c.tenor.com/FxCJGKCeVBIAAAAC/take-a-break-break.gif"/>
