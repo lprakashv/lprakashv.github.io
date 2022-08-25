@@ -1,45 +1,43 @@
 {{ define "main" }}
 <main>
-  <article>
-    <div class="title">
-      <h1 class="title">{{ .Title }}</h1>
-      {{- if (and (eq .Section "posts") (eq .Kind "page")) -}}
-      <div class="meta">Posted on {{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span
-          class="draft-label">DRAFT</span> {{ end }}</div>
+	<article>
+		<div class="title">
+			<h1 class="title">{{ .Title }}</h1>
+			{{- if (and (eq .Section "posts") (eq .Kind "page")) -}}
+      <div class="meta">Posted on {{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
       {{- end -}}
-    </div>
-    {{ if isset .Params "tldr" }}
-    <div class="tldr">
-      <strong>tl;dr:</strong>
-      {{ .Params.tldr }}
-    </div>{{ end }}
+		</div>
+		{{ if isset .Params "tldr" }}
+		<div class="tldr">
+			<strong>tl;dr:</strong>
+			{{ .Params.tldr }}
+		</div>{{ end }}
 
-    <section class="body">
+		<section class="body">
       <!-- {{ partial "google/adsense-horizontal.html" . }} -->
-      {{ $content := replace .Content "
-      <!--adsense-inarticle-->" (partial "google/adsense-inarticle" .) }}
-      {{ $content | safeHTML }}
+      {{ $content := replace .Content "<!--adsense-inarticle-->" (partial "google/adsense-inarticle" .) }}
+			{{ $content | safeHTML }}
       <!-- {{ partial "google/adsense-horizontal.html" . }} -->
-    </section>
+		</section>
 
-    <div class="post-tags">
-      {{ if ne .Type "page" }}
-      {{ if gt .Params.tags 0 }}
-      <nav class="nav tags">
-        <ul class="tags">
-          {{ range .Params.tags }}
-          <li><a href="{{ " /tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
-          {{ end }}
-        </ul>
-      </nav>
-      {{ end }}
-      {{ end }}
-    </div>
+		<div class="post-tags">
+			{{ if ne .Type "page" }}
+			{{ if gt .Params.tags 0 }}
+			<nav class="nav tags">
+				<ul class="tags">
+					{{ range .Params.tags }}
+					<li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+					{{ end }}
+				</ul>
+			</nav>
+			{{ end }}
+			{{ end }}
+		</div>
     {{- if (and (eq .Section "posts") (eq .Kind "page")) -}}
     {{- (partial "diff-blog" . ) | safeHTML -}}
     {{- (partial "disqus-universal" .) | safeHTML -}}
     {{- end -}}
     <!-- {{if (ne .Title "About Me")}}{{ (partial "disqus-universal" .) | safeHTML }}{{end}} -->
-  </article>
+	</article>
 </main>
 {{ end }}

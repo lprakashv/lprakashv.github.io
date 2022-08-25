@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 <html>
-{{ partial "header.html" . }}
-
-<body>
+	{{ partial "header.html" . }}
+	<body>
     <div class="content-side">
-        <!-- {{ partial "google/adsense-vertical.html" . }} -->
+      <!-- {{ partial "google/adsense-vertical.html" . }} -->
     </div>
-    <div class="content">
-        {{ partial "head.html" . }}
+		<div class="content">
+			{{ partial "head.html" . }}
 
-        <main class="list">
-            <div class="site-description">
-                {{- if isset .Site.Params "subtitle" -}}
-                <p>{{ .Site.Params.Subtitle | markdownify }}</p>
-                {{- end -}}
-            </div>
-            {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
-            {{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) }}
-            {{ range $paginator.Pages }}
-            <section class="list-item">
-                {{ partial "post-list-item" . }}
-            </section>
-            {{ end }}
-            {{ template "partials/paginator.html" . }}
-        </main>
-        {{ partial "footer.html" . }}
-    </div>
+			<main class="list">
+				<div class="site-description">
+					{{- if isset .Site.Params "subtitle" -}}
+					<p>{{ .Site.Params.Subtitle | markdownify }}</p>
+					{{- end -}}
+				</div>
+				{{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+				{{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) }}
+				{{ range $paginator.Pages }}
+				<section class="list-item">
+          {{ partial "post-list-item" . }}
+				</section>
+				{{ end }}
+				{{ template "partials/paginator.html" . }}
+			</main>
+			{{ partial "footer.html" . }}
+		</div>
     <div class="content-side">
-        {{ partial "google/adsense-vertical.html" . }}
+      {{ partial "google/adsense-vertical.html" . }}
     </div>
     {{ partial "disqus-body-script" . }}
-</body>
-
+	</body>
 </html>
