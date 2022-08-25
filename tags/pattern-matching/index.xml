@@ -510,12 +510,12 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;/blockquote>
 &lt;p>&lt;strong>&lt;em>Asynchronous:&lt;/em>&lt;/strong> Tasks happen asynchronously/separately and may notify after they’re done. Most popular programming pattern seen with this model is callbacks.&lt;/p>
 &lt;p>CompletableFuture is a very good example for asynchronous programming in Java:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/a0a9f913f58b3a64f392b46c88bbe344.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/a0a9f913f58b3a64f392b46c88bbe344.js">&lt;/script>
 &lt;p>The above code is asynchronous as well as it won’t block! Most often than not, &lt;strong>&lt;em>non-blocking and asynchronous are the same thing&lt;/em>&lt;/strong>. If a piece of code is asynchronous, it has to be non-blocking and vice-versa.&lt;/p>
 &lt;p>There is one major problem with the callbacks, and that is the &lt;a href="http://callbackhell.com/">&lt;strong>&lt;em>Callback Hell&lt;/em>&lt;/strong>&lt;/a> when we have more than 2 nested callbacks, the code starts to look obscure and becomes unmaintainable very quickly.&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/73cdeb5053ae790f45ac29e7c242b5ed.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/73cdeb5053ae790f45ac29e7c242b5ed.js">&lt;/script>
 &lt;p>&lt;strong>&lt;em>Functional/Declarative:&lt;/em>&lt;/strong> To overcome the callback hell and be able to compose (or chain) the operations on the events subscribed, we should use the functional/declarative style. Suppose there is a high level construct of Publisher and Subscriber such that we could use:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/e74478507095de99f6b2c26c4e2c20bf.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/e74478507095de99f6b2c26c4e2c20bf.js">&lt;/script>
 &lt;p>The above code looks more elegant even though it performs a lot of things in steps with a merge chaining of functions. It was just an example taken from Spring Webflux’s Publisher/Subscriber API. There are other reactive libraries and frameworks where this type of functional composition and chaining is possible.&lt;/p>
 &lt;p>Java 9 also has introduced &lt;a href="https://www.reactive-streams.org/">Reactive Streams&lt;/a> and it would be exciting to see how this evolves over time.&lt;/p>
 &lt;h3 id="ok-what-to-i-get-from-being-reactive">OK, what to I get from being Reactive?&lt;/h3>
@@ -604,7 +604,7 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;p>&lt;strong>Add all the required dependencies:&lt;/strong>&lt;/p>
 &lt;p>&lt;img src="../../posts/2020-04-12_akka-streams-in-java-spring-boot/images/3.png#layoutTextWidth" alt="image">&lt;/p>
 &lt;p>&lt;strong>Setup Foundational Akka configurations:&lt;/strong>&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/0928b8c9628407ad6d7f5a0d9a76a165.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/0928b8c9628407ad6d7f5a0d9a76a165.js">&lt;/script>
 &lt;p>In every Akka/Akka-Stream application the very basic components needed are the Akka’s &lt;strong>ActorSystem&lt;/strong> and &lt;strong>Materializer&lt;/strong>. These are needed for a lot of things in this eco-system like, spawning actors, creating stream components, running streams, materializing streams etc.&lt;/p>
 &lt;p>In the above code, we made sure:&lt;/p>
 &lt;ol>
@@ -612,11 +612,11 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;li>Will be instantiated only if &lt;strong>&lt;em>akka.stream.javadsl.Source&lt;/em>&lt;/strong> is in scope.&lt;/li>
 &lt;/ol>
 &lt;p>&lt;strong>Our Kafka Event DTO to consume:&lt;/strong>&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/94d2a2eddb36b429ed9a9de4bb36b43c.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/94d2a2eddb36b429ed9a9de4bb36b43c.js">&lt;/script>
 &lt;p>&lt;strong>Let’s write our Source (Kafka)&lt;/strong>: We would like to commit the offsets later hence using a &lt;a href="https://doc.akka.io/api/alpakka-kafka/2.0.2/akka/kafka/scaladsl/Consumer$.html#plainSource%5BK,V%5D%28settings:akka.kafka.ConsumerSettings%5BK,V%5D,subscription:akka.kafka.Subscription%29:akka.stream.scaladsl.Source%5Borg.apache.kafka.clients.consumer.ConsumerRecord%5BK,V%5D,akka.kafka.scaladsl.Consumer.Control%5D">committableSource&lt;/a>. We will create a Bean out of our committable source to be autowired in our service classes.&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/cc7ad527353aad10ea8c0bdc5c4d0a98.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/cc7ad527353aad10ea8c0bdc5c4d0a98.js">&lt;/script>
 &lt;p>&lt;strong>Now let’s write our Flow (Slick):&lt;/strong> We could have cerated a Sink if we were to not bother about persist result and commit Kafka offset anyway (using a “&lt;a href="https://doc.akka.io/api/alpakka-kafka/2.0.2/akka/kafka/scaladsl/Consumer$.html#plainSource%5BK,V%5D%28settings:akka.kafka.ConsumerSettings%5BK,V%5D,subscription:akka.kafka.Subscription%29:akka.stream.scaladsl.Source%5Borg.apache.kafka.clients.consumer.ConsumerRecord%5BK,V%5D,akka.kafka.scaladsl.Consumer.Control%5D">plainSource&lt;/a>”). We are using flow instead of sink because we want to propagate the committable-offset even after the database stage. We will add the following code in our same config class.&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/865822e16f46cb3cd6274a832a3e9f6f.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/865822e16f46cb3cd6274a832a3e9f6f.js">&lt;/script>
 &lt;p>You might be wondering what is in the &lt;strong>&lt;em>stream.conf&lt;/em>&lt;/strong> file and where did that &lt;strong>&lt;em>committableMesssageToDTO&lt;/em>&lt;/strong> and &lt;strong>&lt;em>insertEventQuery&lt;/em>&lt;/strong> came from?&lt;/p>
 &lt;p>Slick needs a configuration to create a session which will execute all our DB queries. This config needs to follow the below structure in a &lt;strong>&lt;em>.conf&lt;/em>&lt;/strong> file (which is the standard way to access configs in the typesafe/lightbend world).&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>event-sqlserver {
@@ -633,9 +633,9 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>While, the &lt;strong>&lt;em>committableMesssageToDTO&lt;/em>&lt;/strong> and &lt;strong>&lt;em>insertEventQuery&lt;/em>&lt;/strong> are functions which will convert our CommittableMessage to DTO (our record class) and then to SQL insert query.&lt;/p>
 &lt;p>We can write a Utils class with static functions to generate the SQL like:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/3a60d3145df7fa49c1ea0480a3f6cf4d.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/3a60d3145df7fa49c1ea0480a3f6cf4d.js">&lt;/script>
 &lt;p>&lt;strong>Now, let’s piece them together and build a stream:&lt;/strong>&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/91808cad95f56de6099b5d3d7525a795.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/91808cad95f56de6099b5d3d7525a795.js">&lt;/script>
 &lt;p>This is it! We can now invoke the startKafkaToDatabaseStream() method from anywhere and it will do our job.&lt;/p>
 &lt;p>There were a lot of highlighting features there in a single “terse” chain! Let me explain each:&lt;/p>
 &lt;ol>
@@ -647,7 +647,7 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;li>&lt;strong>&lt;em>CommitterSettings.create(actorSystem)&lt;/em>&lt;/strong>: Creates a default committer settings.&lt;/li>
 &lt;/ol>
 &lt;p>The DrainingControl can be used as:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/91808cad95f56de6099b5d3d7525a795.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/91808cad95f56de6099b5d3d7525a795.js">&lt;/script>
 &lt;p>There are a lot of other features of akka stream which were not in scope of this post but still worth to explore. Please checkout &lt;a href="https://doc.akka.io/docs/akka/current/stream/index.html">&lt;strong>akka-stream&lt;/strong>&lt;/a> and &lt;a href="https://doc.akka.io/docs/alpakka/current/index.html">&lt;strong>alpakka’s&lt;/strong>&lt;/a> documentations.&lt;/p>
 &lt;h2 id="conclusion">Conclusion&lt;/h2>
 &lt;p>We saw that we could easily integrate Akka streams into our Spring Boot projects and leverage Spring’s dependency injection to manage our Akka/Stream beans easily.&lt;/p>
@@ -670,10 +670,10 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>where each object and/or value can be nullable. Say our objective is to create a greeting for the name nested three level deep behind root object.&lt;/p>
 &lt;p>Here are our test objects with our testing code:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/57284252c43370da7a47fe2a361d43ef.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/57284252c43370da7a47fe2a361d43ef.js">&lt;/script>
 &lt;p>Let’s start with the solutions:&lt;/p>
 &lt;h3 id="unsafe-approach">&lt;strong>Unsafe Approach:&lt;/strong>&lt;/h3>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/38af049e1d4971a31a7cd8a394fd1b74.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/38af049e1d4971a31a7cd8a394fd1b74.js">&lt;/script>
 &lt;p>This can result in a NullPointerException!&lt;/p>
 &lt;p>Result:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Failed to greet for r1 !
@@ -682,7 +682,7 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r4 : Hello null
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r5 : Hello Lalit
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="naive-safe-approach">&lt;strong>Naive Safe Approach:&lt;/strong>&lt;/h3>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/f68f7f55cb60e42562a0e47a594c856f.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/f68f7f55cb60e42562a0e47a594c856f.js">&lt;/script>
 &lt;p>Result:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Greeting for r1 : Hey There!
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r2 : Hey There!
@@ -691,11 +691,11 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r5 : Hello Lalit
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Look at the indentation increasing with the increasing nesting level. Although, we could combine the null checks, but if we wanted to do other operation on each nested object then we would have to adopt the above approach.&lt;/p>
 &lt;h3 id="the-optional-approach">&lt;strong>The Optional Approach&lt;/strong>&lt;/h3>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/71d96300fb967d53825895b32351c1f7.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/71d96300fb967d53825895b32351c1f7.js">&lt;/script>
 &lt;p>Now, we will jump into the functional territory to solve this problem. Java 8’s Optional&amp;lt;T&amp;lt; comes to our rescue:&lt;/p>
 &lt;p>This works like a charm! The only problem is we cannot control and determine which stage failed or is null, and cannot have failover for each stage.&lt;/p>
 &lt;p>To implement that in Optional, we have to do like:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/5e446053cd0c236aca7d496fa987642e.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/5e446053cd0c236aca7d496fa987642e.js">&lt;/script>
 &lt;p>Result:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Greeting for r1 : Hello first level is null
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r2 : Hello second level null
@@ -713,9 +713,9 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;li>Can &lt;strong>get&lt;/strong> the value by providing a &lt;strong>new default value&lt;/strong> of type T which is otherwise set to null.&lt;/li>
 &lt;/ol>
 &lt;p>Now we have all the ingredients for the recipe, let’s start cooking!&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/9c8b6e5db3c96f992724159524f2a36d.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/9c8b6e5db3c96f992724159524f2a36d.js">&lt;/script>
 &lt;p>Now, let’s taste it! I mean test it with the &lt;strong>mapWithDefault&lt;/strong> feature (the other map will work exactly like Optional).&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/d92be758bbffd36928f9330d6ea5f150.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/d92be758bbffd36928f9330d6ea5f150.js">&lt;/script>
 &lt;p>This will also work just like we expected, and the code looks more elegant.&lt;/p>
 &lt;p>One more benefit of this is that &lt;strong>we don’t have to use the getOrElse every time as NullableWrapper’s .get() will return a default value or null&lt;/strong> (in case default not provided) instead of blowing up:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">// will blow up!
@@ -725,16 +725,16 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>&lt;span style="color:#080;font-weight:bold">new&lt;/span> NullableWrapper&lt;span style="color:#333">(()&lt;/span> &lt;span style="color:#333">-&amp;lt;&lt;/span> &lt;span style="color:#080;font-weight:bold">null&lt;/span>&lt;span style="color:#333">).&lt;/span>&lt;span style="color:#00c">map&lt;/span>&lt;span style="color:#333">(&lt;/span>x &lt;span style="color:#333">-&amp;gt;&lt;/span> &lt;span style="background-color:#fff0f0">&amp;#34;Hello &amp;#34;&lt;/span> &lt;span style="color:#333">+&lt;/span> x&lt;span style="color:#333">).&lt;/span>&lt;span style="color:#00c">get&lt;/span>&lt;span style="color:#333">();&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now, let’s see the NullableWrapper&amp;laquo;() from the point of view of a library user. It asks for a supplier or a value of type T and a default value.&lt;/p>
 &lt;p>This makes me think that the &lt;strong>supplier evaluation must also be safe&lt;/strong> as it would be lazily evaluated inside the wrapper! Let’s try it out:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/8132c283fc608077bbbb6835d3d71773.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/8132c283fc608077bbbb6835d3d71773.js">&lt;/script>
 &lt;p>Result:&lt;/p>
 &lt;p>&lt;img src="../../posts/2020-03-29_handling-nulls-in-nested-objects-java/images/2.png#layoutTextWidth" alt="image">&lt;/p>
 &lt;p>Uh oh! What happened there?&lt;/p>
 &lt;p>This means the .get() operation is not that safe as we thought! How to make it safe? Let’s try to fix this by gulping all the NPEs:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/9333bc660e955883cbc61167a289aad4.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/9333bc660e955883cbc61167a289aad4.js">&lt;/script>
 &lt;p>Now, we also want to do mapping by ignoring NPEs:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/959dda9f696f099105ebc22f9054cb8a.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/959dda9f696f099105ebc22f9054cb8a.js">&lt;/script>
 &lt;p>Let’s try that again:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/36fcc9f772c38b0b5ef05c6852b031a5.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/36fcc9f772c38b0b5ef05c6852b031a5.js">&lt;/script>
 &lt;p>Result:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Hey There!
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Hi Lalit
@@ -767,29 +767,29 @@ courtesy: &lt;a href="https://martinfowler.com/bliki/CircuitBreaker.html">https:
 &lt;/blockquote>
 &lt;h3 id="implementation">Implementation&lt;/h3>
 &lt;p>&lt;strong>CircuitState&lt;/strong> — a trait extended by possible states&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/3b9aceb424a00f7b62289db568e8bdfe.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/3b9aceb424a00f7b62289db568e8bdfe.js">&lt;/script>
 &lt;p>&lt;strong>CircuitResult[T]&lt;/strong> — a trait extended by Success and Failure results of the Circuit with success return type T.&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/9457e7f0670f05bad084f60802789e0d.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/9457e7f0670f05bad084f60802789e0d.js">&lt;/script>
 &lt;p>&lt;strong>Circuit[R]&lt;/strong> — a class denoting a circuit where the call returns the result of type Future[R], future denoting an async call.&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/f91ade5061ab15a70a08ff34065f61e1.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/f91ade5061ab15a70a08ff34065f61e1.js">&lt;/script>
 &lt;p>States of the Circuit&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/875480ef20e6e1191fcce3405e7bba90.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/875480ef20e6e1191fcce3405e7bba90.js">&lt;/script>
 &lt;p>Transition of states&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/1e06d37addcca8af52968e33e89dfa86.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/1e06d37addcca8af52968e33e89dfa86.js">&lt;/script>
 &lt;p>&lt;strong>Main block execution handler&lt;/strong> — It acts as a router and invokes other handlers based on the Circuit’s state. After state transition, the thread request may come back here to be routed again based on the updated state.&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/5d73aed0e919a43bf6a2e3620e8ddf05.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/5d73aed0e919a43bf6a2e3620e8ddf05.js">&lt;/script>
 &lt;p>&lt;strong>Handling failure response from the Callee&lt;/strong> —&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/3d55a8db8e545be12459e24ca8cf7942.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/3d55a8db8e545be12459e24ca8cf7942.js">&lt;/script>
 &lt;p>&lt;strong>Handling closed circuit&lt;/strong>— Executing the provided block of code and yield a success or failure as the result asynchronously, while maintaining/updating the count of consecutive failures.&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/ff0aecba16bf2b41730e56a9f9f205dd.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/ff0aecba16bf2b41730e56a9f9f205dd.js">&lt;/script>
 &lt;p>&lt;strong>Handling Half-Open Circuit&lt;/strong> —&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/e83dc09914510936594920693b89a61f.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/e83dc09914510936594920693b89a61f.js">&lt;/script>
 &lt;p>&lt;strong>Handling open circuit&lt;/strong>— return the successful future with CircuitSuccess wrapping the default value.&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/4bf1d46eb8a5ea9a38290c970d86d185.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/4bf1d46eb8a5ea9a38290c970d86d185.js">&lt;/script>
 &lt;p>&lt;strong>Half-Opener Background Timer&lt;/strong> — Will trip the circuit to half-open after timeout reached since opening the circuit.&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/fc539d500f17fe3e2f82094a358d4a0f.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/fc539d500f17fe3e2f82094a358d4a0f.js">&lt;/script>
 &lt;p>&lt;strong>CircuitImplicits&lt;/strong> — Implicits making the use of our Circuit class a breeze!&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/1dfe69c3d933da42de263444b7667247.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/1dfe69c3d933da42de263444b7667247.js">&lt;/script>
 &lt;p>We can now do something like:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-scala" data-lang="scala">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">implicit&lt;/span> &lt;span style="color:#080;font-weight:bold">val&lt;/span> sampleCircuit&lt;span style="color:#080;font-weight:bold">:&lt;/span> &lt;span style="color:#339;font-weight:bold">Circuit&lt;/span>&lt;span style="color:#333">[&lt;/span>&lt;span style="color:#339;font-weight:bold">Int&lt;/span>&lt;span style="color:#333">]&lt;/span> &lt;span style="color:#080;font-weight:bold">=&lt;/span> &lt;span style="color:#080;font-weight:bold">new&lt;/span> &lt;span style="color:#b06;font-weight:bold">Circuit&lt;/span>&lt;span style="color:#333">[&lt;/span>&lt;span style="color:#339;font-weight:bold">Int&lt;/span>&lt;span style="color:#333">](&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="background-color:#fff0f0">&amp;#34;sample-circuit&amp;#34;&lt;/span>&lt;span style="color:#333">,&lt;/span>
@@ -867,13 +867,13 @@ Courtesy: &lt;a href="https://me.me">https://me.me&lt;/a>&lt;/p>
 &lt;p>By making it abundant, rich in features and resourceful!&lt;/p>
 &lt;p>In simple OOP terms, we add additional feature methods to the class!!&lt;/p>
 &lt;p>Let’s try to enrich a Person class, starting with the basic class:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/802d185e9a3bdbebbf95da9ff8b44242.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/802d185e9a3bdbebbf95da9ff8b44242.js">&lt;/script>
 &lt;p>Now, to make a person speak French, we have to &lt;strong>add another method&lt;/strong> to our Person class:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/7a20470c58ef5187c67e6696c5ae49e0.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/7a20470c58ef5187c67e6696c5ae49e0.js">&lt;/script>
 &lt;p>This is perfectly fine! Just add the additional feature to the existing class and make it rich.&lt;/p>
 &lt;p>But… &lt;strong>&lt;em>there are cases when we cannot add features/methods to classes, like, library classes&lt;/em>&lt;/strong> (java.util.Date, String, etc).&lt;/p>
 &lt;p>To add features to such classes we have to make &lt;strong>&lt;em>“wrapper classes”&lt;/em>&lt;/strong>. Suppose we want to add the “spell the digits” feature in the standard libraries Int class, we would have to make a wrapper class over Int.&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/23463905122a10c1cdb32306c92ae101.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/23463905122a10c1cdb32306c92ae101.js">&lt;/script>
 &lt;p>Problem with this wrapper class approach is, if the desired class’ objects are used in a lot of places, then &lt;strong>&lt;em>refactoring the class objects to our Rich-Wrapper class objects becomes a real pain!&lt;/em>&lt;/strong>&lt;/p>
 &lt;blockquote>
 &lt;p>&lt;strong>Solution: Implicit classes and extension methods&lt;/strong>&lt;/p>
@@ -885,14 +885,14 @@ Courtesy: &lt;a href="https://me.me">https://me.me&lt;/a>&lt;/p>
 &lt;li>Import contents of the container object.&lt;/li>
 &lt;li>Use the method on simple objects directly!&lt;/li>
 &lt;/ol>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/7cbb9b7d81ee139ed33cdc3a2b394e7e.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/7cbb9b7d81ee139ed33cdc3a2b394e7e.js">&lt;/script>
 &lt;p>This pattern of creating an implicit class to enhance a library’s features has a funny name&lt;/p>
 &lt;blockquote>
 &lt;p>“Pimp My Library Pattern”&lt;/p>
 &lt;/blockquote>
 &lt;p>The example we shown above was a very basic example of Implicit class and its extension methods. The application of Implicit classes reach far beyond this!&lt;/p>
 &lt;p>One such example, is creating a generic method time profiler:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/85c214c605dca2f7a9359ca4f9e447e9.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/85c214c605dca2f7a9359ca4f9e447e9.js">&lt;/script>
 &lt;p>Then, what are your waiting for? Since, now you’ve learned to “pimp” any library, go make the mundane library objects rich with features you like!&lt;/p>
 &lt;div class="container" style="display:flex;flex-direction:row;align-items:center;">
 &lt;div id='themoreyouknow-more.mp4' style="margin:auto;">&lt;/div>
@@ -915,7 +915,7 @@ loop: true ,
 player.attachTo(playerElement);
 player.pl
 &lt;/script>
-&lt;p>&lt;em>fin.&lt;/em>&lt;/p></description></item><item><title>Cushing Design Patterns! — Unnecessary Patterns.</title><link>https://www.lprakashv.com/posts/2019-09-30_cushing-design-patternsunnecessary-patterns./</link><pubDate>Mon, 30 Sep 2019 05:16:43 +0000</pubDate><guid>https://www.lprakashv.com/posts/2019-09-30_cushing-design-patternsunnecessary-patterns./</guid><description>&lt;p>&lt;img src="../../posts/2019-09-30_cushing-design-patternsunnecessary-patterns./images/1.jpeg#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>&lt;em>fin.&lt;/em>&lt;/p></description></item><item><title>Cushing Design Patterns! — Unnecessary Patterns.</title><link>https://www.lprakashv.com/posts/2019-09-30_cushing-design-patternsunnecessary-patterns/</link><pubDate>Mon, 30 Sep 2019 05:16:43 +0000</pubDate><guid>https://www.lprakashv.com/posts/2019-09-30_cushing-design-patternsunnecessary-patterns/</guid><description>&lt;p>&lt;img src="../../posts/2019-09-30_cushing-design-patternsunnecessary-patterns/images/1.jpeg#layoutTextWidth" alt="image">&lt;/p>
 &lt;p>This is the part-II in the continuation of the “Crushing Design Patterns” series (&lt;a href="../2019-09-26_crushing-design-patterns-with-scalachain-of-responsibility">Part-I&lt;/a>) where we debunk the idea of having to use the design patterns to design the system.&lt;/p>
 &lt;h2 id="intro">Intro&lt;/h2>
 &lt;p>They are either just so natural that we have been using them unconsciously or there are better ways in which we don’t have to focus on ceremoniously writing them.Here we go.&lt;/p>
@@ -975,9 +975,9 @@ player.attachTo(playerElement);
 player.pl
 &lt;/script>
 &lt;p>Here comes the Builder pattern for our rescue,&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/c739b9ebcbbcc06979711bed37ed0236.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/c739b9ebcbbcc06979711bed37ed0236.js">&lt;/script>
 &lt;p>But hey, this is 2019 and remember, we don’t need to do it like this! Behold, Java has a saviour now, &lt;a href="https://projectlombok.org/features/all">&lt;strong>&lt;em>lombok&lt;/em>&lt;/strong>&lt;/a>&lt;strong>&lt;em>!&lt;/em>&lt;/strong> Let’s rewrite our lombok-y Sandwich class:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/47feb00c232296a0105c86ee3f911a55.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/47feb00c232296a0105c86ee3f911a55.js">&lt;/script>
 &lt;div class="container" style="display:flex;flex-direction:row;align-items:center;">
 &lt;div id='jake-adventure-time.mp4' style="margin:auto;">&lt;/div>
 &lt;/div>
@@ -1000,7 +1000,7 @@ player.attachTo(playerElement);
 player.pl
 &lt;/script>
 &lt;p>That is it! Heck, we didn’t even need write the getters and setters ourselves, lombok does it all for you ! How do we use it, if you ask. Simple:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/28770ff78553c0dc2578afc72c509641.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/28770ff78553c0dc2578afc72c509641.js">&lt;/script>
 &lt;blockquote>
 &lt;p>&lt;strong>Pro Tip:&lt;/strong> If you are a Java dev, you should definitely check out the &lt;a href="https://projectlombok.org/features/all">&lt;strong>Project Lombok&lt;/strong>&lt;/a>, it offer dozens of cool modern features with simple annotations. &lt;strong>All the lombok annotated code simply de-sugars at the compile time into the ugly Java we don’t wanna write!&lt;/strong>&lt;/p>
 &lt;/blockquote>
@@ -1043,14 +1043,14 @@ loop: true ,
 player.attachTo(playerElement);
 player.pl
 &lt;/script>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/c09c9975cc0828539c6e547ab10200e2.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/c09c9975cc0828539c6e547ab10200e2.js">&lt;/script>
 &lt;p>Usage:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/c21f5e07a76638eae91bd7bde520b9dc.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/c21f5e07a76638eae91bd7bde520b9dc.js">&lt;/script>
 &lt;p>You got the point right! Now, I want to you to pay attention and see that “&lt;em>we only care about the encapsulated execute() method”&lt;/em>. So, in a nutshell, the &lt;strong>&lt;em>Command pattern is just a function/method!&lt;/em>&lt;/strong>&lt;/p>
 &lt;p>This becomes very intuitive with Java-8 lambdas, we don’t need to create LoginCommand and LogoutCommand wrapper implementations of the Command interface:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/a79701e737154861496d6b172a993af7.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/a79701e737154861496d6b172a993af7.js">&lt;/script>
 &lt;p>BTW, this is very easy in functional languages, let’s take Scala for example:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/d6f1bec5c5928acdcb9ba63e88e1fa47.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/d6f1bec5c5928acdcb9ba63e88e1fa47.js">&lt;/script>
 &lt;h3 id="4-strategy-pattern">4. Strategy Pattern&lt;/h3>
 &lt;blockquote>
 &lt;p>S&lt;strong>trategy pattern&lt;/strong> (also known as the &lt;strong>policy pattern&lt;/strong>) enables selecting an algorithm at runtime. Instead of implementing a single algorithm directly, code receives run-time instructions as to which in a family of algorithms to use.&amp;gt; — Wikipedia&lt;/p>
@@ -1087,12 +1087,12 @@ player.pl
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># half-taxing-strategy:&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tax &lt;span style="color:#333">=&lt;/span> user&lt;span style="color:#333">.&lt;/span>income &lt;span style="color:#333">/&lt;/span> &lt;span style="color:#00d;font-weight:bold">2&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Here, &lt;strong>&lt;em>the algorithm is the taxing strategy&lt;/em>&lt;/strong> to compute the taxes from users. More strategies mean, more algorithms (functions). Let’s start with good old Java way:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/2156908af1a9a6f5f0321d287728b51a.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/2156908af1a9a6f5f0321d287728b51a.js">&lt;/script>
 &lt;p>For every new strategy, we need to create another implementation class! Usage:&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/6b49ae0861f6bfaec9295bb7e3bca424.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/6b49ae0861f6bfaec9295bb7e3bca424.js">&lt;/script>
 &lt;p>Smart ones among you might already have guessed that &lt;strong>&lt;em>we don’t need the wrapper implementation classes, we just need functions as strategies and pass them around arguments&lt;/em>&lt;/strong>!&lt;/p>
 &lt;p>Let’s do it in functional way (no need to create multiple implementations of Strategy interface):&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/594d5e7397e7dd2ec4fcaf80218195c6.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/594d5e7397e7dd2ec4fcaf80218195c6.js">&lt;/script>
 &lt;div class="container" style="display:flex;flex-direction:row;align-items:center;">
 &lt;div id='cool-coolbeans.mp4' style="margin:auto;">&lt;/div>
 &lt;/div>
@@ -1115,7 +1115,7 @@ player.attachTo(playerElement);
 player.pl
 &lt;/script>
 &lt;p>In functional languages (Scala):&lt;/p>
-&lt;script type="application/javascript" src='https://gist.github.com/lprakashv/ba85d532183912bf0fcf6f193c197b09.js'>&lt;/script>
+&lt;script type="application/javascript" src="https://gist.github.com/lprakashv/ba85d532183912bf0fcf6f193c197b09.js">&lt;/script>
 &lt;h2 id="conclusion">Conclusion&lt;/h2>
 &lt;p>We have discussed 4 pattern in this post: Builder, Iterator, Command and Strategy. Each one can be used without writing any pattern, simply by just intuitively using language features (even in Java). Each pattern has been right in front of us hiding in the language!&lt;/p>
 &lt;p>In summary:&lt;/p>
@@ -1182,4 +1182,4 @@ player.pl
 &lt;p>In conclusion, we shouldn’t have to worry about writing tedious patterns for standard well known problems if the language itself provides them out of the box! We could just take a break from the computer screen and say “Hello world!” literally, in the time we save :)&lt;/p>
 &lt;figure>&lt;img src="https://c.tenor.com/FxCJGKCeVBIAAAAC/take-a-break-break.gif"/>
 &lt;/figure>
-&lt;p>Thank you! And here is &lt;a href="../2019-09-30_cushing-design-patternsunnecessary-patterns.">Part-II&lt;/a>.&lt;/p></description></item></channel></rss>
+&lt;p>Thank you! And here is &lt;a href="../2019-09-30_cushing-design-patternsunnecessary-patterns">Part-II&lt;/a>.&lt;/p></description></item></channel></rss>
