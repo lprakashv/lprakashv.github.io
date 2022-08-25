@@ -117,8 +117,6 @@ _)
 Future.successful(2 + 2).executeAsync
 ```
 
-<!--adsense-inarticle-->
-
 **Testing it out** — You can find the test cases [here](https://github.com/lprakashv/scala-utils/blob/master/src/test/scala/com/lprakashv/resiliency/CircuitTest.scala).
 
 ![image](/posts/2020-03-28_circuit-breaker-pattern-in-scala/images/3.png#layoutTextWidth)

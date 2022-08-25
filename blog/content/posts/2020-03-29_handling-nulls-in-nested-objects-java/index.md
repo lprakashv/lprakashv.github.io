@@ -180,8 +180,6 @@ Hey There!
 Hi Lalit
 ```
 
-<!--adsense-inarticle-->
-
 ## Conclusion
 
 We saw how we can utilise the power of Optionals and functional programming concepts to get the safety of the null checks as well as the control over the outcome with a default value.

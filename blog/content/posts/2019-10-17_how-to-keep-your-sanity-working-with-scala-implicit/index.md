@@ -119,8 +119,6 @@ Simple logic: Avoid surprises 😅 and let compilation fail on mismatches!
 
 Any underscore imports may contain implicit conversions, parameters and/or somewhat safe implicit classes.
 
-<!--adsense-inarticle-->
-
 ## Conclusion
 
 So, these were my highly opinionated rules to avoid surprises and headaches while working with Scala Implicit! They are really powerful tools for writing really awesome code, please use them, don’t abuse them :)

@@ -117,8 +117,6 @@ Each of the matchCase, matchValue and matchRef produces an object of class “Ca
 2. `.thenSupply(Supplier<R> supplier)` — to evaluate the return value lazily using a supplier.
 3. `.thenTransform(Function<T,R> fn)` — to evaluate the return value by performing transformation operation on the matched-object.
 
-<!--adsense-inarticle-->
-
 ## Fin
 
 Please use the library and provide your valuable feedback, you can even raise a PR and I will look into it. This was my very first maven-central deployment so any suggestion will be welcomed :)

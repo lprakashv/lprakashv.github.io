@@ -64,8 +64,6 @@ We will now make slight changes to our wrapper class:
 This pattern of creating an implicit class to enhance a library’s features has a funny name
 > “Pimp My Library Pattern”
 
-<!--adsense-inarticle-->
-
 The example we shown above was a very basic example of Implicit class and its extension methods. The application of Implicit classes reach far beyond this!
 
 One such example, is creating a generic method time profiler:

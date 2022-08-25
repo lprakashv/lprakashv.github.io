@@ -297,8 +297,6 @@ Now, to update automatic CNAME addition on gh-pages deployment, edit your __Depl
           cname: <your-custom-domain>
 ```
 
-<!--adsense-inarticle-->
-
 ## Conclusion
 
 In this article, we built and deployed our blog site from scratch and for free!

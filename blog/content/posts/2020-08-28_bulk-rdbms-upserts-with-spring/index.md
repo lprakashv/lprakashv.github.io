@@ -197,8 +197,6 @@ Wow!! Those batches of 1000 records took less than a second, let’s look at the
 
 ![image](/posts/2020-08-28_bulk-rdbms-upserts-with-spring/images/19.png#layoutTextWidth)
 
-<!--adsense-inarticle-->
-
 ## Conclusion
 
 We can safely infer from our above experiments that:

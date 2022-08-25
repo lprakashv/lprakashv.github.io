@@ -163,8 +163,6 @@ The DrainingControl can be used as:
 
 There are a lot of other features of akka stream which were not in scope of this post but still worth to explore. Please checkout [**akka-stream**](https://doc.akka.io/docs/akka/current/stream/index.html) and [**alpakka’s**](https://doc.akka.io/docs/alpakka/current/index.html) documentations.
 
-<!--adsense-inarticle-->
-
 ## Conclusion
 
 We saw that we could easily integrate Akka streams into our Spring Boot projects and leverage Spring’s dependency injection to manage our Akka/Stream beans easily.

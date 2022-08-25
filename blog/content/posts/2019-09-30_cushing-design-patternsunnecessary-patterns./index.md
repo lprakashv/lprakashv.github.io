@@ -163,8 +163,6 @@ In functional languages (Scala):
 
 {{< script src="https://gist.github.com/lprakashv/ba85d532183912bf0fcf6f193c197b09.js" >}}
 
-<!--adsense-inarticle-->
-
 ## Conclusion
 
 We have discussed 4 pattern in this post: Builder, Iterator, Command and Strategy. Each one can be used without writing any pattern, simply by just intuitively using language features (even in Java). Each pattern has been right in front of us hiding in the language!

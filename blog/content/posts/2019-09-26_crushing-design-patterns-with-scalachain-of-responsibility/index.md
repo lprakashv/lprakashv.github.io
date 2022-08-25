@@ -109,8 +109,6 @@ Now, using all our magic here,
 
 Pretty neat huh! Remember, there is no magic just some hard work behind the scenes. In our case, it’s the Scala compiler.
 
-<!--adsense-inarticle-->
-
 ## Conclusion
 
 In conclusion, we shouldn’t have to worry about writing tedious patterns for standard well known problems if the language itself provides them out of the box! We could just take a break from the computer screen and say “Hello world!” literally, in the time we save :)

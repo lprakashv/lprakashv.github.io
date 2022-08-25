@@ -131,8 +131,6 @@ This adds even more complexity and does influence many critical design decisions
 3. Is there any blocking operation that I am doing within my system?
 4. Do I have written appropriate adapter/wrappers over all the non-reactive components?
 
-<!--adsense-inarticle-->
-
 ## Conclusion
 
 So, better stick to the traditional frameworks unless there is a need otherwise. Some such scenarios could be:
