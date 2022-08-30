@@ -1,6 +1,6 @@
 baseURL = 'https://www.lprakashv.com/'
 languageCode = 'en-us'
-title = 'LPRAKASHV CODE BYTES'
+title = "LALIT's TECH BLOG"
 copyright = "© Lalit Prakash Vatsal"
 relativeurls = true
 
