@@ -1,0 +1,4 @@
+{{ $user := .Get 0 }}
+{{ $json := getJSON "https://api.github.com/users/" $user }}
+{{ $content := $json.avatar_url }}
+<img src={{ $content }}>
