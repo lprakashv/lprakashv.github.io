@@ -915,7 +915,7 @@ loop: true ,
 player.attachTo(playerElement);
 player.pl
 &lt;/script>
-&lt;p>&lt;em>fin.&lt;/em>&lt;/p></description></item><item><title>Cushing Design Patterns! — Unnecessary Patterns.</title><link>https://www.lprakashv.com/posts/2019-09-30_cushing-design-patternsunnecessary-patterns/</link><pubDate>Mon, 30 Sep 2019 05:16:43 +0000</pubDate><guid>https://www.lprakashv.com/posts/2019-09-30_cushing-design-patternsunnecessary-patterns/</guid><description>&lt;p>&lt;img src="./posts/2019-09-30_cushing-design-patternsunnecessary-patterns/images/1.jpeg#layoutTextWidth" alt="image">&lt;/p>
+&lt;p>&lt;em>fin.&lt;/em>&lt;/p></description></item><item><title>Cushing Design Patterns! — Unnecessary Patterns.</title><link>https://www.lprakashv.com/posts/2019-09-30_cushing-design-patterns-unnecessary-patterns/</link><pubDate>Mon, 30 Sep 2019 05:16:43 +0000</pubDate><guid>https://www.lprakashv.com/posts/2019-09-30_cushing-design-patterns-unnecessary-patterns/</guid><description>&lt;p>&lt;img src="./posts/2019-09-30_cushing-design-patternsunnecessary-patterns/images/1.jpeg#layoutTextWidth" alt="image">&lt;/p>
 &lt;p>This is the part-II in the continuation of the “Crushing Design Patterns” series (&lt;a href="../2019-09-26_crushing-design-patterns-with-scalachain-of-responsibility">Part-I&lt;/a>) where we debunk the idea of having to use the design patterns to design the system.&lt;/p>
 &lt;h2 id="intro">Intro&lt;/h2>
 &lt;p>They are either just so natural that we have been using them unconsciously or there are better ways in which we don’t have to focus on ceremoniously writing them.Here we go.&lt;/p>
@@ -1053,7 +1053,7 @@ player.pl
 &lt;script src="https://gist.github.com/lprakashv/d6f1bec5c5928acdcb9ba63e88e1fa47.js">&lt;/script>
 &lt;h3 id="4-strategy-pattern">4. Strategy Pattern&lt;/h3>
 &lt;blockquote>
-&lt;p>S&lt;strong>trategy pattern&lt;/strong> (also known as the &lt;strong>policy pattern&lt;/strong>) enables selecting an algorithm at runtime. Instead of implementing a single algorithm directly, code receives run-time instructions as to which in a family of algorithms to use.&amp;gt; — Wikipedia&lt;/p>
+&lt;p>&lt;strong>Strategy pattern&lt;/strong> (also known as the &lt;strong>policy pattern&lt;/strong>) enables selecting an algorithm at runtime. Instead of implementing a single algorithm directly, code receives run-time instructions as to which in a family of algorithms to use.&amp;gt; — Wikipedia&lt;/p>
 &lt;/blockquote>
 &lt;p>Meaning: &lt;strong>&lt;em>Injecting the algorithm/strategy for some computation at runtime.&lt;/em>&lt;/strong>&lt;/p>
 &lt;p>For example, suppose we are running a country named LaLaLand and are running out of cash. What would be the best way to fill up our stash?&lt;/p>
@@ -1124,7 +1124,7 @@ player.pl
 &lt;li>&lt;em>Iterator — Readily available interfaces/abstractions in many languages.&lt;/em>&lt;/li>
 &lt;li>&lt;em>Command — Just pure functions.&lt;/em>&lt;/li>
 &lt;li>&lt;em>Strategy — passing functions as strategy at runtime.&lt;/em>&lt;/li>
-&lt;/ol></description></item><item><title>Crushing Design Patterns with Scala! — Chain of responsibility</title><link>https://www.lprakashv.com/posts/2019-09-26_crushing-design-patterns-with-scalachain-of-responsibility/</link><pubDate>Thu, 26 Sep 2019 06:06:23 +0000</pubDate><guid>https://www.lprakashv.com/posts/2019-09-26_crushing-design-patterns-with-scalachain-of-responsibility/</guid><description>&lt;p>&lt;img src="./posts/2019-09-26_crushing-design-patterns-with-scalachain-of-responsibility/images/1.jpeg#layoutTextWidth" alt="image">&lt;/p>
+&lt;/ol></description></item><item><title>Crushing Design Patterns with Scala! — Chain of responsibility</title><link>https://www.lprakashv.com/posts/2019-09-26_crushing-design-patterns-with-scala-chain-of-responsibility/</link><pubDate>Thu, 26 Sep 2019 06:06:23 +0000</pubDate><guid>https://www.lprakashv.com/posts/2019-09-26_crushing-design-patterns-with-scala-chain-of-responsibility/</guid><description>&lt;p>&lt;img src="./posts/2019-09-26_crushing-design-patterns-with-scalachain-of-responsibility/images/1.jpeg#layoutTextWidth" alt="image">&lt;/p>
 &lt;p>&lt;strong>&lt;em>Starting this chain of responsibility of debunking the idea of really needing to use the&lt;/em>&lt;/strong>&lt;a href="https://en.wikipedia.org/wiki/Design_Patterns">&lt;strong>&lt;em>Design Patterns&lt;/em>&lt;/strong>&lt;/a>&lt;strong>&lt;em>!&lt;/em>&lt;/strong>. I believe that design patterns were created to standardise the OO patterns needed to solve the common problems arising due to not having a standard way of solving them using the programming language itself.&lt;/p>
 &lt;blockquote>
 &lt;p>Design patterns should be used only as communication tool and not the way we have been using as a design tool. — Mr. &lt;a href="https://twitter.com/venkat_s">Venkat Subramaniam&lt;/a>&lt;/p>
