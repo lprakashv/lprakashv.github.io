@@ -79,3 +79,6 @@ verticalSlot = "6861065745"
 
 [params.analytics]
 gtagId = "G-DNE09NG226"
+
+[markup.goldmark.renderer]
+unsafe = true # Allow HTML in md files
