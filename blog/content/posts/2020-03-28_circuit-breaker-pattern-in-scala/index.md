@@ -103,15 +103,15 @@ Transition of states
 
 We can now do something like:
 
-```scala
+```scala {style=github-dark}
 implicit val sampleCircuit: Circuit[Int] = new Circuit[Int](
     "sample-circuit",
     5,                // max allowed consecutive closed failures
     5.seconds,        // half-opener timeout
     1,                // max allowed consecutive half-open failures
     -1,               // invalid success result
-    _println
-_)
+    println
+)
 
 //this will use the above created circuit to execute
 Future.successful(2 + 2).executeAsync

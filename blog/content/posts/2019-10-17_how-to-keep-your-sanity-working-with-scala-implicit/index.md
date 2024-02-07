@@ -91,7 +91,7 @@ Even Scala compiler will warn you if you use implicit conversion without a speci
 
 So, the tip is, **_avoid implicit conversions at all costs_**. When you absolutely need a conversion in your code in a convenient manner, please use [implicit classes with extension method](https://medium.com/@lprakashv/making-ordinary-classes-rich-scala-ab7f991d690) like:
 
-```scala
+```scala {style=github-dark}
 trait A
 trait B
 

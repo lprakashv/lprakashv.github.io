@@ -82,7 +82,7 @@ OpenTelemetry Collector (otel-collector) is a vendor-neutral component which all
 
 OpenTelemetry Collector can be customized using its configuration, an example configuration would look like:
 
-```yml
+```yml {style=github-dark}
 receivers:
   otlp:
     protocols:

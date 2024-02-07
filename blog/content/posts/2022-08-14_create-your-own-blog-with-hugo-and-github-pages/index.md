@@ -61,7 +61,7 @@ To overcome this problem, we can use any of the static site generators available
 
 Install using Homebrew:
 
-```bash
+```bash {style=github-dark}
 brew install hugo
 ```
 
@@ -69,7 +69,7 @@ for other methods if installing, please refer [this](https://gohugo.io/getting-s
 
 Creating a new site (your blog), it's better to create it as a sub-folder inside your github.io repository:
 
-```bash
+```bash {style=github-dark}
 # clone you github.io repository
 git clone https://github.com/<your-user-name>/<your-user-name>.github.io.git
 
@@ -82,7 +82,7 @@ hugo new site blog
 
 You can then test you website in development mode using:
 
-```bash
+```bash {style=github-dark}
 cd blog
 
 hugo server -D
@@ -96,14 +96,14 @@ We will use [archie theme](https://themes.gohugo.io/themes/archie/) for our blog
 
 ![Archie Theme](/posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/images/2.png#layoutTextWidth)
 
-```bash
+```bash {style=github-dark}
 cd blog
 git submodule add https://github.com/athul/archie.git themes/ananke
 ```
 
 Open `blog/config.toml` file in an editor and add the line:
 
-```yml
+```yml {style=github-dark}
 theme = "archie"
 ```
 
@@ -111,7 +111,7 @@ theme = "archie"
 
 You can create a post by running the command `hugo new posts/<any-subdirectory-to-be-created>/<name-of-the-post-with-hyphenated-words>.md` in __blog__ folder:
 
-```bash
+```bash {style=github-dark}
 # make sure you are under hugo site folder
 cd blog
 
@@ -120,7 +120,7 @@ hugo new posts/my-first-post.md
 
 This will create a markdown file with name __my-first-post.md__ under folder __blog/content/posts__ with contents:
 
-```md
+```md {style=github-dark}
 ---
 title: "My First Post"
 date: 2022-08-14T16:06:48+05:30
@@ -135,7 +135,7 @@ You can now edit this file and add content in [markdown format](https://www.mark
 
 #### Create posts inside sub-folder
 
-```bash
+```bash {style=github-dark}
 # make sure you are under hugo site folder
 cd blog
 
@@ -150,7 +150,7 @@ This way we can have other static content like images/videos/gifs in out post fo
 
 Running Hugo server to see changes locally
 
-```bash
+```bash {style=github-dark}
 $ hugo server -D
 
                    | EN
@@ -176,7 +176,7 @@ Press Ctrl+C to stop
 
 Building static content to deploy on any hosting side (github pages in our case)
 
-```bash
+```bash {style=github-dark}
 hugo -D
 ```
 
@@ -202,7 +202,7 @@ Here, you can define your workflow in YAML format.
 
 This is the minimal setup to be required for Hugo deployment for deployment of your blog:
 
-```yml {linenos=true,linenostart=1}
+```yml {linenos=true,linenostart=1,style=github-dark}
 name: blog site github pages publish
 
 # Controls when the workflow will run
@@ -288,7 +288,7 @@ Click on __Settings__ tab, then click __pages__ on side bar, then enter the Cust
 
 Now, to update automatic CNAME addition on gh-pages deployment, edit your __Deploy__ (last) step workflow and add cname attirbute:
 
-```yml {linenos=true,hl_lines=[6],linenostart=35}
+```yml {linenos=true,hl_lines=[6],linenostart=35,style=github-dark}
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:

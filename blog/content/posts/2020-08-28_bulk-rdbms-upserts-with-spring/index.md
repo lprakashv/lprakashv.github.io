@@ -161,14 +161,14 @@ There are some improvements that can be done here:
 
 For first, we can make use of hibernate properties:
 
-```properties
+```properties {style=github-dark}
 spring.jpa.properties.hibernate.jdbc.batch_size=1000
 spring.jpa.properties.hibernate.order_inserts=true
 ```
 
 For second, there are bulk (multi-row) insert query options available in most of the mainstream database solutions (Postgres, MySQL, Oracle). With syntax like:
 
-```sql
+```sql {style=github-dark}
 insert into myschema.my_table (col1, col2, col3)
 values
 (val11, val12, val13),

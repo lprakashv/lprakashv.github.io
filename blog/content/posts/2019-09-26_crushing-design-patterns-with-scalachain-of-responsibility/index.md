@@ -41,7 +41,7 @@ Further more, you would only want to _beep_ the profanity coming from a certain 
 
 Consider your chat stream looks something like this:
 
-```txt
+```log {style=github-dark}
 #format: [user] comment
 
 [Suresh01] Hello!
@@ -81,7 +81,7 @@ Since, **functions are the first class citizens in Scala**, we could argue that 
 
 Voila, we have our answer here, **“functional composition”** using **_andThen_**.
 
-```scala
+```scala {style=github-dark}
 /* For single argument function, andThen method signature looks like */
 trait Function1[-T1, +R] {
   def apply(v1: T1): R
@@ -89,11 +89,11 @@ trait Function1[-T1, +R] {
 }
 ```
 
-_In plain english, it takes function with input type the same as the return type of the current function it is applied on (R) and returning a new type (A) value. andThen passes the result of the current function to the function passed in and then returns output of the passed function._
+> _In plain english, it takes function with input type the same as the return type of the current function it is applied on (`R`) and returning a new type (`A`) value. `andThen` passes the result of the current function to the function passed in and then returns output of the passed function._
 
 Some syntactic sugar in Scala:
 
-```scala
+```scala {style=github-dark}
 a.method(b.innerMethod(c)
 /* is equivalent to */
 a method (b innerMethod c)

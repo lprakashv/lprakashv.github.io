@@ -34,7 +34,7 @@ Handling NullPointerException and keeping track of all the nullable values has a
 
 This is even worse when you are working with deeply nested objects and handling all the null values grows exponentially with each nullable nested value. This is visible by all the statements like:
 
-```java
+```java {style=github-dark}
 if (x.y().z().. != null) {…}
 ```
 
@@ -42,7 +42,7 @@ In this article, we will explore some of the techniques starting with the naive 
 
 Suppose we have a simple but nested object structure like:
 
-```config
+```config {style=github-dark}
 root {
   first-level {
     second-level {
@@ -70,7 +70,7 @@ This can result in a NullPointerException!
 
 Result:
 
-```log
+```log {style=github-dark}
 Failed to greet for r1 !
 Failed to greet for r2 !
 Failed to greet for r3 !
@@ -84,7 +84,7 @@ Greeting for r5 : Hello Lalit
 
 Result:
 
-```log
+```log {style=github-dark}
 Greeting for r1 : Hey There!
 Greeting for r2 : Hey There!
 Greeting for r3 : Hey There!
@@ -108,7 +108,7 @@ To implement that in Optional, we have to do like:
 
 Result:
 
-```log
+```log {style=github-dark}
 Greeting for r1 : Hello first level is null
 Greeting for r2 : Hello second level null
 Greeting for r3 : Hello third level is null
@@ -141,7 +141,7 @@ This will also work just like we expected, and the code looks more elegant.
 
 One more benefit of this is that **we don’t have to use the getOrElse every time as NullableWrapper’s .get() will return a default value or null** (in case default not provided) instead of blowing up:
 
-```java
+```java {style=github-dark}
 // will blow up!
 Optional.ofNullable(null).map(x -> "Hello " + x).get();
 
@@ -175,7 +175,7 @@ Let’s try that again:
 
 Result:
 
-```log
+```log {style=github-dark}
 Hey There!
 Hi Lalit
 ```

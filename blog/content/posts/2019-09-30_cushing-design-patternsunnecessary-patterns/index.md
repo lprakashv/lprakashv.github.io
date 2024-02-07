@@ -129,14 +129,14 @@ For example, suppose we are running a country named LaLaLand and are running out
 
 We start making a taxing strategy, let’s tax a quarter of the income of everybody.
 
-```python
+```python {style=github-dark}
 # quarter-taxing-strategy:
 tax = user.income / 4
 ```
 
 But , when we think about the good people running a kitten orphanage NGO, we feel bad for them. Also, we want to tax more the black money holders now. **We need more strategies**!
 
-```python
+```python {style=github-dark}
 # non-profit-taxing-strategy:
 tax = 0
 # half-taxing-strategy:

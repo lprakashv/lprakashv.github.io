@@ -59,7 +59,7 @@ We need a simple realtime stream which consumes all the updates published on a K
 
 We will make the project organised like the tree below which is a pretty standard maven directory structure (since we have chosen to use maven here). You could go with gradle also if you like.
 
-```txt
+```bash {style=github-dark}
 .
 ├── pom.xml
 └── src
@@ -121,7 +121,7 @@ You might be wondering what is in the **_stream.conf_** file and where did that 
 
 Slick needs a configuration to create a session which will execute all our DB queries. This config needs to follow the below structure in a **_.conf_** file (which is the standard way to access configs in the typesafe/lightbend world).
 
-```config
+```config {style=github-dark}
 event-sqlserver {
   profile = "slick.jdbc.SQLServerProfile$"
   db {
