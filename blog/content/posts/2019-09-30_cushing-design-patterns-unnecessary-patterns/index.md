@@ -8,9 +8,9 @@ description: ""
 
 subtitle: "This is the part-II in the continuation of the “Crushing Design Patterns” series (Part-I) where we debunk the idea of having to use the…"
 
-image: "/posts/2019-09-30_cushing-design-patternsunnecessary-patterns/images/1.jpeg"
+image: "/posts/2019-09-30_cushing-design-patterns-unnecessary-patterns/images/1.jpeg"
 images:
- - "/posts/2019-09-30_cushing-design-patternsunnecessary-patterns/images/1.jpeg"
+ - "/posts/2019-09-30_cushing-design-patterns-unnecessary-patterns/images/1.jpeg"
 
 
 aliases:
@@ -119,7 +119,7 @@ BTW, this is very easy in functional languages, let’s take Scala for example:
 
 ### 4. Strategy Pattern
 
-> S**trategy pattern** (also known as the **policy pattern**) enables selecting an algorithm at runtime. Instead of implementing a single algorithm directly, code receives run-time instructions as to which in a family of algorithms to use.> — Wikipedia
+> **Strategy pattern** (also known as the **policy pattern**) enables selecting an algorithm at runtime. Instead of implementing a single algorithm directly, code receives run-time instructions as to which in a family of algorithms to use.> — Wikipedia
 
 Meaning: **_Injecting the algorithm/strategy for some computation at runtime._**
 

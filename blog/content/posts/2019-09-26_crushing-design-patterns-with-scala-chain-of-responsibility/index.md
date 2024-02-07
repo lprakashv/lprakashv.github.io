@@ -8,10 +8,10 @@ description: ""
 
 subtitle: "In this (and hopefully further upcoming series) post, we will debunk the idea of really needing to use the Design Patterns. I believe that…"
 
-image: "/posts/2019-09-26_crushing-design-patterns-with-scalachain-of-responsibility/images/1.jpeg"
+image: "/posts/2019-09-26_crushing-design-patterns-with-scala-chain-of-responsibility/images/1.jpeg"
 images:
- - "/posts/2019-09-26_crushing-design-patterns-with-scalachain-of-responsibility/images/1.jpeg"
- - "/posts/2019-09-26_crushing-design-patterns-with-scalachain-of-responsibility/images/2.gif"
+ - "/posts/2019-09-26_crushing-design-patterns-with-scala-chain-of-responsibility/images/1.jpeg"
+ - "/posts/2019-09-26_crushing-design-patterns-with-scala-chain-of-responsibility/images/2.gif"
 
 
 aliases:
