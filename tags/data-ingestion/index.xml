@@ -41,39 +41,39 @@
 &lt;h3 id="collector-vendor-neutral">Collector (vendor-neutral)&lt;/h3>
 &lt;p>OpenTelemetry Collector (otel-collector) is a vendor-neutral component which allows telemetry data (signals) to be collected, processed upon and exported to an observability backend in their respective formats.&lt;/p>
 &lt;p>OpenTelemetry Collector can be customized using its configuration, an example configuration would look like:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#070">receivers&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">otlp&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">protocols&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">grpc&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">http&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#070">processors&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">batch&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#070">exporters&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">otlp&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">endpoint&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>otelcol:4317&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#070">extensions&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">health_check&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">pprof&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">zpages&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#070">service&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">extensions&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[health_check,pprof,zpages]&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">pipelines&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">traces&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">receivers&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[otlp]&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">processors&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[batch]&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">exporters&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[otlp]&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">metrics&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">receivers&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[otlp]&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">processors&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[batch]&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">exporters&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[otlp]&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">logs&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">receivers&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[otlp]&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">processors&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[batch]&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">exporters&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[otlp]&lt;span style="color:#bbb">
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#7ee787">receivers&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">otlp&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">protocols&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">grpc&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">http&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>&lt;span style="color:#7ee787">processors&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">batch&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>&lt;span style="color:#7ee787">exporters&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">otlp&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">endpoint&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">otelcol:4317&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>&lt;span style="color:#7ee787">extensions&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">health_check&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">pprof&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">zpages&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>&lt;span style="color:#7ee787">service&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">extensions&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>[&lt;span style="color:#a5d6ff">health_check,pprof,zpages]&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">pipelines&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">traces&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">receivers&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>[&lt;span style="color:#a5d6ff">otlp]&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">processors&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>[&lt;span style="color:#a5d6ff">batch]&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">exporters&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>[&lt;span style="color:#a5d6ff">otlp]&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">metrics&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">receivers&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>[&lt;span style="color:#a5d6ff">otlp]&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">processors&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>[&lt;span style="color:#a5d6ff">batch]&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">exporters&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>[&lt;span style="color:#a5d6ff">otlp]&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">logs&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">receivers&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>[&lt;span style="color:#a5d6ff">otlp]&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">processors&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>[&lt;span style="color:#a5d6ff">batch]&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">exporters&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>[&lt;span style="color:#a5d6ff">otlp]&lt;/span>&lt;span style="color:#6e7681">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>We can specify &amp;ldquo;pipelines&amp;rdquo; in the otel-collector, each for &lt;strong>metrics&lt;/strong>, &lt;strong>traces&lt;/strong> and &lt;strong>logs&lt;/strong> which are comprised of:&lt;/p>
 &lt;ol>
 &lt;li>&lt;strong>Receivers:&lt;/strong> A receiver accepts data in a specified format, translates it into the internal format and passes it to processors and exporters defined in the applicable pipelines&lt;/li>
@@ -109,37 +109,37 @@
 &lt;/blockquote>
 &lt;h3 id="install-and-setup">Install and Setup&lt;/h3>
 &lt;p>Install using Homebrew:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>brew install hugo
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>brew install hugo
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>for other methods if installing, please refer &lt;a href="https://gohugo.io/getting-started/installing">this&lt;/a>&lt;/p>
 &lt;p>Creating a new site (your blog), it&amp;rsquo;s better to create it as a sub-folder inside your github.io repository:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># clone you github.io repository&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic"># clone you github.io repository&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git clone https://github.com/&amp;lt;your-user-name&amp;gt;/&amp;lt;your-user-name&amp;gt;.github.io.git
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># change directory into the cloned repository folder&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> &amp;lt;your-user-name&amp;gt;.github.io
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic"># change directory into the cloned repository folder&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd &amp;lt;your-user-name&amp;gt;.github.io
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># now create a blog site sub-folder named &amp;#34;blog&amp;#34; using hugo&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic"># now create a blog site sub-folder named &amp;#34;blog&amp;#34; using hugo&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hugo new site blog
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>You can then test you website in development mode using:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> blog
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cd blog
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hugo server -D
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="adding-theme">Adding Theme&lt;/h3>
 &lt;p>There are lots of pre-built themes for you Hugo site, you can choose from this &lt;a href="https://themes.gohugo.io/">hugo themes gallery&lt;/a>.&lt;/p>
 &lt;p>We will use &lt;a href="https://themes.gohugo.io/themes/archie/">archie theme&lt;/a> for our blog, which looks something like:&lt;/p>
 &lt;p>&lt;img src="../../posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/images/2.png#layoutTextWidth" alt="Archie Theme">&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> blog
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cd blog
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git submodule add https://github.com/athul/archie.git themes/ananke
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Open &lt;code>blog/config.toml&lt;/code> file in an editor and add the line:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>theme = &amp;#34;archie&amp;#34;&lt;span style="color:#bbb">
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a5d6ff">theme = &amp;#34;archie&amp;#34;&lt;/span>&lt;span style="color:#6e7681">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="creating-posts">Creating Posts&lt;/h3>
 &lt;p>You can create a post by running the command &lt;code>hugo new posts/&amp;lt;any-subdirectory-to-be-created&amp;gt;/&amp;lt;name-of-the-post-with-hyphenated-words&amp;gt;.md&lt;/code> in &lt;strong>blog&lt;/strong> folder:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># make sure you are under hugo site folder&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> blog
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic"># make sure you are under hugo site folder&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd blog
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hugo new posts/my-first-post.md
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This will create a markdown file with name &lt;strong>my-first-post.md&lt;/strong> under folder &lt;strong>blog/content/posts&lt;/strong> with contents:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-md" data-lang="md">&lt;span style="display:flex;">&lt;span>---
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-md" data-lang="md">&lt;span style="display:flex;">&lt;span>---
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>title: &amp;#34;My First Post&amp;#34;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>date: 2022-08-14T16:06:48+05:30
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>draft: true
@@ -147,37 +147,37 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This is called the &lt;strong>front-matter&lt;/strong> for your post and you can even add more metadata parameters like &lt;strong>tags&lt;/strong>, &lt;strong>description&lt;/strong>, &lt;strong>subtitle&lt;/strong>, &lt;strong>images&lt;/strong> etc. You can refer &lt;a href="https://gohugo.io/content-management/front-matter/">this&lt;/a> for more details.&lt;/p>
 &lt;p>You can now edit this file and add content in &lt;a href="https://www.markdownguide.org/cheat-sheet/">markdown format&lt;/a>.&lt;/p>
 &lt;h4 id="create-posts-inside-sub-folder">Create posts inside sub-folder&lt;/h4>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># make sure you are under hugo site folder&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> blog
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic"># make sure you are under hugo site folder&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd blog
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hugo new posts/my-first-post/index.md
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This will create a folder named &lt;strong>my-first-post&lt;/strong> containing &lt;strong>index.md&lt;/strong> file with the same content instead of just one file.&lt;/p>
 &lt;p>This way we can have other static content like images/videos/gifs in out post folder and we can use those in our &lt;strong>index.md&lt;/strong> file, this ways we can manage separate files for each post.&lt;/p>
 &lt;h3 id="starting-server--building-deployable-static-content">Starting Server &amp;amp; Building Deployable Static Content&lt;/h3>
 &lt;p>Running Hugo server to see changes locally&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ hugo server -D
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ hugo server -D
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> | EN
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>+------------------+----+
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Pages | &lt;span style="color:#60e;font-weight:bold">10&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Paginator pages | &lt;span style="color:#60e;font-weight:bold">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Non-page files | &lt;span style="color:#60e;font-weight:bold">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Static files | &lt;span style="color:#60e;font-weight:bold">3&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Processed images | &lt;span style="color:#60e;font-weight:bold">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Aliases | &lt;span style="color:#60e;font-weight:bold">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Sitemaps | &lt;span style="color:#60e;font-weight:bold">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Cleaned | &lt;span style="color:#60e;font-weight:bold">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Pages | &lt;span style="color:#a5d6ff">10&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Paginator pages | &lt;span style="color:#a5d6ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Non-page files | &lt;span style="color:#a5d6ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Static files | &lt;span style="color:#a5d6ff">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Processed images | &lt;span style="color:#a5d6ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Aliases | &lt;span style="color:#a5d6ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Sitemaps | &lt;span style="color:#a5d6ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Cleaned | &lt;span style="color:#a5d6ff">0&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Total in &lt;span style="color:#60e;font-weight:bold">11&lt;/span> ms
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Watching &lt;span style="color:#080;font-weight:bold">for&lt;/span> changes in /Users/bep/quickstart/&lt;span style="color:#333">{&lt;/span>content,data,layouts,static,themes&lt;span style="color:#333">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Watching &lt;span style="color:#080;font-weight:bold">for&lt;/span> config changes in /Users/bep/quickstart/config.toml
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Environment: &lt;span style="background-color:#fff0f0">&amp;#34;development&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Total in &lt;span style="color:#a5d6ff">11&lt;/span> ms
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Watching &lt;span style="color:#ff7b72">for&lt;/span> changes in /Users/bep/quickstart/&lt;span style="color:#ff7b72;font-weight:bold">{&lt;/span>content,data,layouts,static,themes&lt;span style="color:#ff7b72;font-weight:bold">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Watching &lt;span style="color:#ff7b72">for&lt;/span> config changes in /Users/bep/quickstart/config.toml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Environment: &lt;span style="color:#a5d6ff">&amp;#34;development&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Serving pages from memory
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Web Server is available at http://localhost:1313/ &lt;span style="color:#333">(&lt;/span>&lt;span style="color:#007020">bind&lt;/span> address 127.0.0.1&lt;span style="color:#333">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Web Server is available at http://localhost:1313/ &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>bind address 127.0.0.1&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Press Ctrl+C to stop
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Building static content to deploy on any hosting side (github pages in our case)&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>hugo -D
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>hugo -D
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This will translate our markdown content for our posts into HTML/CSS files in &lt;strong>blog/public&lt;/strong> folder, which can directly be served for our website.&lt;/p>
 &lt;p>We can also use &lt;code>hugo --minify&lt;/code> to have the minified static files for production deployment).&lt;/p>
 &lt;h2 id="github-actions">Github Actions&lt;/h2>
@@ -189,88 +189,88 @@
 &lt;p>&lt;img src="../../posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/images/4.png#layoutTextWidth" alt="Click Actions">&lt;/p>
 &lt;p>Here, you can define your workflow in YAML format.&lt;/p>
 &lt;p>This is the minimal setup to be required for Hugo deployment for deployment of your blog:&lt;/p>
-&lt;div class="highlight">&lt;div style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+&lt;div class="highlight">&lt;div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">18
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">19
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">20
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">21
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">22
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">23
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">24
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">25
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">26
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">27
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">28
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">29
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">30
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">31
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">32
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">33
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">34
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">35
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">36
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">37
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">38
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">39
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#070">name&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>blog site github pages publish&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#888"># Controls when the workflow will run&lt;/span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#070">on&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#888"># Triggers the workflow on push or pull request events but only for the &amp;#34;master&amp;#34; branch&lt;/span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">push&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">branches&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>[&lt;span style="background-color:#fff0f0">&amp;#34;master&amp;#34;&lt;/span>]&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#888"># Allows you to run this workflow manually from the Actions tab&lt;/span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">workflow_dispatch&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#888"># A workflow run is made up of one or more jobs that can run sequentially or in parallel&lt;/span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#070">jobs&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">deploy&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#888"># The type of runner that the job will run on&lt;/span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">runs-on&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>ubuntu-latest&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#888"># Steps represent a sequence of tasks that will be executed as part of the job&lt;/span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">steps&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#888"># Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it&lt;/span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>- &lt;span style="color:#070">uses&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>actions/checkout@v3&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">with&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">submodules&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#080;font-weight:bold">true&lt;/span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#888"># Fetch Hugo themes (true OR recursive)&lt;/span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">fetch-depth&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#60e;font-weight:bold">0&lt;/span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#888"># Fetch all history for .GitInfo and .Lastmod&lt;/span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>- &lt;span style="color:#070">name&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>Setup Hugo&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">uses&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>peaceiris/actions-hugo@v2&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">with&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">hugo-version&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>&lt;span style="background-color:#fff0f0">&amp;#34;latest&amp;#34;&lt;/span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">extended&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#080;font-weight:bold">true&lt;/span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>- &lt;span style="color:#070">name&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>Build&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">working-directory&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>./blog&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">run&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>hugo --minify&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>- &lt;span style="color:#070">name&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>Deploy&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">uses&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>peaceiris/actions-gh-pages@v3&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">with&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">github_token&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>${{ secrets.GITHUB_TOKEN }}&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">publish_dir&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>./blog/public&lt;span style="color:#bbb">
+&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#7ee787">name&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">blog site github pages publish&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>&lt;span style="color:#8b949e;font-style:italic"># Controls when the workflow will run&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>&lt;span style="color:#7ee787">on&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic"># Triggers the workflow on push or pull request events but only for the &amp;#34;master&amp;#34; branch&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">push&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">branches&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>[&lt;span style="color:#a5d6ff">&amp;#34;master&amp;#34;&lt;/span>]&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic"># Allows you to run this workflow manually from the Actions tab&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">workflow_dispatch&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>&lt;span style="color:#8b949e;font-style:italic"># A workflow run is made up of one or more jobs that can run sequentially or in parallel&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>&lt;span style="color:#7ee787">jobs&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">deploy&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic"># The type of runner that the job will run on&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">runs-on&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">ubuntu-latest&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic"># Steps represent a sequence of tasks that will be executed as part of the job&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">steps&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic"># Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>- &lt;span style="color:#7ee787">uses&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">actions/checkout@v3&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">with&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">submodules&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#79c0ff">true&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic"># Fetch Hugo themes (true OR recursive)&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">fetch-depth&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">0&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#8b949e;font-style:italic"># Fetch all history for .GitInfo and .Lastmod&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>- &lt;span style="color:#7ee787">name&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">Setup Hugo&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">uses&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">peaceiris/actions-hugo@v2&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">with&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">hugo-version&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">&amp;#34;latest&amp;#34;&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">extended&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#79c0ff">true&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>- &lt;span style="color:#7ee787">name&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">Build&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">working-directory&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">./blog&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">run&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">hugo --minify&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>- &lt;span style="color:#7ee787">name&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">Deploy&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">uses&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">peaceiris/actions-gh-pages@v3&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">with&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">github_token&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">${{ secrets.GITHUB_TOKEN }}&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">publish_dir&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">./blog/public&lt;/span>&lt;span style="color:#6e7681">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>The above workflow simply defines:&lt;/p>
@@ -306,22 +306,22 @@
 &lt;p>Click on &lt;strong>Settings&lt;/strong> tab, then click &lt;strong>pages&lt;/strong> on side bar, then enter the Custom domain in the &lt;strong>Custom domain&lt;/strong> section.&lt;/p>
 &lt;p>&lt;img src="../../posts/2022-08-14_create-your-own-blog-with-hugo-and-github-pages/images/6.png#layoutTextWidth" alt="Custom Domain Click Actions">&lt;/p>
 &lt;p>Now, to update automatic CNAME addition on gh-pages deployment, edit your &lt;strong>Deploy&lt;/strong> (last) step workflow and add cname attirbute:&lt;/p>
-&lt;div class="highlight">&lt;div style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;display:grid;">
+&lt;div class="highlight">&lt;div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;display:grid;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;display:grid;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-&lt;/span>&lt;span style="background-color:#e5e5e5">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;display:grid;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">35
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">36
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">37
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">38
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">39
+&lt;/span>&lt;span style="color:#6e7681">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">40
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;display:grid;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>- &lt;span style="color:#070">name&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>Deploy&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">uses&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>peaceiris/actions-gh-pages@v3&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">with&lt;/span>:&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">github_token&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>${{ secrets.GITHUB_TOKEN }}&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">publish_dir&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>./blog/public&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex; background-color:#e5e5e5">&lt;span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#070">cname&lt;/span>:&lt;span style="color:#bbb"> &lt;/span>&amp;lt;your-custom-domain&amp;gt;&lt;span style="color:#bbb">
+&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;display:grid;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>- &lt;span style="color:#7ee787">name&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">Deploy&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">uses&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">peaceiris/actions-gh-pages@v3&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">with&lt;/span>:&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">github_token&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">${{ secrets.GITHUB_TOKEN }}&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">publish_dir&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">./blog/public&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex; color:#6e7681">&lt;span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#7ee787">cname&lt;/span>:&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">&amp;lt;your-custom-domain&amp;gt;&lt;/span>&lt;span style="color:#6e7681">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="conclusion">Conclusion&lt;/h2>
@@ -451,15 +451,15 @@
 &lt;li>Rewrite the single queries into a form of single multi-row query.&lt;/li>
 &lt;/ol>
 &lt;p>For first, we can make use of hibernate properties:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-properties" data-lang="properties">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00c">spring.jpa.properties.hibernate.jdbc.batch_size&lt;/span>&lt;span style="color:#333">=&lt;/span>&lt;span style="background-color:#fff0f0">1000&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00c">spring.jpa.properties.hibernate.order_inserts&lt;/span>&lt;span style="color:#333">=&lt;/span>&lt;span style="background-color:#fff0f0">true&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-properties" data-lang="properties">&lt;span style="display:flex;">&lt;span>spring.jpa.properties.hibernate.jdbc.batch_size&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#a5d6ff">1000&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>spring.jpa.properties.hibernate.order_inserts&lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span>&lt;span style="color:#a5d6ff">true&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>For second, there are bulk (multi-row) insert query options available in most of the mainstream database solutions (Postgres, MySQL, Oracle). With syntax like:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">insert&lt;/span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#080;font-weight:bold">into&lt;/span>&lt;span style="color:#bbb"> &lt;/span>myschema.my_table&lt;span style="color:#bbb"> &lt;/span>(col1,&lt;span style="color:#bbb"> &lt;/span>col2,&lt;span style="color:#bbb"> &lt;/span>col3)&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#080;font-weight:bold">values&lt;/span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>(val11,&lt;span style="color:#bbb"> &lt;/span>val12,&lt;span style="color:#bbb"> &lt;/span>val13),&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>(val21,&lt;span style="color:#bbb"> &lt;/span>val22,&lt;span style="color:#bbb"> &lt;/span>val23),&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>....&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>(valn1,&lt;span style="color:#bbb"> &lt;/span>valn2,&lt;span style="color:#bbb"> &lt;/span>valn3);&lt;span style="color:#bbb">
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff7b72">insert&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72">into&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>myschema.my_table&lt;span style="color:#6e7681"> &lt;/span>(col1,&lt;span style="color:#6e7681"> &lt;/span>col2,&lt;span style="color:#6e7681"> &lt;/span>col3)&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>&lt;span style="color:#ff7b72">values&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>(val11,&lt;span style="color:#6e7681"> &lt;/span>val12,&lt;span style="color:#6e7681"> &lt;/span>val13),&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>(val21,&lt;span style="color:#6e7681"> &lt;/span>val22,&lt;span style="color:#6e7681"> &lt;/span>val23),&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>....&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>(valn1,&lt;span style="color:#6e7681"> &lt;/span>valn2,&lt;span style="color:#6e7681"> &lt;/span>valn3);&lt;span style="color:#6e7681">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>While, Postgres and MySQL do support this features with the help of JDBC flag: &lt;strong>&lt;em>reWriteBatchedInserts=true&lt;/em>&lt;/strong>&lt;/p>
 &lt;p>But unfortunately, according to &lt;a href="https://docs.microsoft.com/en-us/sql/connect/jdbc/use-bulk-copy-api-batch-insert-operation?view=sql-server-ver15">this resource&lt;/a>, ms-sql JDBC driver does not support the multi-row rewrite of the queries. So, if we want to do this, we would have to write the insert queries manually.&lt;/p>
 &lt;p>Manual insert query creation could look like:&lt;/p>
@@ -574,7 +574,7 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;strong>Lets start a fresh Spring boot project from Spring Initialzr.&lt;/strong>&lt;/p>
 &lt;p>&lt;a href="https://start.spring.io/">Spring Initializr&lt;/a>&lt;/p>
 &lt;p>We will make the project organised like the tree below which is a pretty standard maven directory structure (since we have chosen to use maven here). You could go with gradle also if you like.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-txt" data-lang="txt">&lt;span style="display:flex;">&lt;span>.
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>.
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── pom.xml
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>└── src
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── main
@@ -619,7 +619,7 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;script src="https://gist.github.com/lprakashv/865822e16f46cb3cd6274a832a3e9f6f.js">&lt;/script>
 &lt;p>You might be wondering what is in the &lt;strong>&lt;em>stream.conf&lt;/em>&lt;/strong> file and where did that &lt;strong>&lt;em>committableMesssageToDTO&lt;/em>&lt;/strong> and &lt;strong>&lt;em>insertEventQuery&lt;/em>&lt;/strong> came from?&lt;/p>
 &lt;p>Slick needs a configuration to create a session which will execute all our DB queries. This config needs to follow the below structure in a &lt;strong>&lt;em>.conf&lt;/em>&lt;/strong> file (which is the standard way to access configs in the typesafe/lightbend world).&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>event-sqlserver {
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>event-sqlserver {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> profile = &amp;#34;slick.jdbc.SQLServerProfile$&amp;#34;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> db {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> dataSourceClass = &amp;#34;slick.jdbc.DriverDataSource&amp;#34;
@@ -656,10 +656,10 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;p>Thanks for reading!&lt;/p></description></item><item><title>Handling Nulls in nested objects (Java)</title><link>https://www.lprakashv.com/posts/2020-03-29_handling-nulls-in-nested-objects-java/</link><pubDate>Sun, 29 Mar 2020 09:14:32 +0000</pubDate><guid>https://www.lprakashv.com/posts/2020-03-29_handling-nulls-in-nested-objects-java/</guid><description>&lt;p>&lt;img src="../../posts/2020-03-29_handling-nulls-in-nested-objects-java/images/1.png#layoutTextWidth" alt="image">&lt;/p>
 &lt;p>Handling NullPointerException and keeping track of all the nullable values has always been a pain for Java developers.&lt;/p>
 &lt;p>This is even worse when you are working with deeply nested objects and handling all the null values grows exponentially with each nullable nested value. This is visible by all the statements like:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">if&lt;/span>&lt;span style="color:#bbb"> &lt;/span>(x.&lt;span style="color:#00c">y&lt;/span>().&lt;span style="color:#00c">z&lt;/span>()..&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#333">!=&lt;/span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#080;font-weight:bold">null&lt;/span>)&lt;span style="color:#bbb"> &lt;/span>{&lt;span style="color:#f00;background-color:#faa">…&lt;/span>}&lt;span style="color:#bbb">
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff7b72">if&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>(x.y().z()..&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">!=&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#79c0ff">null&lt;/span>)&lt;span style="color:#6e7681"> &lt;/span>{&lt;span style="color:#f85149">…&lt;/span>}&lt;span style="color:#6e7681">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>In this article, we will explore some of the techniques starting with the naive approach to a more advanced one for handling such scenarios.So, are you ready? Let’s dive in…&lt;/p>
 &lt;p>Suppose we have a simple but nested object structure like:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>root {
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>root {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> first-level {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> second-level {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> third-level {
@@ -676,7 +676,7 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;script src="https://gist.github.com/lprakashv/38af049e1d4971a31a7cd8a394fd1b74.js">&lt;/script>
 &lt;p>This can result in a NullPointerException!&lt;/p>
 &lt;p>Result:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Failed to greet for r1 !
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Failed to greet for r1 !
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Failed to greet for r2 !
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Failed to greet for r3 !
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r4 : Hello null
@@ -684,7 +684,7 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="naive-safe-approach">&lt;strong>Naive Safe Approach:&lt;/strong>&lt;/h3>
 &lt;script src="https://gist.github.com/lprakashv/f68f7f55cb60e42562a0e47a594c856f.js">&lt;/script>
 &lt;p>Result:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Greeting for r1 : Hey There!
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Greeting for r1 : Hey There!
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r2 : Hey There!
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r3 : Hey There!
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r4 : Hey There!
@@ -697,7 +697,7 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;p>To implement that in Optional, we have to do like:&lt;/p>
 &lt;script src="https://gist.github.com/lprakashv/5e446053cd0c236aca7d496fa987642e.js">&lt;/script>
 &lt;p>Result:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Greeting for r1 : Hello first level is null
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Greeting for r1 : Hello first level is null
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r2 : Hello second level null
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r3 : Hello third level is null
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Greeting for r4 : Hey There!
@@ -718,11 +718,11 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;script src="https://gist.github.com/lprakashv/d92be758bbffd36928f9330d6ea5f150.js">&lt;/script>
 &lt;p>This will also work just like we expected, and the code looks more elegant.&lt;/p>
 &lt;p>One more benefit of this is that &lt;strong>we don’t have to use the getOrElse every time as NullableWrapper’s .get() will return a default value or null&lt;/strong> (in case default not provided) instead of blowing up:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">// will blow up!&lt;/span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>Optional.&lt;span style="color:#00c">ofNullable&lt;/span>(&lt;span style="color:#080;font-weight:bold">null&lt;/span>).&lt;span style="color:#00c">map&lt;/span>(x&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#333">-&amp;gt;&lt;/span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="background-color:#fff0f0">&amp;#34;Hello &amp;#34;&lt;/span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#333">+&lt;/span>&lt;span style="color:#bbb"> &lt;/span>x).&lt;span style="color:#00c">get&lt;/span>();&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#888">// will return null&lt;/span>&lt;span style="color:#bbb">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bbb">&lt;/span>&lt;span style="color:#080;font-weight:bold">new&lt;/span>&lt;span style="color:#bbb"> &lt;/span>NullableWrapper(()&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#333">-&amp;lt;&lt;/span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#080;font-weight:bold">null&lt;/span>).&lt;span style="color:#00c">map&lt;/span>(x&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#333">-&amp;gt;&lt;/span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="background-color:#fff0f0">&amp;#34;Hello &amp;#34;&lt;/span>&lt;span style="color:#bbb"> &lt;/span>&lt;span style="color:#333">+&lt;/span>&lt;span style="color:#bbb"> &lt;/span>x).&lt;span style="color:#00c">get&lt;/span>();&lt;span style="color:#bbb">
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">// will blow up!&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>Optional.ofNullable(&lt;span style="color:#79c0ff">null&lt;/span>).map(x&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">-&amp;gt;&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">&amp;#34;Hello &amp;#34;&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">+&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>x).get();&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>&lt;span style="color:#8b949e;font-style:italic">// will return null&lt;/span>&lt;span style="color:#6e7681">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6e7681">&lt;/span>&lt;span style="color:#ff7b72">new&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>NullableWrapper(()&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">-&amp;lt;&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#79c0ff">null&lt;/span>).map(x&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">-&amp;gt;&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#a5d6ff">&amp;#34;Hello &amp;#34;&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">+&lt;/span>&lt;span style="color:#6e7681"> &lt;/span>x).get();&lt;span style="color:#6e7681">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now, let’s see the NullableWrapper&amp;laquo;() from the point of view of a library user. It asks for a supplier or a value of type T and a default value.&lt;/p>
 &lt;p>This makes me think that the &lt;strong>supplier evaluation must also be safe&lt;/strong> as it would be lazily evaluated inside the wrapper! Let’s try it out:&lt;/p>
 &lt;script src="https://gist.github.com/lprakashv/8132c283fc608077bbbb6835d3d71773.js">&lt;/script>
@@ -736,7 +736,7 @@ Courtesy: &lt;a href="https://www.lightbend.com/white-papers-and-reports/reactiv
 &lt;p>Let’s try that again:&lt;/p>
 &lt;script src="https://gist.github.com/lprakashv/36fcc9f772c38b0b5ef05c6852b031a5.js">&lt;/script>
 &lt;p>Result:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Hey There!
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Hey There!
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Hi Lalit
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="conclusion">Conclusion&lt;/h2>
 &lt;p>We saw how we can utilise the power of Optionals and functional programming concepts to get the safety of the null checks as well as the control over the outcome with a default value.&lt;/p>
@@ -791,17 +791,17 @@ courtesy: &lt;a href="https://martinfowler.com/bliki/CircuitBreaker.html">https:
 &lt;p>&lt;strong>CircuitImplicits&lt;/strong> — Implicits making the use of our Circuit class a breeze!&lt;/p>
 &lt;script src="https://gist.github.com/lprakashv/1dfe69c3d933da42de263444b7667247.js">&lt;/script>
 &lt;p>We can now do something like:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-scala" data-lang="scala">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">implicit&lt;/span> &lt;span style="color:#080;font-weight:bold">val&lt;/span> sampleCircuit&lt;span style="color:#080;font-weight:bold">:&lt;/span> &lt;span style="color:#339;font-weight:bold">Circuit&lt;/span>&lt;span style="color:#333">[&lt;/span>&lt;span style="color:#339;font-weight:bold">Int&lt;/span>&lt;span style="color:#333">]&lt;/span> &lt;span style="color:#080;font-weight:bold">=&lt;/span> &lt;span style="color:#080;font-weight:bold">new&lt;/span> &lt;span style="color:#b06;font-weight:bold">Circuit&lt;/span>&lt;span style="color:#333">[&lt;/span>&lt;span style="color:#339;font-weight:bold">Int&lt;/span>&lt;span style="color:#333">](&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="background-color:#fff0f0">&amp;#34;sample-circuit&amp;#34;&lt;/span>&lt;span style="color:#333">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00d;font-weight:bold">5&lt;/span>&lt;span style="color:#333">,&lt;/span> &lt;span style="color:#888">// max allowed consecutive closed failures
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span> &lt;span style="color:#60e;font-weight:bold">5.&lt;/span>seconds&lt;span style="color:#333">,&lt;/span> &lt;span style="color:#888">// half-opener timeout
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span> &lt;span style="color:#00d;font-weight:bold">1&lt;/span>&lt;span style="color:#333">,&lt;/span> &lt;span style="color:#888">// max allowed consecutive half-open failures
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span> &lt;span style="color:#333">-&lt;/span>&lt;span style="color:#00d;font-weight:bold">1&lt;/span>&lt;span style="color:#333">,&lt;/span> &lt;span style="color:#888">// invalid success result
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span> &lt;span style="color:#b06;font-weight:bold">_println&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">_&lt;/span>&lt;span style="color:#333">)&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-scala" data-lang="scala">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff7b72">implicit&lt;/span> &lt;span style="color:#ff7b72">val&lt;/span> sampleCircuit&lt;span style="color:#ff7b72">:&lt;/span> &lt;span style="color:#ff7b72">Circuit&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">[&lt;/span>&lt;span style="color:#ff7b72">Int&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">]&lt;/span> &lt;span style="color:#ff7b72">=&lt;/span> &lt;span style="color:#ff7b72">new&lt;/span> &lt;span style="color:#f0883e;font-weight:bold">Circuit&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">[&lt;/span>&lt;span style="color:#ff7b72">Int&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">](&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a5d6ff">&amp;#34;sample-circuit&amp;#34;&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a5d6ff">5&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">,&lt;/span> &lt;span style="color:#8b949e;font-style:italic">// max allowed consecutive closed failures
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">&lt;/span> &lt;span style="color:#a5d6ff">5.&lt;/span>seconds&lt;span style="color:#ff7b72;font-weight:bold">,&lt;/span> &lt;span style="color:#8b949e;font-style:italic">// half-opener timeout
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">&lt;/span> &lt;span style="color:#a5d6ff">1&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">,&lt;/span> &lt;span style="color:#8b949e;font-style:italic">// max allowed consecutive half-open failures
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">-&lt;/span>&lt;span style="color:#a5d6ff">1&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">,&lt;/span> &lt;span style="color:#8b949e;font-style:italic">// invalid success result
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">&lt;/span> println
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//this will use the above created circuit to execute
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>&lt;span style="color:#b06;font-weight:bold">Future&lt;/span>&lt;span style="color:#333">.&lt;/span>successful&lt;span style="color:#333">(&lt;/span>&lt;span style="color:#00d;font-weight:bold">2&lt;/span> &lt;span style="color:#333">+&lt;/span> &lt;span style="color:#00d;font-weight:bold">2&lt;/span>&lt;span style="color:#333">).&lt;/span>executeAsync
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">//this will use the above created circuit to execute
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">&lt;/span>&lt;span style="color:#f0883e;font-weight:bold">Future&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">.&lt;/span>successful&lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>&lt;span style="color:#a5d6ff">2&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">+&lt;/span> &lt;span style="color:#a5d6ff">2&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">).&lt;/span>executeAsync
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>Testing it out&lt;/strong> — You can find the test cases &lt;a href="https://github.com/lprakashv/scala-utils/blob/master/src/test/scala/com/lprakashv/resiliency/CircuitTest.scala">here&lt;/a>.&lt;/p>
 &lt;p>&lt;img src="../../posts/2020-03-28_circuit-breaker-pattern-in-scala/images/3.png#layoutTextWidth" alt="image">&lt;/p></description></item><item><title>How to keep your sanity working with Scala Implicit!</title><link>https://www.lprakashv.com/posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/</link><pubDate>Thu, 17 Oct 2019 08:14:10 +0000</pubDate><guid>https://www.lprakashv.com/posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/</guid><description>&lt;p>&lt;img src="../../posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/images/1.jpeg#layoutTextWidth" alt="image">
 Courtesy: &lt;a href="https://www.pexels.com/photo/calm-daylight-evening-grass-267967/">https://www.pexels.com/&lt;/a>&lt;/p>
@@ -837,23 +837,23 @@ Courtesy: &lt;a href="https://me.me">https://me.me&lt;/a>&lt;/p>
 &lt;p>Even Scala compiler will warn you if you use implicit conversion without a specific import ( &lt;strong>scala.language.implicitConversions&lt;/strong> ):&lt;/p>
 &lt;p>&lt;img src="../../posts/2019-10-17_how-to-keep-your-sanity-working-with-scala-implicit/images/9.png#layoutTextWidth" alt="image">&lt;/p>
 &lt;p>So, the tip is, &lt;strong>&lt;em>avoid implicit conversions at all costs&lt;/em>&lt;/strong>. When you absolutely need a conversion in your code in a convenient manner, please use &lt;a href="https://medium.com/@lprakashv/making-ordinary-classes-rich-scala-ab7f991d690">implicit classes with extension method&lt;/a> like:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-scala" data-lang="scala">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">trait&lt;/span> &lt;span style="color:#b06;font-weight:bold">A&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">trait&lt;/span> &lt;span style="color:#b06;font-weight:bold">B&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-scala" data-lang="scala">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff7b72">trait&lt;/span> &lt;span style="color:#f0883e;font-weight:bold">A&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff7b72">trait&lt;/span> &lt;span style="color:#f0883e;font-weight:bold">B&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//avoid this:
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//implicit def aToB(a: A): B = ???
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//do this instead:
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>&lt;span style="color:#080;font-weight:bold">implicit&lt;/span> &lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">RichA&lt;/span>&lt;span style="color:#333">(&lt;/span>a&lt;span style="color:#080;font-weight:bold">:&lt;/span> &lt;span style="color:#339;font-weight:bold">A&lt;/span>&lt;span style="color:#333">)&lt;/span> &lt;span style="color:#333">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">def&lt;/span> toB &lt;span style="color:#080;font-weight:bold">=&lt;/span> &lt;span style="color:#333">???&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#333">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">//avoid this:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">//implicit def aToB(a: A): B = ???
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">//do this instead:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">&lt;/span>&lt;span style="color:#ff7b72">implicit&lt;/span> &lt;span style="color:#ff7b72">class&lt;/span> &lt;span style="color:#f0883e;font-weight:bold">RichA&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>a&lt;span style="color:#ff7b72">:&lt;/span> &lt;span style="color:#ff7b72">A&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff7b72">def&lt;/span> toB &lt;span style="color:#ff7b72">=&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">???&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff7b72;font-weight:bold">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//use it like this:
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>&lt;span style="color:#080;font-weight:bold">val&lt;/span> someA&lt;span style="color:#080;font-weight:bold">:&lt;/span> &lt;span style="color:#339;font-weight:bold">A&lt;/span> &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#333">???&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">val&lt;/span> someB&lt;span style="color:#080;font-weight:bold">:&lt;/span> &lt;span style="color:#339;font-weight:bold">SomeB&lt;/span> &lt;span style="color:#333">=&lt;/span> someA&lt;span style="color:#333">.&lt;/span>toB
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">//use it like this:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">&lt;/span>&lt;span style="color:#ff7b72">val&lt;/span> someA&lt;span style="color:#ff7b72">:&lt;/span> &lt;span style="color:#ff7b72">A&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">???&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff7b72">val&lt;/span> someB&lt;span style="color:#ff7b72">:&lt;/span> &lt;span style="color:#ff7b72">SomeB&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span> someA&lt;span style="color:#ff7b72;font-weight:bold">.&lt;/span>toB
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//so that, this will be avoided:
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//val someB: SomeB = someA
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">//so that, this will be avoided:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">//val someB: SomeB = someA
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="ditch-the-type-inference-and-annotate-the-required-types">Ditch the type inference and annotate the required types&lt;/h3>
 &lt;p>Simple logic: Avoid surprises 😅 and let compilation fail on mismatches!&lt;/p>
 &lt;h3 id="check-the-imports">Check the imports&lt;/h3>
@@ -1079,13 +1079,13 @@ player.attachTo(playerElement);
 player.pl
 &lt;/script>
 &lt;p>We start making a taxing strategy, let’s tax a quarter of the income of everybody.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># quarter-taxing-strategy:&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tax &lt;span style="color:#333">=&lt;/span> user&lt;span style="color:#333">.&lt;/span>income &lt;span style="color:#333">/&lt;/span> &lt;span style="color:#00d;font-weight:bold">4&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic"># quarter-taxing-strategy:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tax &lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span> user&lt;span style="color:#ff7b72;font-weight:bold">.&lt;/span>income &lt;span style="color:#ff7b72;font-weight:bold">/&lt;/span> &lt;span style="color:#a5d6ff">4&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>But , when we think about the good people running a kitten orphanage NGO, we feel bad for them. Also, we want to tax more the black money holders now. &lt;strong>We need more strategies&lt;/strong>!&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># non-profit-taxing-strategy:&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tax &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#00d;font-weight:bold">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># half-taxing-strategy:&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tax &lt;span style="color:#333">=&lt;/span> user&lt;span style="color:#333">.&lt;/span>income &lt;span style="color:#333">/&lt;/span> &lt;span style="color:#00d;font-weight:bold">2&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic"># non-profit-taxing-strategy:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tax &lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span> &lt;span style="color:#a5d6ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic"># half-taxing-strategy:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tax &lt;span style="color:#ff7b72;font-weight:bold">=&lt;/span> user&lt;span style="color:#ff7b72;font-weight:bold">.&lt;/span>income &lt;span style="color:#ff7b72;font-weight:bold">/&lt;/span> &lt;span style="color:#a5d6ff">2&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Here, &lt;strong>&lt;em>the algorithm is the taxing strategy&lt;/em>&lt;/strong> to compute the taxes from users. More strategies mean, more algorithms (functions). Let’s start with good old Java way:&lt;/p>
 &lt;script src="https://gist.github.com/lprakashv/2156908af1a9a6f5f0321d287728b51a.js">&lt;/script>
 &lt;p>For every new strategy, we need to create another implementation class! Usage:&lt;/p>
@@ -1139,7 +1139,7 @@ player.pl
 &lt;p>Let’s consider a problem to solve. Consider You want to filter out (beep) profanity out of a public chat system (&lt;em>This example is inspired from Mykhailo Kozik’s post&lt;/em> &lt;a href="http://mishadoff.com/blog/clojure-design-patterns/#episode-16-chain-of-responsibility">&lt;strong>&lt;em>Clojure Design Patterns&lt;/em>&lt;/strong>&lt;em>.&lt;/em>&lt;/a>).&lt;/p>
 &lt;p>Further more, you would only want to &lt;em>beep&lt;/em> the profanity coming from a certain respectable person. You can leave the rest of the world with their freedom of expression ;)&lt;/p>
 &lt;p>Consider your chat stream looks something like this:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-txt" data-lang="txt">&lt;span style="display:flex;">&lt;span>#format: [user] comment
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>#format: [user] comment
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[Suresh01] Hello!
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[RameshXX] Hi Suresh, how are you.
@@ -1161,19 +1161,21 @@ player.pl
 &lt;p>If we take a step back and look at the pattern (or rather problem) again, we could see that &lt;strong>&lt;em>we just care about the process method and the order in which they are applied.&lt;/em>&lt;/strong>&lt;/p>
 &lt;p>Since, &lt;strong>functions are the first class citizens in Scala&lt;/strong>, we could argue that we just want the methods and not the entire Filter classes, and some way of composing them.&lt;/p>
 &lt;p>Voila, we have our answer here, &lt;strong>“functional composition”&lt;/strong> using &lt;strong>&lt;em>andThen&lt;/em>&lt;/strong>.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-scala" data-lang="scala">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">/* For single argument function, andThen method signature looks like */&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">trait&lt;/span> &lt;span style="color:#b06;font-weight:bold">Function1&lt;/span>&lt;span style="color:#333">[&lt;/span>&lt;span style="color:#339;font-weight:bold">-T1&lt;/span>, &lt;span style="color:#339;font-weight:bold">+R&lt;/span>&lt;span style="color:#333">]&lt;/span> &lt;span style="color:#333">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">def&lt;/span> apply&lt;span style="color:#333">(&lt;/span>v1&lt;span style="color:#080;font-weight:bold">:&lt;/span> &lt;span style="color:#339;font-weight:bold">T1&lt;/span>&lt;span style="color:#333">)&lt;/span>&lt;span style="color:#080;font-weight:bold">:&lt;/span> &lt;span style="color:#339;font-weight:bold">R&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">def&lt;/span> andThen&lt;span style="color:#333">[&lt;/span>&lt;span style="color:#339;font-weight:bold">A&lt;/span>&lt;span style="color:#333">](&lt;/span>g&lt;span style="color:#080;font-weight:bold">:&lt;/span> &lt;span style="color:#339;font-weight:bold">R&lt;/span> &lt;span style="color:#333">=&amp;lt;&lt;/span> A&lt;span style="color:#333">)&lt;/span>&lt;span style="color:#080;font-weight:bold">:&lt;/span> &lt;span style="color:#339;font-weight:bold">T1&lt;/span> &lt;span style="color:#333">=&amp;lt;&lt;/span> A &lt;span style="color:#080;font-weight:bold">=&lt;/span> &lt;span style="color:#333">{&lt;/span> x &lt;span style="color:#333">=&amp;lt;&lt;/span> g&lt;span style="color:#333">(&lt;/span>apply&lt;span style="color:#333">(&lt;/span>x&lt;span style="color:#333">))&lt;/span> &lt;span style="color:#333">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#333">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>In plain english, it takes function with input type the same as the return type of the current function it is applied on (R) and returning a new type (A) value. andThen passes the result of the current function to the function passed in and then returns output of the passed function.&lt;/em>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-scala" data-lang="scala">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">/* For single argument function, andThen method signature looks like */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff7b72">trait&lt;/span> &lt;span style="color:#f0883e;font-weight:bold">Function1&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">[&lt;/span>&lt;span style="color:#ff7b72">-T1&lt;/span>, &lt;span style="color:#ff7b72">+R&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">]&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff7b72">def&lt;/span> apply&lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>v1&lt;span style="color:#ff7b72">:&lt;/span> &lt;span style="color:#ff7b72">T1&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>&lt;span style="color:#ff7b72">:&lt;/span> &lt;span style="color:#ff7b72">R&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff7b72">def&lt;/span> andThen&lt;span style="color:#ff7b72;font-weight:bold">[&lt;/span>&lt;span style="color:#ff7b72">A&lt;/span>&lt;span style="color:#ff7b72;font-weight:bold">](&lt;/span>g&lt;span style="color:#ff7b72">:&lt;/span> &lt;span style="color:#ff7b72">R&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">=&amp;lt;&lt;/span> A&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>&lt;span style="color:#ff7b72">:&lt;/span> &lt;span style="color:#ff7b72">T1&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">=&amp;lt;&lt;/span> A &lt;span style="color:#ff7b72">=&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">{&lt;/span> x &lt;span style="color:#ff7b72;font-weight:bold">=&amp;lt;&lt;/span> g&lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>apply&lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>x&lt;span style="color:#ff7b72;font-weight:bold">))&lt;/span> &lt;span style="color:#ff7b72;font-weight:bold">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff7b72;font-weight:bold">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>&lt;em>In plain english, it takes function with input type the same as the return type of the current function it is applied on (&lt;code>R&lt;/code>) and returning a new type (&lt;code>A&lt;/code>) value. &lt;code>andThen&lt;/code> passes the result of the current function to the function passed in and then returns output of the passed function.&lt;/em>&lt;/p>
+&lt;/blockquote>
 &lt;p>Some syntactic sugar in Scala:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-scala" data-lang="scala">&lt;span style="display:flex;">&lt;span>a&lt;span style="color:#333">.&lt;/span>method&lt;span style="color:#333">(&lt;/span>b&lt;span style="color:#333">.&lt;/span>innerMethod&lt;span style="color:#333">(&lt;/span>c&lt;span style="color:#333">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">/* is equivalent to */&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>a method &lt;span style="color:#333">(&lt;/span>b innerMethod c&lt;span style="color:#333">)&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-scala" data-lang="scala">&lt;span style="display:flex;">&lt;span>a&lt;span style="color:#ff7b72;font-weight:bold">.&lt;/span>method&lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>b&lt;span style="color:#ff7b72;font-weight:bold">.&lt;/span>innerMethod&lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>c&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">/* is equivalent to */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>a method &lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>b innerMethod c&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>a&lt;span style="color:#333">.&lt;/span>method1&lt;span style="color:#333">(&lt;/span>b&lt;span style="color:#333">).&lt;/span>method2&lt;span style="color:#333">(&lt;/span>c&lt;span style="color:#333">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">/* is equivalent to */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>a&lt;span style="color:#ff7b72;font-weight:bold">.&lt;/span>method1&lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>b&lt;span style="color:#ff7b72;font-weight:bold">).&lt;/span>method2&lt;span style="color:#ff7b72;font-weight:bold">(&lt;/span>c&lt;span style="color:#ff7b72;font-weight:bold">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8b949e;font-style:italic">/* is equivalent to */&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>a method1 b method2 c
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now, using all our magic here,&lt;/p>
 &lt;script src="https://gist.github.com/a8a82dd6ef7d5f1813e3e813a087f0e8/1c179fd7582da567da4aff9831026a95eaec2a98.js">&lt;/script>
