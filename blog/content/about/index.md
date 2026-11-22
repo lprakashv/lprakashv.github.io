@@ -15,6 +15,4 @@ aliases:
 
 ---
 
-{{% github-user-avatar "lprakashv" %}}
-
-{{% github-repo-md-content "lprakashv" "readme" %}}
+{{% profile-readme %}}
