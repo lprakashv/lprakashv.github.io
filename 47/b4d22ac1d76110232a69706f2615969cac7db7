@@ -1,0 +1,30 @@
+README.md
+  s_b527519f8f7367::t_d9a28a3eed1120 61,68
+  s_bde807e7915c73::t_0487895bbbb205 55
+.github/workflows/main.yml
+  s_b527519f8f7367::t_d9a28a3eed1120 74-75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "47b4d22ac1d76110232a69706f2615969cac7db7",
+  "prompts": {},
+  "sessions": {
+    "s_b527519f8f7367": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a202ce-d39c-76c3-92b5-4ac625e922bc",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "Lalit Vatsal <lprakashv@gmail.com>"
+    },
+    "s_bde807e7915c73": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a2024d-9b05-7a73-b8da-70b132a49089",
+        "model": "gpt-6.1-terra"
+      },
+      "human_author": "Lalit Vatsal <lprakashv@gmail.com>"
+    }
+  }
+}
