@@ -52,27 +52,20 @@ An FP style pattern matcher library for Java
 
 ## Site maintenance
 
-The nightly workflow refreshes the app list from public repositories that have GitHub Pages enabled and link to an app path on this domain in their homepage or README. It uses the repository description and the first suitable image in its README. Repositories without a matching link are skipped; add the app URL and a demo image to their README to include them. Run the workflow manually from the Actions tab to refresh the list sooner.
+The nightly workflow refreshes the app list from public repositories that have GitHub Pages enabled and link to an app path on this domain in their homepage or README. It also follows a repository's GitHub Pages project URL when it redirects to this domain. It uses the repository description and the first suitable image in its README, if available. Repositories without a matching link are skipped; add the app URL and a demo image to their README to include them. Run the workflow manually from the Actions tab to refresh the list sooner.
 
 The workflow builds the blog with Hugo 0.170.1 extended. Update the pinned version after checking the build with the new release.
 
 ### Website analytics
 
-The Hugo site uses Google Analytics 4 (GA4). The tag is included in the page head when a Measurement ID is set in `blog/config.toml`:
-
-```toml
-[params.analytics]
-gtagId = "G-XXXXXXXXXX"
-```
-
-The current ID is `G-DNE09NG226`. Keep it if it belongs to your Google Analytics property. Otherwise, replace it with your property's Measurement ID.
+The Hugo site uses Google Analytics 4 (GA4). The Pages workflow reads the Measurement ID from the repository Actions variable `GOOGLE_TAG_ID` and passes it to Hugo at build time. Set this variable to the ID for your web stream. It starts with `G-`.
 
 #### Set up or check Google Analytics
 
 1. Sign in at [Google Analytics](https://analytics.google.com/).
 2. Open **Admin → Data streams**. Create or select a **Web** stream for `https://www.lprakashv.com`.
 3. Copy the stream's **Measurement ID**. It starts with `G-`.
-4. Set that value as `gtagId` in `blog/config.toml`.
+4. In the repository, open **Settings → Secrets and variables → Actions → Variables** and add `GOOGLE_TAG_ID` with that value.
 5. Deploy the site. A push to `master` runs the GitHub Pages workflow.
 6. Visit the live site, then check the property's **Realtime** report. Data can take up to 30 minutes to appear.
 

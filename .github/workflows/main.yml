@@ -71,6 +71,8 @@ jobs:
           extended: true
       - name: Build
         working-directory: ./blog
+        env:
+          HUGO_PARAMS_ANALYTICS_GTAGID: ${{ vars.GOOGLE_TAG_ID }}
         run: hugo --minify
 
       - name: Deploy
