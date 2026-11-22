@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parent.parent
 START = "<!-- apps:start -->"
 END = "<!-- apps:end -->"
 DOMAIN = re.compile(r"https?://(?:www\.)?lprakashv\.com/[^\s<>)\]\"']+", re.I)
+PAGES = re.compile(r"https?://lprakashv\.github\.io/[^\s<>)\]\"']+", re.I)
 IMAGE = re.compile(r'!\[([^\]]*)\]\(([^\s)]+)(?:\s+[^)]*)?\)|<img\b[^>]*?src=["\']([^"\']+)["\'][^>]*>', re.I)
 
 
@@ -38,11 +39,14 @@ def readme(repo):
 
 
 def app_url(repo, content):
-    # A project must have Pages enabled and advertise the site's path in its
-    # homepage or README. GitHub's Pages URL may use the github.io domain.
-    urls = [repo.get("homepage") or "", *DOMAIN.findall(content)]
+    # Pages project URLs can redirect from github.io to the custom domain.
+    urls = [repo.get("homepage") or "", *DOMAIN.findall(content), *PAGES.findall(content)]
     for value in urls:
         parsed = urlparse(value)
+        if parsed.hostname == f"{OWNER}.github.io" and parsed.path.strip("/").lower() == repo["name"].lower():
+            request = Request(value, headers={"User-Agent": "site-app-index"})
+            with urlopen(request, timeout=30) as response:
+                parsed = urlparse(response.geturl())
         if parsed.scheme in ("https", "http") and parsed.hostname in ("lprakashv.com", "www.lprakashv.com") and parsed.path.strip("/"):
             return "https://www.lprakashv.com" + parsed.path.rstrip("/") + "/"
     return None
