@@ -1,0 +1,55 @@
+blog/content/about/index.md
+  s_142ee824d0157b::t_148d34876541b1 18
+scripts/sync_apps.py
+  s_bde807e7915c73::t_eded24285c9ef9 1-108
+README.md
+  s_bde807e7915c73::t_0e947e743b125a 29,40,53
+  s_240adfa980f9d8::t_371d6da1115154 28,30-39,41-51
+  s_bde807e7915c73::t_7f3be4ceb7da96 11,13-24,26-27
+  s_bde807e7915c73::t_4b585574fa2b8a 2,4,6,8,10,12
+  s_142ee824d0157b::t_148d34876541b1 52,54-55
+  s_bde807e7915c73::t_8e23cdcfa131e5 1,3,5,7,9,25
+blog/content/about/profile-readme.md
+  s_142ee824d0157b::t_148d34876541b1 1-28
+  s_142ee824d0157b::t_4b82b5b039dddb 29-33
+blog/layouts/shortcodes/profile-readme.html
+  s_142ee824d0157b::t_148d34876541b1 1
+.github/workflows/main.yml
+  s_bde807e7915c73::t_6ba54f2405eb31 13,36-41,54,57-58
+  s_142ee824d0157b::t_148d34876541b1 14-16,25-26,42-53,55-56,59-60
+  s_142ee824d0157b::t_9c2b7a0c8a268c 61
+blog/layouts/partials/google/analytics.html
+  s_240adfa980f9d8::t_371d6da1115154 1,3,9,11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e30bf423b9ddb7482f408d58f11495646702fd80",
+  "prompts": {},
+  "sessions": {
+    "s_142ee824d0157b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a2024c-e2fc-72d2-914f-f67c119c6447",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "Lalit Vatsal <lprakashv@gmail.com>"
+    },
+    "s_240adfa980f9d8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a20245-b307-7221-876c-799bf191be82",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "Lalit Vatsal <lprakashv@gmail.com>"
+    },
+    "s_bde807e7915c73": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a2024d-9b05-7a73-b8da-70b132a49089",
+        "model": "gpt-6.1-terra"
+      },
+      "human_author": "Lalit Vatsal <lprakashv@gmail.com>"
+    }
+  }
+}
