@@ -12,6 +12,22 @@ My website also includes apps at paths such as `www.lprakashv.com/<app-name>`.
 
 <!-- apps:start -->
 
+### [codenames-game](https://www.lprakashv.com/codenames-game/)
+
+An offline (for now) "Codenames Game" app built using Clojurescript and re-frame.
+
+[Repository](https://github.com/lprakashv/codenames-game)
+
+![codenames-game app preview](https://raw.githubusercontent.com/lprakashv/codenames-game/main/demo/Screenshot_2021-02-17_reframe_codenames_1.png)
+
+### [designed-to-scale](https://www.lprakashv.com/designed-to-scale/)
+
+Clone of Designed to Scale - System Design Concepts and Practice
+
+[Repository](https://github.com/lprakashv/designed-to-scale)
+
+![designed-to-scale app preview](https://raw.githubusercontent.com/lprakashv/designed-to-scale/main/showcase/request-lifecycle.jpg)
+
 ### [dsa-blueprint](https://www.lprakashv.com/dsa-blueprint/)
 
 DSA Blueprint - Understand coding problem patterns
@@ -19,6 +35,18 @@ DSA Blueprint - Understand coding problem patterns
 [Repository](https://github.com/lprakashv/dsa-blueprint)
 
 ![dsa-blueprint app preview](https://raw.githubusercontent.com/lprakashv/dsa-blueprint/main/docs/images/learn.jpg)
+
+### [notes](https://www.lprakashv.com/notes/)
+
+Learning Notes
+
+[Repository](https://github.com/lprakashv/notes)
+
+### [patternmatcher4j](https://www.lprakashv.com/patternmatcher4j/)
+
+An FP style pattern matcher library for Java
+
+[Repository](https://github.com/lprakashv/patternmatcher4j)
 
 <!-- apps:end -->
 
