@@ -39,22 +39,27 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/sync_apps.py
 
-      - name: Sync profile README
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-        run: |
-          readme_path="blog/content/about/profile-readme.md"
-          temp_path="${readme_path}.tmp"
-          curl --fail --silent --show-error --location \
-            --header "Accept: application/vnd.github.raw+json" \
-            https://api.github.com/repos/lprakashv/lprakashv/readme \
-            --output "$temp_path"
-          test -s "$temp_path"
-          mv "$temp_path" "$readme_path"
+      - name: Check out profile repository
+        if: github.event_name != 'pull_request'
+        uses: actions/checkout@v3
+        with:
+          repository: lprakashv/lprakashv
+          path: .profile-source
+          persist-credentials: false
 
-          if ! git diff --quiet -- "$readme_path" README.md; then
+      - name: Sync profile README
+        if: github.event_name != 'pull_request'
+        run: |
+          test -s .profile-source/README.md
+          cp .profile-source/README.md blog/content/about/profile-readme.md
+          mkdir -p blog/static/about/images
+          cp .profile-source/lprakashv-profile-banner.png blog/static/about/
+          cp .profile-source/images/* blog/static/about/images/
+
+          git add blog/content/about/profile-readme.md blog/static/about README.md
+          if ! git diff --cached --quiet; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add "$readme_path" README.md
             git commit -m "Sync profile and app list"
             git push origin "HEAD:${GITHUB_REF_NAME}"
           fi

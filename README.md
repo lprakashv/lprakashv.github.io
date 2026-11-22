@@ -54,4 +54,4 @@ See Google's [GA4 setup guide](https://support.google.com/analytics/answer/14183
 
 ### About page
 
-The About page renders `blog/content/about/profile-readme.md` as local site content. The scheduled GitHub Actions workflow refreshes this file nightly from the public `lprakashv/lprakashv` profile repository, commits changes, then builds and deploys the site. Run the workflow manually from the Actions tab to sync it sooner.
+The About page renders `blog/content/about/profile-readme.md` as local site content. On pushes to `master`, nightly, and on manual runs, GitHub Actions copies the README and its images from the public `lprakashv/lprakashv` profile repository, commits changes, then builds and deploys the site. Run the workflow manually from the Actions tab to sync it sooner. The sync expects the banner at the repository root and images in its `images` directory.
