@@ -1,0 +1,23 @@
+blog/content/about/profile-readme.md
+  s_142ee824d0157b::t_e9da43bf4596fc 1-44
+README.md
+  s_142ee824d0157b::t_6ca1476a4581d3 57
+.github/workflows/main.yml
+  s_142ee824d0157b::t_6ca1476a4581d3 42-49,51,53-57,59-60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7f2841df11d2f37fde288b6ace15c7754c952981",
+  "prompts": {},
+  "sessions": {
+    "s_142ee824d0157b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a2024c-e2fc-72d2-914f-f67c119c6447",
+        "model": "gpt-6.1-terra"
+      },
+      "human_author": "Lalit Vatsal <lprakashv@gmail.com>"
+    }
+  }
+}
