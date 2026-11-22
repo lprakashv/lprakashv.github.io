@@ -1,0 +1,33 @@
+blog/layouts/shortcodes/github-repo-md-content.html
+  s_bde807e7915c73::t_1d179cbbdae60e 3-4
+blog/layouts/shortcodes/github-user-avatar.html
+  s_bde807e7915c73::t_1d179cbbdae60e 2-3
+blog/layouts/_default/rss.xml
+  s_bde807e7915c73::t_403abfd6a93ef4 8
+README.md
+  s_bde807e7915c73::t_413293d8092dfe 29-30
+blog/layouts/partials/footer.html
+  s_bde807e7915c73::t_0d8d5618bfd186 1-17
+blog/layouts/shortcodes/gist.html
+  s_bde807e7915c73::t_403abfd6a93ef4 1-2
+blog/config.toml
+  s_bde807e7915c73::t_413293d8092dfe 2,84
+.github/workflows/main.yml
+  s_bde807e7915c73::t_1d179cbbdae60e 65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "dede6d4831f73c35ca8d302e6ead4470a3f41377",
+  "prompts": {},
+  "sessions": {
+    "s_bde807e7915c73": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a2024d-9b05-7a73-b8da-70b132a49089",
+        "model": "gpt-6.1-terra"
+      },
+      "human_author": "Lalit Vatsal <lprakashv@gmail.com>"
+    }
+  }
+}
