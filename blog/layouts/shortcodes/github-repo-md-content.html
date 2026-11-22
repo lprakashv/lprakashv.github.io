@@ -1,6 +1,7 @@
 {{ $repo := .Get 0 }}
 {{ $filePath := .Get 1 }}
-{{ $json := getJSON "https://api.github.com/repos/lprakashv/" $repo "/" $filePath }}
+{{ $url := printf "https://api.github.com/repos/lprakashv/%s/%s" $repo $filePath }}
+{{ $json := (resources.GetRemote $url).Content | transform.Unmarshal }}
 {{ $content := $json.content | base64Decode }}
 {{ $content = replace $content "\\n" "\n" }}
 {{ $content | safeHTML }}

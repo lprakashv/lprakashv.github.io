@@ -1,5 +1,6 @@
 {{ $user := .Get 0 }}
-{{ $json := getJSON "https://api.github.com/users/" $user }}
+{{ $url := printf "https://api.github.com/users/%s" $user }}
+{{ $json := (resources.GetRemote $url).Content | transform.Unmarshal }}
 {{ $content := $json.avatar_url }}
 <p class="md__image">
     <img src="{{ $content | safeURL }}" alt="avatar" />

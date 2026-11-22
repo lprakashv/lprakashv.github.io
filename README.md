@@ -26,6 +26,8 @@ DSA Blueprint - Understand coding problem patterns
 
 The nightly workflow refreshes the app list from public repositories that have GitHub Pages enabled and link to an app path on this domain in their homepage or README. It uses the repository description and the first suitable image in its README. Repositories without a matching link are skipped; add the app URL and a demo image to their README to include them. Run the workflow manually from the Actions tab to refresh the list sooner.
 
+The workflow builds the blog with Hugo 0.170.1 extended. Update the pinned version after checking the build with the new release.
+
 ### Website analytics
 
 The Hugo site uses Google Analytics 4 (GA4). The tag is included in the page head when a Measurement ID is set in `blog/config.toml`:
