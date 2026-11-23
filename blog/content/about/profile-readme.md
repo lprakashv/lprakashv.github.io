@@ -27,7 +27,6 @@ I'm a software engineer, problem solver, and curious experimenter from India, wi
   </tr>
 </table>
 
-- 📊 [data-science-notes](https://github.com/lprakashv/data-science-notes) — Notes and examples on data science, machine learning, and AI. **[📖 Browse the notes](https://www.lprakashv.com/data-science-notes/)**
 - ☕ [patternmatcher4j](https://github.com/lprakashv/patternmatcher4j) — A functional style pattern matching library for Java. [API docs](https://www.lprakashv.com/patternmatcher4j/)
 - 🧮 [expression-parser](https://github.com/lprakashv/expression-parser) — A Scala REPL parser for user-defined functions.
 - 🧰 [scala-utils](https://github.com/lprakashv/scala-utils) — A collection of Scala utilities.
@@ -37,6 +36,8 @@ I'm a software engineer, problem solver, and curious experimenter from India, wi
 <!-- pages:start -->
 
 <!-- pages:end -->
+
+- 📊 [data-science-notes](https://github.com/lprakashv/data-science-notes) — Partial, experimental notes and examples on data science, machine learning, and AI. **[📖 Browse the notes](https://www.lprakashv.com/data-science-notes/)**
 
 ## ⚙️ Tools and technologies
 
