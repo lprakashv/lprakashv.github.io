@@ -1,0 +1,31 @@
+.app-sync-state.json
+  s_a0eabb75847ad8::t_39251683f0d9f0 1-37
+README.md
+  s_a0eabb75847ad8::t_331ae26b7cee1b 55-57
+  s_a0eabb75847ad8::t_39251683f0d9f0 21-27,35,43
+.github/workflows/main.yml
+  s_a0eabb75847ad8::t_56a53f2c52aaf2 63
+  s_a0eabb75847ad8::t_6fc4abd00d90de 25-27
+scripts/sync_apps.py
+  s_a0eabb75847ad8::t_616773e4c9d058 18-19,94,108,117-119,148-149,152-153,155-169,172-175,177-178
+  s_a0eabb75847ad8::t_2fc8ef794ede58 2,9,11,17,25-27,29-33,37,39,49-50,54-60,66,77-81,83-91,95,102-104,106-107,109-116,120-126,131-147,176,181
+  s_a0eabb75847ad8::t_2af303931feb90 105,127-130
+  s_a0eabb75847ad8::t_efaa9fc2c07087 67-69
+  s_a0eabb75847ad8::t_38ef86b573ac4a 170-171,179-180
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b943f03d738f5796bec59bd62d480f394fc3283b",
+  "prompts": {},
+  "sessions": {
+    "s_a0eabb75847ad8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a201fb-158d-72b1-8d3b-705a84ae8b7b",
+        "model": "gpt-6.1-terra"
+      },
+      "human_author": "Lalit Vatsal <lprakashv@gmail.com>"
+    }
+  }
+}
