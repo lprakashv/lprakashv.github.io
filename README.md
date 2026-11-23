@@ -18,7 +18,13 @@ An offline (for now) "Codenames Game" app built using Clojurescript and re-frame
 
 [Repository](https://github.com/lprakashv/codenames-game)
 
-![codenames-game app preview](https://raw.githubusercontent.com/lprakashv/codenames-game/main/demo/Screenshot_2021-02-17_reframe_codenames_1.png)
+![codenames-game app preview](https://raw.githubusercontent.com/lprakashv/codenames-game/574bc4986fbfba6c47c4e1893426ae66ded95759/demo/Screenshot_2021-02-17_reframe_codenames_1.png)
+
+### [data-science-notes](https://www.lprakashv.com/data-science-notes/)
+
+Data Science notes with Jupyter Notebooks
+
+[Repository](https://github.com/lprakashv/data-science-notes)
 
 ### [designed-to-scale](https://www.lprakashv.com/designed-to-scale/)
 
@@ -26,7 +32,7 @@ Clone of Designed to Scale - System Design Concepts and Practice
 
 [Repository](https://github.com/lprakashv/designed-to-scale)
 
-![designed-to-scale app preview](https://raw.githubusercontent.com/lprakashv/designed-to-scale/main/showcase/request-lifecycle.jpg)
+![designed-to-scale app preview](https://raw.githubusercontent.com/lprakashv/designed-to-scale/f3581386a7758352bc0fe5e12e9569c4b446d7f5/showcase/request-lifecycle.jpg)
 
 ### [dsa-blueprint](https://www.lprakashv.com/dsa-blueprint/)
 
@@ -34,13 +40,7 @@ DSA Blueprint - Understand coding problem patterns
 
 [Repository](https://github.com/lprakashv/dsa-blueprint)
 
-![dsa-blueprint app preview](https://raw.githubusercontent.com/lprakashv/dsa-blueprint/main/docs/images/learn.jpg)
-
-### [notes](https://www.lprakashv.com/notes/)
-
-Learning Notes
-
-[Repository](https://github.com/lprakashv/notes)
+![dsa-blueprint app preview](https://raw.githubusercontent.com/lprakashv/dsa-blueprint/bad9711f0ea31fc1fddba624d7e41881baf7b707/docs/images/learn.jpg)
 
 ### [patternmatcher4j](https://www.lprakashv.com/patternmatcher4j/)
 
@@ -52,7 +52,9 @@ An FP style pattern matcher library for Java
 
 ## Site maintenance
 
-The nightly workflow refreshes the app list from public repositories that have GitHub Pages enabled and link to an app path on this domain in their homepage or README. It also follows a repository's GitHub Pages project URL when it redirects to this domain. It uses the repository description and the first suitable image in its README, if available. Repositories without a matching link are skipped; add the app URL and a demo image to their README to include them. Run the workflow manually from the Actions tab to refresh the list sooner.
+The nightly workflow discovers public, non-fork repositories with GitHub Pages and an app URL on this domain. It records each default-branch commit in `.app-sync-state.json` and processes the README and preview only when that commit changes. Images are linked to that commit. If no suitable image exists, the app keeps a text link. If a repository cannot be read, the workflow retains its last successful entry and retries it later. On the first run, a read failure stops the sync so it cannot replace the existing list with an incomplete one. Run the workflow manually from the Actions tab to refresh the list sooner.
+
+The profile repository has a separate nightly workflow using the same script and state format. It refreshes the four featured app card images and adds newly discovered Pages projects between its `pages` markers. Keep the scripts in both repositories in sync when changing discovery behavior. A card keeps its current preview when the child repository has no usable image.
 
 The workflow builds the blog with Hugo 0.170.1 extended. Update the pinned version after checking the build with the new release.
 

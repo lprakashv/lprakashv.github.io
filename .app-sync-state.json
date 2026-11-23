@@ -1,0 +1,37 @@
+{
+  "codenames-game": {
+    "sha": "574bc4986fbfba6c47c4e1893426ae66ded95759",
+    "url": "https://www.lprakashv.com/codenames-game/",
+    "image": "https://raw.githubusercontent.com/lprakashv/codenames-game/574bc4986fbfba6c47c4e1893426ae66ded95759/demo/Screenshot_2021-02-17_reframe_codenames_1.png",
+    "description": "An offline (for now) \"Codenames Game\" app built using Clojurescript and re-frame.",
+    "repo": "https://github.com/lprakashv/codenames-game"
+  },
+  "data-science-notes": {
+    "sha": "a4e70b8a266ae1d4fbd80c5c54f49e6710b65720",
+    "url": "https://www.lprakashv.com/data-science-notes/",
+    "image": null,
+    "description": "Data Science notes with Jupyter Notebooks",
+    "repo": "https://github.com/lprakashv/data-science-notes"
+  },
+  "designed-to-scale": {
+    "sha": "f3581386a7758352bc0fe5e12e9569c4b446d7f5",
+    "url": "https://www.lprakashv.com/designed-to-scale/",
+    "image": "https://raw.githubusercontent.com/lprakashv/designed-to-scale/f3581386a7758352bc0fe5e12e9569c4b446d7f5/showcase/request-lifecycle.jpg",
+    "description": "Clone of Designed to Scale - System Design Concepts and Practice",
+    "repo": "https://github.com/lprakashv/designed-to-scale"
+  },
+  "dsa-blueprint": {
+    "sha": "bad9711f0ea31fc1fddba624d7e41881baf7b707",
+    "url": "https://www.lprakashv.com/dsa-blueprint/",
+    "image": "https://raw.githubusercontent.com/lprakashv/dsa-blueprint/bad9711f0ea31fc1fddba624d7e41881baf7b707/docs/images/learn.jpg",
+    "description": "DSA Blueprint - Understand coding problem patterns",
+    "repo": "https://github.com/lprakashv/dsa-blueprint"
+  },
+  "patternmatcher4j": {
+    "sha": "d9534a525e56d03d790dee94465255e3312a4a9b",
+    "url": "https://www.lprakashv.com/patternmatcher4j/",
+    "image": null,
+    "description": "An FP style pattern matcher library for Java",
+    "repo": "https://github.com/lprakashv/patternmatcher4j"
+  }
+}
