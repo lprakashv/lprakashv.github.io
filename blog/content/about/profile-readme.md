@@ -18,12 +18,12 @@ I'm a software engineer, problem solver, and curious experimenter from India, wi
 
 <table>
   <tr>
-    <td width="50%"><a href="https://www.lprakashv.com/dsa-blueprint/"><img src="images/dsa-blueprint.jpg" alt="DSA Blueprint two pointers lesson" width="400"></a><br><strong>🧩 DSA Blueprint</strong><br>Explore coding interview patterns with visual lessons and examples.<br><a href="https://www.lprakashv.com/dsa-blueprint/"><strong>▶ Open the app</strong></a> · <a href="https://github.com/lprakashv/dsa-blueprint">Repository</a></td>
-    <td width="50%"><a href="https://www.lprakashv.com/designed-to-scale/"><img src="images/designed-to-scale.jpg" alt="System design request lifecycle lesson" width="400"></a><br><strong>🏗️ Designed to Scale</strong><br>An interactive study companion based on Dilum Sanjaya’s course.<br><a href="https://www.lprakashv.com/designed-to-scale/"><strong>▶ Explore the lessons</strong></a> · <a href="https://github.com/lprakashv/designed-to-scale">Repository</a></td>
+    <td width="50%"><a href="https://www.lprakashv.com/dsa-blueprint/"><img src="https://raw.githubusercontent.com/lprakashv/dsa-blueprint/bad9711f0ea31fc1fddba624d7e41881baf7b707/docs/images/learn.jpg" alt="DSA Blueprint two pointers lesson" width="400"></a><br><strong>🧩 DSA Blueprint</strong><br>Explore coding interview patterns with visual lessons and examples.<br><a href="https://www.lprakashv.com/dsa-blueprint/"><strong>▶ Open the app</strong></a> · <a href="https://github.com/lprakashv/dsa-blueprint">Repository</a></td>
+    <td width="50%"><a href="https://www.lprakashv.com/designed-to-scale/"><img src="https://raw.githubusercontent.com/lprakashv/designed-to-scale/f3581386a7758352bc0fe5e12e9569c4b446d7f5/showcase/request-lifecycle.jpg" alt="System design request lifecycle lesson" width="400"></a><br><strong>🏗️ Designed to Scale</strong><br>An interactive study companion based on Dilum Sanjaya’s course.<br><a href="https://www.lprakashv.com/designed-to-scale/"><strong>▶ Explore the lessons</strong></a> · <a href="https://github.com/lprakashv/designed-to-scale">Repository</a></td>
   </tr>
   <tr>
-    <td><a href="https://github.com/lprakashv/cleanwall-plus-ultra"><img src="images/clean-wall.jpg" alt="Clean Wall Plus Ultra Android TV home screen" width="400"></a><br><strong>📺 Clean Wall +Ultra</strong><br>A configurable launcher for Android TV.<br><a href="https://github.com/lprakashv/cleanwall-plus-ultra"><strong>▶ View the app and repository</strong></a></td>
-    <td><a href="https://www.lprakashv.com/codenames-game/"><img src="images/codenames.png" alt="Codenames game board" width="400"></a><br><strong>🎲 Codenames</strong><br>An offline game built with ClojureScript and re-frame.<br><a href="https://www.lprakashv.com/codenames-game/"><strong>▶ Play the game</strong></a> · <a href="https://github.com/lprakashv/codenames-game">Repository</a></td>
+    <td><a href="https://github.com/lprakashv/cleanwall-plus-ultra"><img src="https://raw.githubusercontent.com/lprakashv/cleanwall-plus-ultra/7428bab339ef499dff8be8d32223614deabe57aa/docs/images/tv-home.jpg" alt="Clean Wall Plus Ultra Android TV home screen" width="400"></a><br><strong>📺 Clean Wall +Ultra</strong><br>A configurable launcher for Android TV.<br><a href="https://github.com/lprakashv/cleanwall-plus-ultra"><strong>▶ View the app and repository</strong></a></td>
+    <td><a href="https://www.lprakashv.com/codenames-game/"><img src="https://raw.githubusercontent.com/lprakashv/codenames-game/574bc4986fbfba6c47c4e1893426ae66ded95759/demo/Screenshot_2021-02-17_reframe_codenames_1.png" alt="Codenames game board" width="400"></a><br><strong>🎲 Codenames</strong><br>An offline game built with ClojureScript and re-frame.<br><a href="https://www.lprakashv.com/codenames-game/"><strong>▶ Play the game</strong></a> · <a href="https://github.com/lprakashv/codenames-game">Repository</a></td>
   </tr>
 </table>
 
@@ -33,6 +33,10 @@ I'm a software engineer, problem solver, and curious experimenter from India, wi
 - 🧰 [scala-utils](https://github.com/lprakashv/scala-utils) — A collection of Scala utilities.
 - 🛡️ [resilience4s](https://github.com/lprakashv/resilience4s) — An archived Scala toolkit for microservice resilience patterns.
 - 💉 [cowin-availability-bot-script](https://github.com/lprakashv/cowin-availability-bot-script) — A script that sends vaccine availability updates through Telegram.
+
+<!-- pages:start -->
+
+<!-- pages:end -->
 
 ## ⚙️ Tools and technologies
 
