@@ -14,16 +14,16 @@
     "repo": "https://github.com/lprakashv/data-science-notes"
   },
   "designed-to-scale": {
-    "sha": "f3581386a7758352bc0fe5e12e9569c4b446d7f5",
+    "sha": "56c29061d94ee090790e2148d53ab1d2b6765eee",
     "url": "https://www.lprakashv.com/designed-to-scale/",
-    "image": "https://raw.githubusercontent.com/lprakashv/designed-to-scale/f3581386a7758352bc0fe5e12e9569c4b446d7f5/showcase/request-lifecycle.jpg",
+    "image": "https://raw.githubusercontent.com/lprakashv/designed-to-scale/56c29061d94ee090790e2148d53ab1d2b6765eee/showcase/request-lifecycle.jpg",
     "description": "Clone of Designed to Scale - System Design Concepts and Practice",
     "repo": "https://github.com/lprakashv/designed-to-scale"
   },
   "dsa-blueprint": {
-    "sha": "bad9711f0ea31fc1fddba624d7e41881baf7b707",
+    "sha": "5e306271ca282bc5a141d8854ae7945a0fdcc044",
     "url": "https://www.lprakashv.com/dsa-blueprint/",
-    "image": "https://raw.githubusercontent.com/lprakashv/dsa-blueprint/bad9711f0ea31fc1fddba624d7e41881baf7b707/docs/images/learn.jpg",
+    "image": "https://www.lprakashv.com/dsa-blueprint/screenshot.png",
     "description": "DSA Blueprint - Understand coding problem patterns",
     "repo": "https://github.com/lprakashv/dsa-blueprint"
   },

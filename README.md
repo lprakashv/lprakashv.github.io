@@ -32,7 +32,7 @@ Clone of Designed to Scale - System Design Concepts and Practice
 
 [Repository](https://github.com/lprakashv/designed-to-scale)
 
-![designed-to-scale app preview](https://raw.githubusercontent.com/lprakashv/designed-to-scale/f3581386a7758352bc0fe5e12e9569c4b446d7f5/showcase/request-lifecycle.jpg)
+![designed-to-scale app preview](https://raw.githubusercontent.com/lprakashv/designed-to-scale/56c29061d94ee090790e2148d53ab1d2b6765eee/showcase/request-lifecycle.jpg)
 
 ### [dsa-blueprint](https://www.lprakashv.com/dsa-blueprint/)
 
@@ -40,7 +40,7 @@ DSA Blueprint - Understand coding problem patterns
 
 [Repository](https://github.com/lprakashv/dsa-blueprint)
 
-![dsa-blueprint app preview](https://raw.githubusercontent.com/lprakashv/dsa-blueprint/bad9711f0ea31fc1fddba624d7e41881baf7b707/docs/images/learn.jpg)
+![dsa-blueprint app preview](https://www.lprakashv.com/dsa-blueprint/screenshot.png)
 
 ### [patternmatcher4j](https://www.lprakashv.com/patternmatcher4j/)
 
