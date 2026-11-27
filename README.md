@@ -32,7 +32,7 @@ Clone of Designed to Scale - System Design Concepts and Practice
 
 [Repository](https://github.com/lprakashv/designed-to-scale)
 
-![designed-to-scale app preview](https://raw.githubusercontent.com/lprakashv/designed-to-scale/56c29061d94ee090790e2148d53ab1d2b6765eee/showcase/request-lifecycle.jpg)
+![designed-to-scale app preview](https://raw.githubusercontent.com/lprakashv/designed-to-scale/189289cfa56de7b59c2bc1315dd7002cc5494f00/showcase/request-lifecycle.jpg)
 
 ### [dsa-blueprint](https://www.lprakashv.com/dsa-blueprint/)
 
